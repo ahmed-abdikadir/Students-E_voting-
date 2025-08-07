@@ -1,0 +1,90 @@
+<!-- src/main/resources/templates/dashboard.html -->
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Dashboard</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #e9ecef;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+        }
+        .dashboard-container {
+            background-color: #fff;
+            padding: 40px;
+            border-radius: 8px;
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.15);
+            text-align: center;
+            width: 400px;
+        }
+        .dashboard-container:hover {
+            background-color: #0056b3;
+        }
+        .election-list {
+            list-style: none;
+            padding: 0;
+            margin-top: 20px;
+        }
+        .election-list li {
+            background-color: #f1f1f1;
+            padding: 15px;
+            margin-bottom: 10px;
+            border-radius: 8px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .vote-button {
+            background-color: #28a745;
+            padding: 8px 15px;
+            font-size: 14px;
+            margin-top: 0;
+        }
+        .vote-button:hover {
+            background-color: #218838;
+        }
+        .logout-button {
+            background-color: #dc3545;
+        }
+        .logout-button:hover {
+            background-color: #c82333;
+        }
+        .dashboard-container h1 {
+            color: #28a745;
+            margin-bottom: 20px;
+        }
+        .dashboard-container p {
+            color: #6c757d;
+            font-size: 1.1em;
+        }
+    </style>
+</head>
+<body>
+    <div class="dashboard-container">
+        <h1>E-Voting Dashboard</h1>
+        <h2>Active Elections</h2>
+        <div th:if="${elections.isEmpty()}">
+            <p>No active elections at the moment.</p>
+        </div>
+        <ul th:unless="${elections.isEmpty()}" class="election-list">
+            <li th:each="election : ${elections}">
+                <p>Welcome, <span th:text="${session.username}">User</span>!</p>
+                <div th:if="${session.role == 'ADMIN'}" style="margin-bottom: 20px;">
+                    <a th:href="@{/admin/dashboard}" class="button" style="background-color: #dc3545;">Go to Admin Panel</a>
+                </div>
+                <span th:text="${election.name}">Election Name</span>
+                <div th:switch="${session.role}">
+                    <a th:case="'ADMIN'" th:href="@{/election/{id}/results(id=${election.id})}" class="button">View Results</a>
+                    <a th:case="'STUDENT'" th:href="@{/election/{id}/ballot(id=${election.id})}" class="button">Vote</a>
+                </div>
+            </li>
+        </ul>
+        <a th:href="@{/login}" class="logout-button">Logout</a>
+    </div>
+</body>
+</html>

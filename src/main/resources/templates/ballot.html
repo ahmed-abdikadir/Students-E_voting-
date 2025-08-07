@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Ballot</title>
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            background-color: #f8f9fa;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+        .ballot-container {
+            background-color: #ffffff;
+            padding: 40px;
+            border-radius: 12px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+            text-align: left;
+            width: 500px;
+        }
+        h1 {
+            color: #333;
+            font-size: 24px;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+        .candidate-list {
+            list-style: none;
+            padding: 0;
+        }
+        .candidate-list li {
+            margin-bottom: 15px;
+        }
+        input[type="radio"] {
+            margin-right: 10px;
+        }
+        .submit-button {
+            display: block;
+            width: 100%;
+            padding: 12px;
+            margin-top: 20px;
+            background-color: #007bff;
+            color: #fff;
+            text-decoration: none;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        .submit-button:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+    <div class="ballot-container">
+        <h1 th:text="${election.name}">Election Name</h1>
+        <form th:action="@{/vote}" method="post">
+            <input type="hidden" name="electionId" th:value="${election.id}"/>
+            <ul class="candidate-list">
+                <li th:each="candidate : ${candidates}">
+                    <input type="radio" name="candidateId" th:id="${'candidate-' + candidate.id}" th:value="${candidate.id}" required/>
+                    <label th:for="${'candidate-' + candidate.id}" th:text="${candidate.name}">Candidate Name</label>
+                </li>
+            </ul>
+            <button type="submit" class="submit-button">Cast Your Vote</button>
+        </form>
+    </div>
+</body>
+</html>

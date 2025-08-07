@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Election Results</title>
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+</head>
+<body>
+<div class="container">
+    <h1 th:text="${election.name} + ' Results'">Election Results</h1>
+
+    <!-- Calculate Total Votes -->
+    <div th:with="totalVotes=${results.values().stream().mapToLong(Long::longValue).sum()}"></div>
+
+    <table class="results-table">
+        <thead>
+            <tr>
+                <th>Candidate</th>
+                <th style="width: 60%;">Vote Distribution</th>
+                <th>Total Votes</th>
+            </tr>
+        </thead>
+        <tbody>
+            <!-- Handle case with no votes -->
+            <tr th:if="${results.isEmpty() or totalVotes == 0}">
+                <td colspan="3" style="text-align: center;">No votes have been cast yet.</td>
+            </tr>
+            <!-- Display results -->
+            <tr th:each="result : ${results}" th:if="${!results.isEmpty() and totalVotes > 0}">
+                <td class="candidate-name" th:text="${result.key}">Candidate Name</td>
+                <td>
+                    <div class="bar-container">
+                        <div class="bar" th:style="'width: ' + (${result.value} * 100.0 / ${totalVotes}) + '%;'">
+                             <span class="bar-label" th:text="${#numbers.formatDecimal(result.value * 100.0 / totalVotes, 1, 1)} + '%'"></span>
+                        </div>
+                    </div>
+                </td>
+                <td th:text="${result.value}">0</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a th:href="@{/dashboard}" class="button">Back to Dashboard</a>
+</div>
+</body>
+</html>
