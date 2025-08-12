@@ -47,4 +47,9 @@ public class UserServiceImpl implements UserService {
                 .filter(user -> user.getPassword().equals(password))
                 .orElse(null);
     }
+
+    @Override
+    public User save(User user) {
+        return userRepository.save(user);
+    }
 }

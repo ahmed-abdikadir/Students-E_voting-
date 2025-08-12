@@ -67,6 +67,11 @@ public class ElectionServiceImpl implements ElectionService {
 
     @Override
     public void castVote(String studentId, Long electionId, Long candidateId) {
+        if (hasVoted(studentId, electionId)) {
+            // Optionally, you can throw a custom exception here and handle it in the controller
+            // For now, we'll just prevent saving the duplicate vote
+            return;
+        }
         Vote vote = new Vote();
         vote.setStudentId(studentId);
         vote.setElectionId(electionId);

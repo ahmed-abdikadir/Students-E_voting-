@@ -18,4 +18,31 @@ public class AdminController {
         }
         return "admin-dashboard";
     }
+
+    @GetMapping("/elections")
+    public String showManageElectionsPage(HttpSession session) {
+        String role = (String) session.getAttribute("role");
+        if (!"ADMIN".equals(role)) {
+            return "redirect:/login";
+        }
+        return "manage-elections";
+    }
+
+    @GetMapping("/candidates")
+    public String showManageCandidatesPage(HttpSession session) {
+        String role = (String) session.getAttribute("role");
+        if (!"ADMIN".equals(role)) {
+            return "redirect:/login";
+        }
+        return "manage-candidates";
+    }
+
+    @GetMapping("/students")
+    public String showManageStudentsPage(HttpSession session) {
+        String role = (String) session.getAttribute("role");
+        if (!"ADMIN".equals(role)) {
+            return "redirect:/login";
+        }
+        return "manage-students";
+    }
 }

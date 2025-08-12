@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import java.util.List;
+import java.util.Map;
 
 @Controller
 public class ElectionController {
@@ -92,8 +93,12 @@ public class ElectionController {
             return "redirect:/dashboard"; // Or an error page
         }
 
+        Map<String, Long> results = electionService.getElectionResults(electionId);
+        long totalVotes = results.values().stream().mapToLong(Long::longValue).sum();
+
         model.addAttribute("election", election);
-        model.addAttribute("results", electionService.getElectionResults(electionId));
+        model.addAttribute("results", results);
+        model.addAttribute("totalVotes", totalVotes);
 
         return "election-results";
     }

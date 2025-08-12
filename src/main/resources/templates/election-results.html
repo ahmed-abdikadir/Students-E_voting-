@@ -9,9 +9,6 @@
 <div class="container">
     <h1 th:text="${election.name} + ' Results'">Election Results</h1>
 
-    <!-- Calculate Total Votes -->
-    <div th:with="totalVotes=${results.values().stream().mapToLong(Long::longValue).sum()}"></div>
-
     <table class="results-table">
         <thead>
             <tr>

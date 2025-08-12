@@ -79,8 +79,8 @@
                 </div>
                 <span th:text="${election.name}">Election Name</span>
                 <div th:switch="${session.role}">
-                    <a th:case="'ADMIN'" th:href="@{/election/{id}/results(id=${election.id})}" class="button">View Results</a>
-                    <a th:case="'STUDENT'" th:href="@{/election/{id}/ballot(id=${election.id})}" class="button">Vote</a>
+                    <a th:case="'ADMIN'" th:href="@{/election/{electionId}/results(electionId=${election.id})}" class="button">View Results</a>
+                    <a th:case="'STUDENT'" th:href="@{/election/{id}(id=${election.id})}" class="button">Vote</a>
                 </div>
             </li>
         </ul>
