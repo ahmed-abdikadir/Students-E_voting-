@@ -16,4 +16,12 @@ public interface ElectionService {
     void castVote(String studentId, Long electionId, Long candidateId);
 
     Map<String, Long> getElectionResults(Long electionId);
+
+    Election createElection(String name);
+
+    Election openElection(Long electionId);
+
+    Election closeElection(Long electionId);
+    
+    void deleteElection(Long electionId);
 }

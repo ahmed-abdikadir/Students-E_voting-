@@ -1,22 +1,30 @@
 package com.example.E_voting.model;
 
 import jakarta.persistence.Entity;
+import jakarta.persistence.EnumType;
+import jakarta.persistence.Enumerated;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 
 @Entity
 public class Election {
-        @Id
+
+    @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+
     private String name;
 
-        public Election() {
+    @Enumerated(EnumType.STRING)
+    private ElectionStatus status;
+
+    public Election() {
     }
 
-        public Election(String name) {
+    public Election(String name) {
         this.name = name;
+        this.status = ElectionStatus.CREATED;
     }
 
     // Getters and Setters
@@ -35,4 +43,19 @@ public class Election {
     public void setName(String name) {
         this.name = name;
     }
+
+    public ElectionStatus getStatus() {
+        return status;
+    }
+
+    public void setStatus(ElectionStatus status) {
+        this.status = status;
+    }
+
+    public enum ElectionStatus {
+        CREATED,
+        OPEN,
+        CLOSED
+    }
 }
+

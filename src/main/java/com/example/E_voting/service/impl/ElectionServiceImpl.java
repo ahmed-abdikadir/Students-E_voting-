@@ -3,6 +3,7 @@ package com.example.E_voting.service.impl;
 import com.example.E_voting.model.Candidate;
 import com.example.E_voting.model.Election;
 import com.example.E_voting.model.Vote;
+import org.springframework.transaction.annotation.Transactional;
 import com.example.E_voting.repository.CandidateRepository;
 import com.example.E_voting.repository.ElectionRepository;
 import com.example.E_voting.repository.VoteRepository;
@@ -99,5 +100,58 @@ public class ElectionServiceImpl implements ElectionService {
     @Override
     public Candidate getCandidateById(Long candidateId) {
         return candidateRepository.findById(candidateId).orElse(null);
+    }
+
+    @Override
+    public Election createElection(String name) {
+        Election newElection = new Election(name);
+        return electionRepository.save(newElection);
+    }
+
+    @Override
+    public Election openElection(Long electionId) {
+        Election election = getElectionById(electionId);
+        if (election != null) {
+            election.setStatus(Election.ElectionStatus.OPEN);
+            return electionRepository.save(election);
+        }
+        return null;
+    }
+
+    @Override
+    public Election closeElection(Long electionId) {
+        Election election = getElectionById(electionId);
+        if (election != null) {
+            election.setStatus(Election.ElectionStatus.CLOSED);
+            return electionRepository.save(election);
+        }
+        return null;
+    }
+    
+    @Override
+    @Transactional
+    public void deleteElection(Long electionId) {
+        try {
+            // First check if election exists
+            Election election = electionRepository.findById(electionId)
+                .orElseThrow(() -> new IllegalArgumentException("Election not found with id: " + electionId));
+            
+            // Delete all votes for this election
+            List<Vote> votes = voteRepository.findByElectionId(electionId);
+            if (votes != null && !votes.isEmpty()) {
+                voteRepository.deleteAll(votes);
+            }
+            
+            // Delete all candidates for this election
+            List<Candidate> candidates = candidateRepository.findByElectionId(electionId);
+            if (candidates != null && !candidates.isEmpty()) {
+                candidateRepository.deleteAll(candidates);
+            }
+            
+            // Finally delete the election
+            electionRepository.delete(election);
+        } catch (Exception e) {
+            throw new RuntimeException("Error deleting election with id " + electionId + ": " + e.getMessage(), e);
+        }
     }
 }

@@ -7,6 +7,7 @@ import java.util.List;
 
 @Repository
 public interface VoteRepository extends JpaRepository<Vote, Long> {
-        boolean existsByStudentIdAndElectionId(String studentId, Long electionId);
+    boolean existsByStudentIdAndElectionId(String studentId, Long electionId);
     List<Vote> findByElectionId(Long electionId);
+    void deleteByElectionId(Long electionId);
 }
