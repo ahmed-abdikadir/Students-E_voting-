@@ -1,69 +1,157 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<html xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>Confirm Your Vote</title>
+    <title>Confirm Vote</title>
     <style>
         body {
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-            background-color: #f8f9fa;
+            font-family: Arial, sans-serif;
+            background-color: #f0f4f8;
             display: flex;
             justify-content: center;
             align-items: center;
-            height: 100vh;
+            min-height: 100vh;
             margin: 0;
         }
-        .confirmation-container {
+        .confirm-container {
             background-color: #ffffff;
             padding: 40px;
-            border-radius: 12px;
+            border-radius: 16px;
             box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
             text-align: center;
             width: 500px;
         }
-        h1 {
-            color: #333;
-            font-size: 24px;
-            margin-bottom: 20px;
+        .confirm-container:hover {
+            background-color: #e3f2fd;
         }
-        .selection-details {
-            background-color: #f1f1f1;
+        .confirm-container h1 {
+            color: #007bff;
+            margin-bottom: 20px;
+            font-size: 1.8em;
+        }
+        .confirm-container p {
+            color: #6c757d;
+            font-size: 1.05em;
+            margin-bottom: 20px;
+            line-height: 1.6;
+        }
+        .election-info {
+            background-color: #e3f2fd;
+            padding: 15px;
+            border-radius: 8px;
+            margin: 20px 0;
+            border-left: 4px solid #007bff;
+        }
+        .election-name {
+            color: #007bff;
+            font-weight: bold;
+            font-size: 1.1em;
+            margin: 5px 0;
+        }
+        .candidate-selection {
+            background-color: #fff3cd;
             padding: 20px;
             border-radius: 8px;
-            margin-bottom: 20px;
+            margin: 20px 0;
+            border: 2px solid #ffc107;
         }
-        .submit-button {
-            display: inline-block;
-            padding: 12px 20px;
+        .candidate-selection h3 {
+            color: #856404;
+            margin-top: 0;
+            margin-bottom: 10px;
+        }
+        .selected-candidate {
+            color: #28a745;
+            font-size: 1.4em;
+            font-weight: bold;
+            margin: 15px 0;
+        }
+        .warning-text {
+            background-color: #fff5f5;
+            border: 1px solid #ffcccc;
+            color: #a02a2a;
+            padding: 12px;
+            border-radius: 6px;
+            margin: 20px 0;
+            font-size: 0.95em;
+        }
+        .button-group {
+            display: flex;
+            gap: 10px;
+            margin-top: 30px;
+            justify-content: center;
+        }
+        .confirm-button {
             background-color: #28a745;
-            color: #fff;
-            text-decoration: none;
-            border: none;
-            border-radius: 5px;
+            color: #ffffff;
+            padding: 12px 30px;
             font-size: 16px;
+            border: none;
+            border-radius: 8px;
             cursor: pointer;
-            transition: background-color 0.3s;
+            transition: all 0.3s;
+            font-weight: 600;
+            flex: 1;
+            max-width: 200px;
         }
-        .submit-button:hover {
+        .confirm-button:hover {
             background-color: #218838;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(40, 167, 69, 0.3);
         }
-        .cancel-link {
-            margin-left: 15px;
-            color: #007bff;
-            text-decoration: none;
+        .confirm-button:active {
+            transform: translateY(0);
+        }
+        .cancel-button {
+            background-color: #dc3545;
+            color: #ffffff;
+            padding: 12px 30px;
+            font-size: 16px;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.3s;
+            font-weight: 600;
+            flex: 1;
+            max-width: 200px;
+        }
+        .cancel-button:hover {
+            background-color: #c82333;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(220, 53, 69, 0.3);
+        }
+        .cancel-button:active {
+            transform: translateY(0);
         }
     </style>
 </head>
 <body>
-    <div class="confirmation-container">
-        <h1>Confirm Your Selection</h1>
-        <div class="selection-details">
-            <p><strong>Election:</strong> <span th:text="${election.name}">Election Name</span></p>
-            <p><strong>You selected:</strong> <span th:text="${candidate.name}">Candidate Name</span></p>
+    <div class="confirm-container">
+        <h1>⚠️ Confirm Your Vote</h1>
+        
+        <div class="election-info" th:if="${election}">
+            <p style="margin: 0 0 10px 0; color: #495057; font-size: 0.95em;">Election:</p>
+            <p class="election-name" th:text="${election.name}"></p>
         </div>
-        <form th:action="@{/vote/confirm}" method="post">
-            <button type="submit" class="submit-button">Confirm Vote</button>
-            <a th:href="@{/election/{id}(id=${election.id})}" class="cancel-link">Cancel</a>
+
+        <div class="candidate-selection">
+            <h3>You are voting for:</h3>
+            <div class="selected-candidate" th:text="${candidate.name}">
+                Candidate Name
+            </div>
+        </div>
+
+        <div class="warning-text">
+            ⚠️ <strong>Important:</strong> Please review your selection carefully. Once you confirm, your vote cannot be changed.
+        </div>
+
+        <p><strong>Are you sure you want to cast your vote for this candidate?</strong></p>
+
+        <form th:action="@{/student/vote/confirm}" method="post" style="margin: 0;">
+            <div class="button-group">
+                <button type="submit" class="confirm-button">✓ Yes, Confirm Vote</button>
+                <a th:href="@{/dashboard}" class="cancel-button">✗ No, Go Back</a>
+            </div>
         </form>
     </div>
 </body>

@@ -162,22 +162,32 @@
             fetch(`/admin/elections/delete/${electionId}`, {
                 method: 'DELETE',
                 headers: {
-                    'X-Requested-With': 'XMLHttpRequest',
-                    'Content-Type': 'application/json'
+                    'X-Requested-With': 'XMLHttpRequest'
                 },
                 credentials: 'same-origin'
             })
             .then(response => {
                 console.log('Response status:', response.status);
-                return response.json().then(data => {
-                    if (!response.ok) {
-                        throw new Error(data.message || 'Failed to delete election');
-                    }
-                    return data;
-                });
+                console.log('Content-Type:', response.headers.get('content-type'));
+                
+                // Check if response is JSON
+                const contentType = response.headers.get('content-type');
+                if (contentType && contentType.includes('application/json')) {
+                    return response.json().then(data => {
+                        return { ok: response.ok, data: data };
+                    });
+                } else {
+                    // Handle text response
+                    return response.text().then(text => {
+                        return { ok: response.ok, data: { message: text } };
+                    });
+                }
             })
-            .then(data => {
-                console.log('Success:', data);
+            .then(result => {
+                if (!result.ok) {
+                    throw new Error(result.data.message || 'Failed to delete election');
+                }
+                console.log('Success:', result.data);
                 // Show success message
                 alert('Election deleted successfully');
                 // Reload the page to see the updated list

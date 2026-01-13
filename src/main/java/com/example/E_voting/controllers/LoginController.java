@@ -30,7 +30,14 @@ public class LoginController {
         if (user != null) {
             session.setAttribute("username", user.getUsername());
             session.setAttribute("role", user.getRole().name());
-            return "redirect:/dashboard"; // Redirect to a dashboard page on successful login
+            
+            // Redirect based on role
+            if ("ADMIN".equals(user.getRole().name())) {
+                return "redirect:/admin/dashboard";
+            } else if ("STUDENT".equals(user.getRole().name())) {
+                return "redirect:/student/dashboard";
+            }
+            return "redirect:/dashboard"; // Fallback for unknown roles
         } else {
             model.addAttribute("error", "Invalid username or password");
             return "login"; // Return to login page with an error message

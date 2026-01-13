@@ -32,6 +32,6 @@ public class RegistrationController {
         session.setAttribute("username", user.getUsername());
         session.setAttribute("role", user.getRole().name());
 
-        return "redirect:/dashboard";
+        return "redirect:/student/dashboard";
     }
 }

@@ -37,6 +37,111 @@
         .admin-card .button:hover {
             background-color: #0056b3;
         }
+
+        /* Live Results Section */
+        .live-results-container {
+            margin-top: 50px;
+            padding: 20px;
+            background-color: #f8f9fa;
+            border-radius: 8px;
+        }
+        .live-results-container h2 {
+            color: #343a40;
+            margin-top: 0;
+        }
+        .election-results {
+            margin: 20px 0;
+            padding: 20px;
+            background-color: #ffffff;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
+        .election-results h3 {
+            margin-top: 0;
+            color: #007bff;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .election-status {
+            font-size: 0.8em;
+            padding: 4px 8px;
+            border-radius: 4px;
+            font-weight: bold;
+        }
+        .status-created {
+            background-color: #e7f1ff;
+            color: #0056b3;
+        }
+        .status-open {
+            background-color: #e8f5e9;
+            color: #2e7d32;
+        }
+        .status-closed {
+            background-color: #ffebee;
+            color: #c62828;
+        }
+        .candidate-vote-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 12px 0;
+            border-bottom: 1px solid #e9ecef;
+        }
+        .candidate-vote-item:last-child {
+            border-bottom: none;
+        }
+        .candidate-name {
+            font-weight: 500;
+            color: #495057;
+        }
+        .vote-count {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .vote-number {
+            font-weight: bold;
+            color: #007bff;
+            font-size: 1.2em;
+            min-width: 40px;
+            text-align: right;
+        }
+        .vote-bar {
+            height: 24px;
+            background-color: #e9ecef;
+            border-radius: 4px;
+            min-width: 150px;
+            position: relative;
+            overflow: hidden;
+        }
+        .vote-bar-fill {
+            height: 100%;
+            background: linear-gradient(90deg, #28a745, #20c997);
+            border-radius: 4px;
+            transition: width 0.5s ease;
+            display: flex;
+            align-items: center;
+            justify-content: flex-end;
+            padding-right: 8px;
+            color: white;
+            font-weight: bold;
+            font-size: 0.85em;
+        }
+        .total-votes {
+            margin-top: 15px;
+            padding-top: 15px;
+            border-top: 2px solid #e9ecef;
+            text-align: right;
+            font-weight: bold;
+            color: #343a40;
+        }
+        .no-votes {
+            color: #6c757d;
+            font-style: italic;
+            padding: 10px;
+            text-align: center;
+        }
     </style>
 </head>
 <body>
@@ -60,9 +165,116 @@
             <p>View, add, and import student data.</p>
             <a th:href="@{/admin/students}" class="button">Go to Students</a>
         </div>
+        <div class="admin-card">
+            <h2>Live Analytics</h2>
+            <p>View real-time vote analytics and charts.</p>
+            <select class="form-select" id="electionSelect" style="margin-top: 10px;">
+                <option value="">Select an election to view analytics...</option>
+                <option th:each="election : ${elections}" th:value="${election.id}" th:text="${election.name}"></option>
+            </select>
+            <button class="button" style="margin-top: 10px;" onclick="openAnalytics()">View Analytics</button>
+        </div>
+    </div>
+
+    <!-- Live Vote Results Section -->
+    <div class="live-results-container" th:if="${!elections.isEmpty()}">
+        <h2>📊 Live Vote Results</h2>
+        <div th:each="election : ${elections}" class="election-results">
+            <h3>
+                <span th:text="${election.name}"></span>
+                <span th:class="'election-status status-' + ${election.status?.name()?.toLowerCase()}"
+                      th:text="${election.status?.name()?.toLowerCase()}">
+                </span>
+            </h3>
+            
+            <div th:if="${election.status?.name() != 'CLOSED'}">
+                <p style="color: #6c757d; margin: 0 0 15px 0;">
+                    <small>Real-time vote tracking - Updates automatically</small>
+                </p>
+            </div>
+
+            <div class="candidate-vote-item" th:each="candidate : ${T(com.example.E_voting.model.Candidate).class}">
+                <!-- Candidates will be loaded dynamically -->
+            </div>
+
+            <div id="election-results-" th:id="${'election-results-' + election.id}">
+                <!-- Results will be loaded here -->
+            </div>
+
+            <div class="no-votes" th:if="${!election.status?.name()?.equals('OPEN')}">
+                <p>Voting is not active for this election.</p>
+            </div>
+        </div>
     </div>
 
     <a th:href="@{/dashboard}" class="button" style="background-color: #6c757d; margin-top: 40px;">Back to Main Dashboard</a>
 </div>
+
+<!-- JavaScript for auto-refresh of vote counts -->
+<script th:inline="javascript">
+    const elections = /*[[${elections}]]*/ [];
+    
+    function loadElectionResults() {
+        elections.forEach(function(election) {
+            if (election.status === 'OPEN' || election.status === 'CREATED') {
+                fetch(`/admin/election/${election.id}/live-results`)
+                    .then(response => response.json())
+                    .then(data => updateElectionResults(election.id, data))
+                    .catch(error => console.error('Error loading results:', error));
+            }
+        });
+    }
+
+    function updateElectionResults(electionId, data) {
+        const container = document.getElementById('election-results-' + electionId);
+        if (!container) return;
+
+        let html = '';
+        let totalVotes = 0;
+
+        if (data.results && Object.keys(data.results).length > 0) {
+            const results = data.results;
+            const maxVotes = Math.max(...Object.values(results));
+
+            Object.forEach.call(results, function(votes, candidateName) {
+                totalVotes += votes;
+                const percentage = maxVotes > 0 ? (votes / maxVotes) * 100 : 0;
+                
+                html += `
+                    <div class="candidate-vote-item">
+                        <span class="candidate-name">${candidateName}</span>
+                        <div class="vote-count">
+                            <div class="vote-bar">
+                                <div class="vote-bar-fill" style="width: ${percentage}%">
+                                    ${percentage > 10 ? votes : ''}
+                                </div>
+                            </div>
+                            <span class="vote-number">${votes}</span>
+                        </div>
+                    </div>
+                `;
+            });
+
+            html += `<div class="total-votes">Total Votes Cast: ${totalVotes}</div>`;
+        } else {
+            html = '<div class="no-votes">No votes cast yet</div>';
+        }
+
+        container.innerHTML = html;
+    }
+
+    // Load results immediately and refresh every 3 seconds
+    loadElectionResults();
+    setInterval(loadElectionResults, 3000);
+
+    function openAnalytics() {
+        const electionId = document.getElementById('electionSelect').value;
+        if (!electionId) {
+            alert('Please select an election');
+            return;
+        }
+        window.location.href = `/admin/analytics/dashboard/${electionId}`;
+    }
+</script>
 </body>
 </html>

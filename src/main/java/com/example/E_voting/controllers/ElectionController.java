@@ -10,12 +10,14 @@ import jakarta.servlet.http.HttpSession;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import java.util.List;
 import java.util.Map;
 
 @Controller
+@RequestMapping("/student")
 public class ElectionController {
 
     @Autowired
@@ -23,6 +25,11 @@ public class ElectionController {
 
     @GetMapping("/election/{id}")
     public String showBallot(@PathVariable("id") Long electionId, Model model, HttpSession session) {
+        String role = (String) session.getAttribute("role");
+        if (!"STUDENT".equals(role)) {
+            return "redirect:/login";
+        }
+        
         String studentId = (String) session.getAttribute("username");
         if (electionService.hasVoted(studentId, electionId)) {
             return "already-voted";
@@ -38,28 +45,51 @@ public class ElectionController {
 
     @PostMapping("/vote")
     public String submitVote(@RequestParam Long electionId, @RequestParam Long candidateId, HttpSession session) {
+        String role = (String) session.getAttribute("role");
+        if (!"STUDENT".equals(role)) {
+            return "redirect:/login";
+        }
+        
         session.setAttribute("electionId", electionId);
         session.setAttribute("candidateId", candidateId);
-        return "redirect:/vote/confirm";
+        return "redirect:/student/vote/confirm";
     }
 
     @GetMapping("/vote/confirm")
-    public String confirmVote(HttpSession session, Model model) {
-        Long electionId = (Long) session.getAttribute("electionId");
-        Long candidateId = (Long) session.getAttribute("candidateId");
-
-        if (electionId == null || candidateId == null) {
-            return "redirect:/dashboard";
+    public String confirmVote(@RequestParam(required = false) Long candidateId, 
+                               @RequestParam(required = false) Long electionId,
+                               HttpSession session, Model model) {
+        String role = (String) session.getAttribute("role");
+        if (!"STUDENT".equals(role)) {
+            return "redirect:/login";
+        }
+        
+        // If query parameters are provided, use them
+        if (candidateId != null && electionId != null) {
+            session.setAttribute("electionId", electionId);
+            session.setAttribute("candidateId", candidateId);
         }
 
-        model.addAttribute("election", electionService.getElectionById(electionId));
-        model.addAttribute("candidate", electionService.getCandidateById(candidateId));
+        Long sessionElectionId = (Long) session.getAttribute("electionId");
+        Long sessionCandidateId = (Long) session.getAttribute("candidateId");
+
+        if (sessionElectionId == null || sessionCandidateId == null) {
+            return "redirect:/student/dashboard";
+        }
+
+        model.addAttribute("election", electionService.getElectionById(sessionElectionId));
+        model.addAttribute("candidate", electionService.getCandidateById(sessionCandidateId));
 
         return "confirm-vote";
     }
 
     @PostMapping("/vote/confirm")
     public String castVote(HttpSession session) {
+        String role = (String) session.getAttribute("role");
+        if (!"STUDENT".equals(role)) {
+            return "redirect:/login";
+        }
+        
         String studentId = (String) session.getAttribute("username");
         Long electionId = (Long) session.getAttribute("electionId");
         Long candidateId = (Long) session.getAttribute("candidateId");
@@ -73,12 +103,23 @@ public class ElectionController {
         session.removeAttribute("electionId");
         session.removeAttribute("candidateId");
 
-        return "redirect:/vote/success";
+        return "redirect:/student/vote/success";
     }
 
     @GetMapping("/vote/success")
-    public String voteSuccess() {
+    public String voteSuccess(Model model, HttpSession session) {
+        String role = (String) session.getAttribute("role");
+        if (!"STUDENT".equals(role)) {
+            return "redirect:/login";
+        }
+        
+        model.addAttribute("role", role);
         return "vote-success";
+    }
+
+    @GetMapping("/vote-success")
+    public String voteSuccessAlternate() {
+        return "redirect:/student/vote/success";
     }
 
     @GetMapping("/election/{electionId}/results")

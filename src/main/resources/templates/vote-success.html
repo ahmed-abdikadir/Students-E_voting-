@@ -45,7 +45,8 @@
     <div class="message-container">
         <h1>Your vote has been cast successfully!</h1>
         <p>Thank you for participating in the election.</p>
-        <a th:href="@{/dashboard}">Return to Dashboard</a>
+        <a th:if="${role == 'STUDENT'}" th:href="@{/dashboard}">Return to Dashboard</a>
+        <a th:if="${role == 'ADMIN'}" th:href="@{/admin/elections}">Return to Admin Dashboard</a>
     </div>
 </body>
 </html>

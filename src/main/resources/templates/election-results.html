@@ -1,43 +1,65 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<html xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <title>Election Results</title>
-    <link rel="stylesheet" th:href="@{/css/style.css}">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f4f8;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+        }
+        .results-container {
+            background-color: #ffffff;
+            padding: 40px;
+            border-radius: 16px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            width: 600px;
+        }
+        .results-container:hover {
+            background-color: #e3f2fd;
+        }
+        .results-list {
+            list-style: none;
+            padding: 0;
+            margin-top: 20px;
+        }
+        .results-list li {
+            background-color: #f8f9fa;
+            padding: 15px;
+            margin-bottom: 10px;
+            border-radius: 12px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+        }
+        .results-container h1 {
+            color: #007bff;
+            margin-bottom: 20px;
+        }
+        .results-container p {
+            color: #6c757d;
+            font-size: 1.1em;
+        }
+    </style>
 </head>
 <body>
-<div class="container">
-    <h1 th:text="${election.name} + ' Results'">Election Results</h1>
-
-    <table class="results-table">
-        <thead>
-            <tr>
-                <th>Candidate</th>
-                <th style="width: 60%;">Vote Distribution</th>
-                <th>Total Votes</th>
-            </tr>
-        </thead>
-        <tbody>
-            <!-- Handle case with no votes -->
-            <tr th:if="${results.isEmpty() or totalVotes == 0}">
-                <td colspan="3" style="text-align: center;">No votes have been cast yet.</td>
-            </tr>
-            <!-- Display results -->
-            <tr th:each="result : ${results}" th:if="${!results.isEmpty() and totalVotes > 0}">
-                <td class="candidate-name" th:text="${result.key}">Candidate Name</td>
-                <td>
-                    <div class="bar-container">
-                        <div class="bar" th:style="'width: ' + (${result.value} * 100.0 / ${totalVotes}) + '%;'">
-                             <span class="bar-label" th:text="${#numbers.formatDecimal(result.value * 100.0 / totalVotes, 1, 1)} + '%'"></span>
-                        </div>
-                    </div>
-                </td>
-                <td th:text="${result.value}">0</td>
-            </tr>
-        </tbody>
-    </table>
-
-    <a th:href="@{/dashboard}" class="button">Back to Dashboard</a>
-</div>
+    <div class="results-container">
+        <h1 th:text="${election.name} + ' Results'">Election Results</h1>
+        <h2>Results Overview</h2>
+        <ul class="results-list" th:each="result : ${results}">
+            <li>
+                <span th:text="${result.key}">Candidate Name</span>
+                <span th:text="${result.value}">Votes</span>
+            </li>
+        </ul>
+        <a th:href="@{/dashboard}" class="button">Back to Dashboard</a>
+    </div>
 </body>
 </html>

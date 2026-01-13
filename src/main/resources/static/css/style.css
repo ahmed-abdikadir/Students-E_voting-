@@ -1,31 +1,39 @@
-/* General Body Styles */
+/* Updated General Body Styles */
 body {
-    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-    background-color: #f4f7f6;
-    color: #333;
+    font-family: 'Poppins', sans-serif;
+    background-color: #f0f2f5;
+    color: #212529;
     margin: 0;
-    padding: 20px;
+    padding: 0;
     display: flex;
     justify-content: center;
     align-items: flex-start;
     min-height: 100vh;
 }
 
-/* Main Container */
+/* Updated Main Container */
 .container {
     background-color: #ffffff;
-    padding: 40px;
-    border-radius: 12px;
-    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
-    width: 100%;
-    max-width: 800px;
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+    width: 90%;
+    max-width: 900px;
     text-align: center;
-    margin-top: 50px;
+    margin: 20px auto;
 }
 
-h1 {
-    color: #2c3e50;
-    margin-bottom: 30px;
+/* Typography */
+h1, h2, h3, h4, h5, h6 {
+    font-family: 'Poppins', sans-serif;
+    color: #343a40;
+    margin-bottom: 20px;
+}
+
+p {
+    font-size: 16px;
+    line-height: 1.6;
+    color: #495057;
 }
 
 /* Results Table & Bar Chart */
@@ -78,19 +86,36 @@ h1 {
     padding-right: 10px;
 }
 
-/* Back Button */
+/* Buttons */
 .button {
     display: inline-block;
-    margin-top: 30px;
-    padding: 12px 25px;
-    background-color: #6c757d; /* Gray */
+    margin-top: 20px;
+    padding: 10px 20px;
+    background-color: #007bff;
     color: white;
     text-decoration: none;
     border-radius: 5px;
-    font-weight: 500;
-    transition: background-color 0.3s;
+    font-weight: 600;
+    transition: background-color 0.3s, transform 0.2s;
 }
 
 .button:hover {
-    background-color: #5a6268;
+    background-color: #0056b3;
+    transform: scale(1.05);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .container {
+        padding: 20px;
+    }
+
+    .results-table th, .results-table td {
+        font-size: 14px;
+    }
+
+    .button {
+        padding: 8px 16px;
+        font-size: 14px;
+    }
 }

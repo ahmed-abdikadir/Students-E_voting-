@@ -1,27 +1,22 @@
 package com.example.E_voting.model;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 
 @Entity
 public class Candidate {
-        @Id
+    @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String name;
-    private Long electionId;
+    
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "election_id", nullable = false)
+    private Election election;
 
-        public Candidate() {
+    public Candidate() {
+        // Default constructor for JPA
     }
 
-        public Candidate(String name, Long electionId) {
-        this.name = name;
-        this.electionId = electionId;
-    }
-
-    // Getters and Setters
     public Long getId() {
         return id;
     }
@@ -38,11 +33,22 @@ public class Candidate {
         this.name = name;
     }
 
+    public Election getElection() {
+        return election;
+    }
+
+    public void setElection(Election election) {
+        this.election = election;
+    }
+    
     public Long getElectionId() {
-        return electionId;
+        return election != null ? election.getId() : null;
     }
 
     public void setElectionId(Long electionId) {
-        this.electionId = electionId;
+        if (this.election == null) {
+            this.election = new Election();
+        }
+        this.election.setId(electionId);
     }
 }
