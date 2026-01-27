@@ -1,0 +1,45 @@
+version: '3.8'
+
+services:
+  mysql:
+    image: mysql:8.0
+    container_name: voting_db
+    environment:
+      MYSQL_ROOT_PASSWORD: rootpassword
+      MYSQL_DATABASE: voting_db
+      MYSQL_USER: e_voting
+      MYSQL_PASSWORD: epassword123!
+    ports:
+      - "3306:3306"
+    volumes:
+      - voting_db_data:/var/lib/mysql
+    networks:
+      - voting_network
+    healthcheck:
+      test: ["CMD", "mysqladmin", "ping", "-h", "localhost"]
+      timeout: 20s
+      retries: 10
+
+  app:
+    build: .
+    container_name: voting_app
+    depends_on:
+      mysql:
+        condition: service_healthy
+    environment:
+      SPRING_DATASOURCE_URL: jdbc:mysql://mysql:3306/voting_db
+      SPRING_DATASOURCE_USERNAME: e_voting
+      SPRING_DATASOURCE_PASSWORD: epassword123!
+      SERVER_PORT: 9097
+    ports:
+      - "9097:9097"
+    networks:
+      - voting_network
+    restart: unless-stopped
+
+volumes:
+  voting_db_data:
+
+networks:
+  voting_network:
+    driver: bridge

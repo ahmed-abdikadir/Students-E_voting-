@@ -26,9 +26,16 @@ public class AnalyticsController {
             return "redirect:/login";
         }
         
-        model.addAttribute("election", electionService.getElectionById(electionId));
-        model.addAttribute("candidates", electionService.getCandidatesByElectionId(electionId));
+        var election = electionService.getElectionById(electionId);
+        var candidates = electionService.getCandidatesByElectionId(electionId);
+        var results = electionService.getElectionResults(electionId);
+        
+        System.out.println("[ANALYTICS] Dashboard - Election: " + electionId + ", Candidates: " + candidates.size() + ", Results: " + results);
+        
+        model.addAttribute("election", election);
+        model.addAttribute("candidates", candidates);
         model.addAttribute("electionId", electionId);
+        model.addAttribute("results", results);
         
         return "analytics-dashboard";
     }
@@ -38,15 +45,20 @@ public class AnalyticsController {
     public ResponseEntity<?> getLiveVotes(@PathVariable Long electionId, HttpSession session) {
         try {
             String role = (String) session.getAttribute("role");
+            System.out.println("[ANALYTICS] getLiveVotes called - ElectionId: " + electionId + ", Role: " + role);
+            
             if (!"ADMIN".equals(role)) {
+                System.out.println("[ANALYTICS] Access denied - insufficient role");
                 return ResponseEntity.status(HttpStatus.FORBIDDEN).body("Access denied");
             }
 
             // Get election results
             Map<String, Long> results = electionService.getElectionResults(electionId);
+            System.out.println("[ANALYTICS] Election Results: " + results);
             
             // Get candidates
             var candidates = electionService.getCandidatesByElectionId(electionId);
+            System.out.println("[ANALYTICS] Candidates count: " + candidates.size());
             
             // Build response with candidate data
             List<Map<String, Object>> chartData = new ArrayList<>();
@@ -60,6 +72,7 @@ public class AnalyticsController {
                 data.put("id", candidate.getId());
                 chartData.add(data);
                 totalVotes += voteCount;
+                System.out.println("[ANALYTICS] Candidate: " + candidate.getName() + ", Votes: " + voteCount);
             }
             
             // Sort by votes descending
@@ -71,8 +84,11 @@ public class AnalyticsController {
             response.put("totalVotes", totalVotes);
             response.put("timestamp", System.currentTimeMillis());
             
+            System.out.println("[ANALYTICS] Returning response with " + chartData.size() + " candidates, total votes: " + totalVotes);
             return ResponseEntity.ok(response);
         } catch (Exception e) {
+            System.err.println("[ANALYTICS ERROR] Exception in getLiveVotes: " + e.getMessage());
+            e.printStackTrace();
             Map<String, Object> errorResponse = new HashMap<>();
             errorResponse.put("success", false);
             errorResponse.put("error", e.getMessage());

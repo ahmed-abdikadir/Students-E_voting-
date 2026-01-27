@@ -1,0 +1,212 @@
+================================================================================
+E-VOTING APPLICATION - DEPLOYMENT COMMANDS
+================================================================================
+
+PROJECT LOCATION: /Users/Ahmed/Downloads/Students-E_voting-
+JAR FILE: target/E_voting-0.0.1-SNAPSHOT.jar (Already built ✓)
+APPLICATION URL: http://localhost:9097
+
+================================================================================
+METHOD 1: DOCKER DEPLOYMENT (RECOMMENDED) ⭐
+================================================================================
+
+The easiest way - includes MySQL database, one command to start.
+
+Prerequisites: Docker and Docker Compose installed
+
+Step 1: Start Everything
+  cd /Users/Ahmed/Downloads/Students-E_voting-
+  docker-compose up --build
+
+Step 2: Wait for startup (takes ~30 seconds)
+  You'll see: "app | Started EVotingApplication in X.XXX seconds"
+
+Step 3: Access the application
+  Open browser: http://localhost:9097
+  Health check: curl http://localhost:9097/actuator/health
+
+Step 4: Stop Everything
+  docker-compose down
+
+Step 5: View logs
+  docker-compose logs -f app
+
+================================================================================
+METHOD 2: DIRECT JAVA DEPLOYMENT (No Docker)
+================================================================================
+
+Prerequisites: Java 17+, MySQL 8.0+ running, Maven installed
+
+Step 1: Create MySQL Database
+  mysql -u root -p << 'SQLEOF'
+  CREATE DATABASE voting_db;
+  CREATE USER 'e_voting'@'localhost' IDENTIFIED BY 'epassword123!';
+  GRANT ALL PRIVILEGES ON voting_db.* TO 'e_voting'@'localhost';
+  FLUSH PRIVILEGES;
+  SQLEOF
+
+Step 2: Run the Application
+  cd /Users/Ahmed/Downloads/Students-E_voting-
+  ./run.sh
+
+Step 3: Access the application
+  Open browser: http://localhost:9097
+
+Step 4: Stop the Application (Ctrl+C in terminal)
+
+Step 5: View logs
+  tail -f app.log
+
+================================================================================
+METHOD 3: AUTOMATED DEPLOYMENT SCRIPT
+================================================================================
+
+Prerequisites: Java 17+, MySQL 8.0+ running, Maven installed
+
+One command that builds, stops old app, and starts new one:
+
+  cd /Users/Ahmed/Downloads/Students-E_voting-
+  ./deploy.sh
+
+Logs: tail -f app.log
+Stop: kill $(cat app.pid)
+
+================================================================================
+DATABASE CREDENTIALS (Default)
+================================================================================
+
+For Docker:
+  Host: mysql (inside container) or localhost:3306 (from host)
+  Username: e_voting
+  Password: epassword123!
+  Database: voting_db
+
+For Direct Java:
+  Host: localhost:3306
+  Username: e_voting
+  Password: epassword123!
+  Database: voting_db
+
+⚠️  IMPORTANT: Change these credentials before production!
+
+================================================================================
+VERIFY DEPLOYMENT
+================================================================================
+
+Check if app is running:
+  curl http://localhost:9097/actuator/health
+
+Expected output:
+  {"status":"UP"}
+
+View application metrics:
+  curl http://localhost:9097/actuator/metrics
+
+Verify setup (checks Java, Maven, Docker, MySQL):
+  ./check-status.sh
+
+================================================================================
+TROUBLESHOOTING
+================================================================================
+
+Port 9097 already in use:
+  lsof -i :9097
+  kill -9 <PID>
+
+Cannot connect to MySQL:
+  mysql -h localhost -u e_voting -p voting_db
+  (check if MySQL is running)
+
+Docker containers not starting:
+  docker-compose logs
+  docker-compose down -v
+  docker-compose up --build
+
+Application crashes:
+  tail -f app.log
+  Check database connection
+  Check available disk space
+
+================================================================================
+QUICK REFERENCE
+================================================================================
+
+Start (Docker):         docker-compose up --build
+Start (Java):           ./run.sh
+Start (Automated):      ./deploy.sh
+
+Stop (Docker):          docker-compose down
+Stop (Java):            Ctrl+C or kill $(cat app.pid)
+
+View Logs (Docker):     docker-compose logs -f app
+View Logs (Java):       tail -f app.log
+
+Health Check:           curl http://localhost:9097/actuator/health
+Metrics:                curl http://localhost:9097/actuator/metrics
+
+Verify Setup:           ./check-status.sh
+Full Guide:             cat DEPLOYMENT_GUIDE.md
+Quick Start:            cat QUICKSTART.md
+This File:              cat DEPLOY_COMMANDS.txt
+
+================================================================================
+WHICH METHOD TO CHOOSE?
+================================================================================
+
+Use DOCKER if:
+  ✓ First time deploying
+  ✓ Want one-command setup
+  ✓ Want to include MySQL
+  ✓ Deploying to cloud (AWS, Azure, etc.)
+  ✓ Team has Docker experience
+
+Use DIRECT JAVA if:
+  ✓ MySQL already running
+  ✓ Want minimal overhead
+  ✓ Fast local development
+  ✓ Want quick debugging
+
+Use AUTOMATED SCRIPT if:
+  ✓ Want managed lifecycle
+  ✓ Running on Linux server
+  ✓ Want built-in logging
+  ✓ Need process management
+
+================================================================================
+NEXT STEPS
+================================================================================
+
+1. Choose a deployment method above
+2. Follow the steps for that method
+3. Wait for "Started EVotingApplication" message
+4. Open http://localhost:9097 in your browser
+5. Test the application
+6. Stop with Ctrl+C (Java) or docker-compose down (Docker)
+
+For detailed configuration: see DEPLOYMENT_GUIDE.md
+For quick setup: see QUICKSTART.md
+
+================================================================================
+FILES CREATED FOR YOU
+================================================================================
+
+Scripts:
+  deploy.sh              Automated deployment (builds + manages app)
+  run.sh                 Simple run script
+  check-status.sh        Verify all prerequisites
+
+Configuration:
+  Dockerfile             Container definition
+  docker-compose.yml     Complete stack (app + MySQL)
+  .env.example           Environment variables template
+
+Documentation:
+  DEPLOYMENT_GUIDE.md    80+ lines, all options
+  DEPLOYMENT_SUMMARY.md  Overview and next steps
+  QUICKSTART.md          5-10 minute setup
+  DEPLOY_COMMANDS.txt    This file - quick reference
+
+Build Artifact:
+  target/E_voting-0.0.1-SNAPSHOT.jar ✓ Ready to deploy
+
+================================================================================
