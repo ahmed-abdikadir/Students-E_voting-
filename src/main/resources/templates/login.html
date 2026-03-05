@@ -2,70 +2,62 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>Login</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login — E-Voting System</title>
+    <link rel="stylesheet" th:href="@{/css/style.css}">
     <style>
-        body {
-            font-family: Arial, sans-serif;
-            background-color: #f0f4f8;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            min-height: 100vh;
-            margin: 0;
+        .login-card { max-width: 420px; }
+        .login-logo {
+            width: 48px; height: 48px;
+            background: var(--blue-600);
+            border-radius: var(--radius);
+            display: flex; align-items: center; justify-content: center;
+            margin: 0 auto 16px;
+            font-size: 1.4rem;
         }
-        .login-container {
-            background-color: #ffffff;
-            padding: 40px;
-            border-radius: 16px;
-            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+        .login-action-row {
+            margin-top: 20px;
+        }
+        .error-msg {
+            background: var(--red-50);
+            border: 1px solid #fecaca;
+            color: var(--red-700);
+            border-radius: var(--radius);
+            padding: 10px 14px;
+            font-size: 0.875rem;
+            margin-bottom: 16px;
             text-align: center;
-            width: 400px;
-        }
-        .login-container:hover {
-            background-color: #e3f2fd;
-        }
-        .login-form {
-            display: flex;
-            flex-direction: column;
-            gap: 20px;
-        }
-        .login-form input {
-            padding: 10px;
-            border: 1px solid #ced4da;
-            border-radius: 8px;
-            font-size: 14px;
-        }
-        .login-button {
-            background-color: #007bff;
-            color: #ffffff;
-            padding: 10px 20px;
-            font-size: 14px;
-            border: none;
-            border-radius: 8px;
-            cursor: pointer;
-            transition: background-color 0.3s;
-        }
-        .login-button:hover {
-            background-color: #0056b3;
-        }
-        .login-container h1 {
-            color: #007bff;
-            margin-bottom: 20px;
-        }
-        .login-container p {
-            color: #6c757d;
-            font-size: 1.1em;
         }
     </style>
 </head>
 <body>
-    <div class="login-container">
-        <h1>E-Voting Login</h1>
-        <form th:action="@{/login}" method="post" class="login-form">
-            <input type="text" name="username" placeholder="Username" required>
-            <input type="password" name="password" placeholder="Password" required>
-            <button type="submit" class="login-button">Login</button>
+<div class="page-center">
+    <div class="card login-card">
+        <div style="text-align:center; margin-bottom: 24px;">
+            <div class="login-logo">🗳️</div>
+            <h1 style="font-size:1.35rem; font-weight:700; color:var(--slate-900); margin-bottom:4px;">Student E-Voting</h1>
+            <p style="font-size:0.875rem; color:var(--slate-500);">Sign in to access your account</p>
+        </div>
+
+        <div class="error-msg" th:if="${param.error}">
+            Invalid username or password. Please try again.
+        </div>
+        <div class="alert alert-success" th:if="${param.logout}" style="text-align:center;">
+            You have been signed out successfully.
+        </div>
+
+        <form th:action="@{/login}" method="post">
+            <div class="form-group">
+                <label for="username" class="form-label">Username</label>
+                <input id="username" type="text" name="username" class="form-control" placeholder="Enter your username" required autofocus>
+            </div>
+            <div class="form-group" style="margin-bottom:20px;">
+                <label for="password" class="form-label">Password</label>
+                <input id="password" type="password" name="password" class="form-control" placeholder="Enter your password" required>
+            </div>
+            <button type="submit" class="btn btn-primary btn-full btn-lg">Sign In</button>
         </form>
     </div>
+</div>
 </body>
 </html>
