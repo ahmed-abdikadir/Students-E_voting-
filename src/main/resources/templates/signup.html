@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign Up — E-Voting System</title>
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+</head>
+
+<body>
+
+    <div class="page-center">
+        <!-- Brand Header -->
+        <div class="page-header-brand">
+            <div class="brand-title">E-Voting Portal</div>
+        </div>
+
+        <div class="card card-sm">
+            <h1 class="card-title">Create Account</h1>
+            <p class="card-subtitle">Join the student e-voting platform.</p>
+
+            <!-- Registration Form -->
+            <form th:action="@{/signup}" method="post">
+                <div class="form-group">
+                    <label class="form-label" for="username">Username</label>
+                    <input type="text" id="username" name="username" class="form-control"
+                        placeholder="Choose a username" required autofocus>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label" for="password">Password</label>
+                    <input type="password" id="password" name="password" class="form-control"
+                        placeholder="Create a password" required>
+                    <p style="font-size: 0.75rem; color: var(--slate-400); margin-top: 6px;">
+                        Must be at least 6 characters.
+                    </p>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label" for="confirmPassword">Confirm Password</label>
+                    <input type="password" id="confirmPassword" name="confirmPassword" class="form-control"
+                        placeholder="Repeat your password" required>
+                </div>
+
+                <div th:if="${error}" class="alert alert-danger" th:text="${error}"></div>
+
+                <button type="submit" class="btn btn-primary btn-full">Create Account</button>
+            </form>
+
+            <hr class="card-divider">
+
+            <div style="text-align: center; font-size: 0.875rem; color: var(--slate-500);">
+                Already have an account? <a th:href="@{/login}" style="font-weight: 600;">Sign In</a>
+            </div>
+        </div>
+
+        <div style="margin-top: 32px; font-size: 0.75rem; color: var(--slate-400);">
+            &copy; 2026 Student E-Voting System. Secure & Transparent.
+        </div>
+    </div>
+
+    <script>
+        // Simple password match validation
+        const form = document.querySelector('form');
+        const password = document.getElementById('password');
+        const confirm = document.getElementById('confirmPassword');
+
+        form.addEventListener('submit', function (e) {
+            if (password.value !== confirm.value) {
+                e.preventDefault();
+                alert("Passwords do not match!");
+            }
+            if (password.value.length < 6) {
+                e.preventDefault();
+                alert("Password must be at least 6 characters.");
+            }
+        });
+    </script>
+</body>
+
+</html>

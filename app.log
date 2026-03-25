@@ -1,21 +1,21 @@
-2026-03-05T14:46:45.025+03:00  INFO 18760 --- [E_voting] [main] c.example.E_voting.EVotingApplication    : Starting EVotingApplication using Java 24.0.1 with PID 18760 (/Users/Ahmed/Downloads/Students-E_voting-/target/classes started by user in /Users/Ahmed/Downloads/Students-E_voting-)
-2026-03-05T14:46:45.028+03:00  INFO 18760 --- [E_voting] [main] c.example.E_voting.EVotingApplication    : No active profile set, falling back to 1 default profile: "default"
-2026-03-05T14:46:45.390+03:00  INFO 18760 --- [E_voting] [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
-2026-03-05T14:46:45.415+03:00  INFO 18760 --- [E_voting] [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 21 ms. Found 5 JPA repository interfaces.
-2026-03-05T14:46:45.621+03:00  INFO 18760 --- [E_voting] [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 9097 (http)
-2026-03-05T14:46:45.628+03:00  INFO 18760 --- [E_voting] [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
-2026-03-05T14:46:45.628+03:00  INFO 18760 --- [E_voting] [main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.43]
-2026-03-05T14:46:45.665+03:00  INFO 18760 --- [E_voting] [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
-2026-03-05T14:46:45.665+03:00  INFO 18760 --- [E_voting] [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 613 ms
-2026-03-05T14:46:45.772+03:00  INFO 18760 --- [E_voting] [main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
-2026-03-05T14:46:45.794+03:00  INFO 18760 --- [E_voting] [main] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.6.22.Final
-2026-03-05T14:46:45.807+03:00  INFO 18760 --- [E_voting] [main] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
-2026-03-05T14:46:45.924+03:00  INFO 18760 --- [E_voting] [main] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
-2026-03-05T14:46:45.936+03:00  INFO 18760 --- [E_voting] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
-2026-03-05T14:46:46.180+03:00  INFO 18760 --- [E_voting] [main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@628bd77e
-2026-03-05T14:46:46.181+03:00  INFO 18760 --- [E_voting] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
-2026-03-05T14:46:46.221+03:00  WARN 18760 --- [E_voting] [main] org.hibernate.orm.deprecation            : HHH90000025: MySQLDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
-2026-03-05T14:46:46.227+03:00  INFO 18760 --- [E_voting] [main] org.hibernate.orm.connections.pooling    : HHH10001005: Database info:
+2026-03-25T10:49:15.311+03:00  INFO 2285 --- [E_voting] [main] c.example.E_voting.EVotingApplication    : Starting EVotingApplication using Java 24.0.1 with PID 2285 (/Users/Ahmed/Downloads/Students-E_voting-/target/classes started by user in /Users/Ahmed/Downloads/Students-E_voting-)
+2026-03-25T10:49:15.313+03:00  INFO 2285 --- [E_voting] [main] c.example.E_voting.EVotingApplication    : No active profile set, falling back to 1 default profile: "default"
+2026-03-25T10:49:15.677+03:00  INFO 2285 --- [E_voting] [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2026-03-25T10:49:15.701+03:00  INFO 2285 --- [E_voting] [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 20 ms. Found 6 JPA repository interfaces.
+2026-03-25T10:49:15.901+03:00  INFO 2285 --- [E_voting] [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 9097 (http)
+2026-03-25T10:49:15.908+03:00  INFO 2285 --- [E_voting] [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2026-03-25T10:49:15.908+03:00  INFO 2285 --- [E_voting] [main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.43]
+2026-03-25T10:49:15.941+03:00  INFO 2285 --- [E_voting] [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2026-03-25T10:49:15.941+03:00  INFO 2285 --- [E_voting] [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 603 ms
+2026-03-25T10:49:16.039+03:00  INFO 2285 --- [E_voting] [main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2026-03-25T10:49:16.064+03:00  INFO 2285 --- [E_voting] [main] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.6.22.Final
+2026-03-25T10:49:16.077+03:00  INFO 2285 --- [E_voting] [main] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
+2026-03-25T10:49:16.198+03:00  INFO 2285 --- [E_voting] [main] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2026-03-25T10:49:16.209+03:00  INFO 2285 --- [E_voting] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2026-03-25T10:49:16.477+03:00  INFO 2285 --- [E_voting] [main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@3815a7d1
+2026-03-25T10:49:16.478+03:00  INFO 2285 --- [E_voting] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2026-03-25T10:49:16.514+03:00  WARN 2285 --- [E_voting] [main] org.hibernate.orm.deprecation            : HHH90000025: MySQLDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2026-03-25T10:49:16.520+03:00  INFO 2285 --- [E_voting] [main] org.hibernate.orm.connections.pooling    : HHH10001005: Database info:
 	Database JDBC URL [Connecting through datasource 'HikariDataSource (HikariPool-1)']
 	Database driver: undefined/unknown
 	Database version: 9.3
@@ -23,45 +23,45 @@
 	Isolation level: undefined/unknown
 	Minimum pool size: undefined/unknown
 	Maximum pool size: undefined/unknown
-2026-03-05T14:46:46.551+03:00  INFO 18760 --- [E_voting] [main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
-2026-03-05T14:46:46.641+03:00  INFO 18760 --- [E_voting] [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
-2026-03-05T14:46:46.986+03:00  WARN 18760 --- [E_voting] [main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
-2026-03-05T14:46:47.087+03:00  INFO 18760 --- [E_voting] [main] o.s.b.a.e.web.EndpointLinksResolver      : Exposing 1 endpoint beneath base path '/actuator'
-2026-03-05T14:46:47.104+03:00  WARN 18760 --- [E_voting] [main] .s.s.UserDetailsServiceAutoConfiguration : 
+2026-03-25T10:49:16.893+03:00  INFO 2285 --- [E_voting] [main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2026-03-25T10:49:16.974+03:00  INFO 2285 --- [E_voting] [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2026-03-25T10:49:17.335+03:00  WARN 2285 --- [E_voting] [main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2026-03-25T10:49:17.441+03:00  INFO 2285 --- [E_voting] [main] o.s.b.a.e.web.EndpointLinksResolver      : Exposing 1 endpoint beneath base path '/actuator'
+2026-03-25T10:49:17.456+03:00  WARN 2285 --- [E_voting] [main] .s.s.UserDetailsServiceAutoConfiguration : 
 
-Using generated security password: 739b7ed7-0ea2-483b-ac55-e9b58fa839a6
+Using generated security password: a3e85fe1-fa38-4073-8162-6e0ad9f9e0f7
 
 This generated password is for development use only. Your security configuration must be updated before running your application in production.
 
-2026-03-05T14:46:47.107+03:00  INFO 18760 --- [E_voting] [main] r$InitializeUserDetailsManagerConfigurer : Global AuthenticationManager configured with UserDetailsService bean with name inMemoryUserDetailsManager
-2026-03-05T14:46:47.285+03:00  INFO 18760 --- [E_voting] [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 9097 (http) with context path '/'
-2026-03-05T14:46:47.293+03:00  INFO 18760 --- [E_voting] [main] c.example.E_voting.EVotingApplication    : Started EVotingApplication in 2.477 seconds (process running for 2.637)
-2026-03-05T14:46:53.390+03:00  INFO 18760 --- [E_voting] [http-nio-9097-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
-2026-03-05T14:46:53.391+03:00  INFO 18760 --- [E_voting] [http-nio-9097-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
-2026-03-05T14:46:53.397+03:00  INFO 18760 --- [E_voting] [http-nio-9097-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 6 ms
-2026-03-05T14:48:11.832+03:00  INFO 18760 --- [E_voting] [SpringApplicationShutdownHook] o.s.b.w.e.tomcat.GracefulShutdown        : Commencing graceful shutdown. Waiting for active requests to complete
-2026-03-05T14:48:11.835+03:00  INFO 18760 --- [E_voting] [tomcat-shutdown] o.s.b.w.e.tomcat.GracefulShutdown        : Graceful shutdown complete
-2026-03-05T14:48:11.839+03:00  INFO 18760 --- [E_voting] [SpringApplicationShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
-2026-03-05T14:48:11.841+03:00  INFO 18760 --- [E_voting] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
-2026-03-05T14:48:11.845+03:00  INFO 18760 --- [E_voting] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
-2026-03-05T15:08:49.765+03:00  INFO 19643 --- [E_voting] [main] c.example.E_voting.EVotingApplication    : Starting EVotingApplication using Java 24.0.1 with PID 19643 (/Users/Ahmed/Downloads/Students-E_voting-/target/classes started by user in /Users/Ahmed/Downloads/Students-E_voting-)
-2026-03-05T15:08:49.766+03:00  INFO 19643 --- [E_voting] [main] c.example.E_voting.EVotingApplication    : No active profile set, falling back to 1 default profile: "default"
-2026-03-05T15:08:50.129+03:00  INFO 19643 --- [E_voting] [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
-2026-03-05T15:08:50.155+03:00  INFO 19643 --- [E_voting] [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 22 ms. Found 5 JPA repository interfaces.
-2026-03-05T15:08:50.360+03:00  INFO 19643 --- [E_voting] [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 9097 (http)
-2026-03-05T15:08:50.368+03:00  INFO 19643 --- [E_voting] [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
-2026-03-05T15:08:50.368+03:00  INFO 19643 --- [E_voting] [main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.43]
-2026-03-05T15:08:50.403+03:00  INFO 19643 --- [E_voting] [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
-2026-03-05T15:08:50.403+03:00  INFO 19643 --- [E_voting] [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 609 ms
-2026-03-05T15:08:50.502+03:00  INFO 19643 --- [E_voting] [main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
-2026-03-05T15:08:50.525+03:00  INFO 19643 --- [E_voting] [main] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.6.22.Final
-2026-03-05T15:08:50.537+03:00  INFO 19643 --- [E_voting] [main] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
-2026-03-05T15:08:50.657+03:00  INFO 19643 --- [E_voting] [main] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
-2026-03-05T15:08:50.672+03:00  INFO 19643 --- [E_voting] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
-2026-03-05T15:08:50.921+03:00  INFO 19643 --- [E_voting] [main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@23c72128
-2026-03-05T15:08:50.922+03:00  INFO 19643 --- [E_voting] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
-2026-03-05T15:08:50.959+03:00  WARN 19643 --- [E_voting] [main] org.hibernate.orm.deprecation            : HHH90000025: MySQLDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
-2026-03-05T15:08:50.964+03:00  INFO 19643 --- [E_voting] [main] org.hibernate.orm.connections.pooling    : HHH10001005: Database info:
+2026-03-25T10:49:17.459+03:00  INFO 2285 --- [E_voting] [main] r$InitializeUserDetailsManagerConfigurer : Global AuthenticationManager configured with UserDetailsService bean with name inMemoryUserDetailsManager
+2026-03-25T10:49:17.594+03:00  INFO 2285 --- [E_voting] [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 9097 (http) with context path '/'
+2026-03-25T10:49:17.602+03:00  INFO 2285 --- [E_voting] [main] c.example.E_voting.EVotingApplication    : Started EVotingApplication in 2.481 seconds (process running for 2.618)
+2026-03-25T10:50:09.518+03:00  INFO 2285 --- [E_voting] [http-nio-9097-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2026-03-25T10:50:09.520+03:00  INFO 2285 --- [E_voting] [http-nio-9097-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2026-03-25T10:50:09.553+03:00  INFO 2285 --- [E_voting] [http-nio-9097-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 33 ms
+2026-03-25T10:55:20.266+03:00  INFO 2285 --- [E_voting] [SpringApplicationShutdownHook] o.s.b.w.e.tomcat.GracefulShutdown        : Commencing graceful shutdown. Waiting for active requests to complete
+2026-03-25T10:55:20.269+03:00  INFO 2285 --- [E_voting] [tomcat-shutdown] o.s.b.w.e.tomcat.GracefulShutdown        : Graceful shutdown complete
+2026-03-25T10:55:20.275+03:00  INFO 2285 --- [E_voting] [SpringApplicationShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2026-03-25T10:55:20.278+03:00  INFO 2285 --- [E_voting] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2026-03-25T10:55:20.281+03:00  INFO 2285 --- [E_voting] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2026-03-25T11:12:08.804+03:00  INFO 2904 --- [E_voting] [main] c.example.E_voting.EVotingApplication    : Starting EVotingApplication using Java 24.0.1 with PID 2904 (/Users/Ahmed/Downloads/Students-E_voting-/target/classes started by user in /Users/Ahmed/Downloads/Students-E_voting-)
+2026-03-25T11:12:08.805+03:00  INFO 2904 --- [E_voting] [main] c.example.E_voting.EVotingApplication    : No active profile set, falling back to 1 default profile: "default"
+2026-03-25T11:12:09.158+03:00  INFO 2904 --- [E_voting] [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2026-03-25T11:12:09.184+03:00  INFO 2904 --- [E_voting] [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 22 ms. Found 7 JPA repository interfaces.
+2026-03-25T11:12:09.389+03:00  INFO 2904 --- [E_voting] [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 9097 (http)
+2026-03-25T11:12:09.398+03:00  INFO 2904 --- [E_voting] [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2026-03-25T11:12:09.398+03:00  INFO 2904 --- [E_voting] [main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.43]
+2026-03-25T11:12:09.420+03:00  INFO 2904 --- [E_voting] [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2026-03-25T11:12:09.421+03:00  INFO 2904 --- [E_voting] [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 598 ms
+2026-03-25T11:12:09.532+03:00  INFO 2904 --- [E_voting] [main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2026-03-25T11:12:09.554+03:00  INFO 2904 --- [E_voting] [main] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.6.22.Final
+2026-03-25T11:12:09.567+03:00  INFO 2904 --- [E_voting] [main] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
+2026-03-25T11:12:09.681+03:00  INFO 2904 --- [E_voting] [main] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2026-03-25T11:12:09.693+03:00  INFO 2904 --- [E_voting] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2026-03-25T11:12:09.919+03:00  INFO 2904 --- [E_voting] [main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@3815a7d1
+2026-03-25T11:12:09.919+03:00  INFO 2904 --- [E_voting] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2026-03-25T11:12:09.955+03:00  WARN 2904 --- [E_voting] [main] org.hibernate.orm.deprecation            : HHH90000025: MySQLDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2026-03-25T11:12:09.961+03:00  INFO 2904 --- [E_voting] [main] org.hibernate.orm.connections.pooling    : HHH10001005: Database info:
 	Database JDBC URL [Connecting through datasource 'HikariDataSource (HikariPool-1)']
 	Database driver: undefined/unknown
 	Database version: 9.3
@@ -69,42 +69,45 @@ This generated password is for development use only. Your security configuration
 	Isolation level: undefined/unknown
 	Minimum pool size: undefined/unknown
 	Maximum pool size: undefined/unknown
-2026-03-05T15:08:51.320+03:00  INFO 19643 --- [E_voting] [main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
-2026-03-05T15:08:51.389+03:00  INFO 19643 --- [E_voting] [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
-2026-03-05T15:08:51.739+03:00  WARN 19643 --- [E_voting] [main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
-2026-03-05T15:08:51.845+03:00  INFO 19643 --- [E_voting] [main] o.s.b.a.e.web.EndpointLinksResolver      : Exposing 1 endpoint beneath base path '/actuator'
-2026-03-05T15:08:51.860+03:00  WARN 19643 --- [E_voting] [main] .s.s.UserDetailsServiceAutoConfiguration : 
+2026-03-25T11:12:10.286+03:00  INFO 2904 --- [E_voting] [main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2026-03-25T11:12:10.379+03:00  INFO 2904 --- [E_voting] [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2026-03-25T11:12:10.726+03:00  WARN 2904 --- [E_voting] [main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2026-03-25T11:12:10.830+03:00  INFO 2904 --- [E_voting] [main] o.s.b.a.e.web.EndpointLinksResolver      : Exposing 1 endpoint beneath base path '/actuator'
+2026-03-25T11:12:10.843+03:00  WARN 2904 --- [E_voting] [main] .s.s.UserDetailsServiceAutoConfiguration : 
 
-Using generated security password: 899381a2-7413-4831-a27b-1d29aadfb723
+Using generated security password: a952c000-3c22-427f-b4e5-938ab6b7ccd6
 
 This generated password is for development use only. Your security configuration must be updated before running your application in production.
 
-2026-03-05T15:08:51.862+03:00  INFO 19643 --- [E_voting] [main] r$InitializeUserDetailsManagerConfigurer : Global AuthenticationManager configured with UserDetailsService bean with name inMemoryUserDetailsManager
-2026-03-05T15:08:52.016+03:00  INFO 19643 --- [E_voting] [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 9097 (http) with context path '/'
-2026-03-05T15:08:52.024+03:00  INFO 19643 --- [E_voting] [main] c.example.E_voting.EVotingApplication    : Started EVotingApplication in 2.466 seconds (process running for 2.608)
-2026-03-05T15:12:49.019+03:00  INFO 19643 --- [E_voting] [SpringApplicationShutdownHook] o.s.b.w.e.tomcat.GracefulShutdown        : Commencing graceful shutdown. Waiting for active requests to complete
-2026-03-05T15:12:49.024+03:00  INFO 19643 --- [E_voting] [tomcat-shutdown] o.s.b.w.e.tomcat.GracefulShutdown        : Graceful shutdown complete
-2026-03-05T15:12:49.029+03:00  INFO 19643 --- [E_voting] [SpringApplicationShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
-2026-03-05T15:12:49.031+03:00  INFO 19643 --- [E_voting] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
-2026-03-05T15:12:49.041+03:00  INFO 19643 --- [E_voting] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
-2026-03-05T15:12:58.215+03:00  INFO 19880 --- [E_voting] [main] c.example.E_voting.EVotingApplication    : Starting EVotingApplication using Java 24.0.1 with PID 19880 (/Users/Ahmed/Downloads/Students-E_voting-/target/classes started by user in /Users/Ahmed/Downloads/Students-E_voting-)
-2026-03-05T15:12:58.216+03:00  INFO 19880 --- [E_voting] [main] c.example.E_voting.EVotingApplication    : No active profile set, falling back to 1 default profile: "default"
-2026-03-05T15:12:58.546+03:00  INFO 19880 --- [E_voting] [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
-2026-03-05T15:12:58.573+03:00  INFO 19880 --- [E_voting] [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 23 ms. Found 5 JPA repository interfaces.
-2026-03-05T15:12:58.813+03:00  INFO 19880 --- [E_voting] [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 9097 (http)
-2026-03-05T15:12:58.819+03:00  INFO 19880 --- [E_voting] [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
-2026-03-05T15:12:58.819+03:00  INFO 19880 --- [E_voting] [main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.43]
-2026-03-05T15:12:58.845+03:00  INFO 19880 --- [E_voting] [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
-2026-03-05T15:12:58.845+03:00  INFO 19880 --- [E_voting] [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 611 ms
-2026-03-05T15:12:58.961+03:00  INFO 19880 --- [E_voting] [main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
-2026-03-05T15:12:58.982+03:00  INFO 19880 --- [E_voting] [main] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.6.22.Final
-2026-03-05T15:12:58.993+03:00  INFO 19880 --- [E_voting] [main] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
-2026-03-05T15:12:59.102+03:00  INFO 19880 --- [E_voting] [main] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
-2026-03-05T15:12:59.112+03:00  INFO 19880 --- [E_voting] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
-2026-03-05T15:12:59.326+03:00  INFO 19880 --- [E_voting] [main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@41026e5c
-2026-03-05T15:12:59.327+03:00  INFO 19880 --- [E_voting] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
-2026-03-05T15:12:59.362+03:00  WARN 19880 --- [E_voting] [main] org.hibernate.orm.deprecation            : HHH90000025: MySQLDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
-2026-03-05T15:12:59.369+03:00  INFO 19880 --- [E_voting] [main] org.hibernate.orm.connections.pooling    : HHH10001005: Database info:
+2026-03-25T11:12:10.846+03:00  INFO 2904 --- [E_voting] [main] r$InitializeUserDetailsManagerConfigurer : Global AuthenticationManager configured with UserDetailsService bean with name inMemoryUserDetailsManager
+2026-03-25T11:12:10.984+03:00  INFO 2904 --- [E_voting] [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 9097 (http) with context path '/'
+2026-03-25T11:12:10.992+03:00  INFO 2904 --- [E_voting] [main] c.example.E_voting.EVotingApplication    : Started EVotingApplication in 2.424 seconds (process running for 2.565)
+2026-03-25T11:12:11.991+03:00  INFO 2904 --- [E_voting] [http-nio-9097-exec-2] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2026-03-25T11:12:11.991+03:00  INFO 2904 --- [E_voting] [http-nio-9097-exec-2] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2026-03-25T11:12:11.992+03:00  INFO 2904 --- [E_voting] [http-nio-9097-exec-2] o.s.web.servlet.DispatcherServlet        : Completed initialization in 1 ms
+2026-03-25T11:23:21.382+03:00  INFO 2904 --- [E_voting] [SpringApplicationShutdownHook] o.s.b.w.e.tomcat.GracefulShutdown        : Commencing graceful shutdown. Waiting for active requests to complete
+2026-03-25T11:23:21.386+03:00  INFO 2904 --- [E_voting] [tomcat-shutdown] o.s.b.w.e.tomcat.GracefulShutdown        : Graceful shutdown complete
+2026-03-25T11:23:21.393+03:00  INFO 2904 --- [E_voting] [SpringApplicationShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2026-03-25T11:23:21.396+03:00  INFO 2904 --- [E_voting] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2026-03-25T11:23:21.399+03:00  INFO 2904 --- [E_voting] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2026-03-25T11:23:25.783+03:00  INFO 3393 --- [E_voting] [main] c.example.E_voting.EVotingApplication    : Starting EVotingApplication using Java 24.0.1 with PID 3393 (/Users/Ahmed/Downloads/Students-E_voting-/target/classes started by user in /Users/Ahmed/Downloads/Students-E_voting-)
+2026-03-25T11:23:25.785+03:00  INFO 3393 --- [E_voting] [main] c.example.E_voting.EVotingApplication    : No active profile set, falling back to 1 default profile: "default"
+2026-03-25T11:23:26.128+03:00  INFO 3393 --- [E_voting] [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2026-03-25T11:23:26.154+03:00  INFO 3393 --- [E_voting] [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 22 ms. Found 7 JPA repository interfaces.
+2026-03-25T11:23:26.355+03:00  INFO 3393 --- [E_voting] [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 9097 (http)
+2026-03-25T11:23:26.362+03:00  INFO 3393 --- [E_voting] [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2026-03-25T11:23:26.362+03:00  INFO 3393 --- [E_voting] [main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.43]
+2026-03-25T11:23:26.389+03:00  INFO 3393 --- [E_voting] [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2026-03-25T11:23:26.390+03:00  INFO 3393 --- [E_voting] [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 586 ms
+2026-03-25T11:23:26.489+03:00  INFO 3393 --- [E_voting] [main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2026-03-25T11:23:26.511+03:00  INFO 3393 --- [E_voting] [main] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.6.22.Final
+2026-03-25T11:23:26.524+03:00  INFO 3393 --- [E_voting] [main] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
+2026-03-25T11:23:26.671+03:00  INFO 3393 --- [E_voting] [main] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2026-03-25T11:23:26.683+03:00  INFO 3393 --- [E_voting] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2026-03-25T11:23:26.882+03:00  INFO 3393 --- [E_voting] [main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@6a552721
+2026-03-25T11:23:26.883+03:00  INFO 3393 --- [E_voting] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2026-03-25T11:23:26.913+03:00  WARN 3393 --- [E_voting] [main] org.hibernate.orm.deprecation            : HHH90000025: MySQLDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2026-03-25T11:23:26.919+03:00  INFO 3393 --- [E_voting] [main] org.hibernate.orm.connections.pooling    : HHH10001005: Database info:
 	Database JDBC URL [Connecting through datasource 'HikariDataSource (HikariPool-1)']
 	Database driver: undefined/unknown
 	Database version: 9.3
@@ -112,45 +115,45 @@ This generated password is for development use only. Your security configuration
 	Isolation level: undefined/unknown
 	Minimum pool size: undefined/unknown
 	Maximum pool size: undefined/unknown
-2026-03-05T15:12:59.667+03:00  INFO 19880 --- [E_voting] [main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
-2026-03-05T15:12:59.734+03:00  INFO 19880 --- [E_voting] [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
-2026-03-05T15:13:00.070+03:00  WARN 19880 --- [E_voting] [main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
-2026-03-05T15:13:00.168+03:00  INFO 19880 --- [E_voting] [main] o.s.b.a.e.web.EndpointLinksResolver      : Exposing 1 endpoint beneath base path '/actuator'
-2026-03-05T15:13:00.181+03:00  WARN 19880 --- [E_voting] [main] .s.s.UserDetailsServiceAutoConfiguration : 
+2026-03-25T11:23:27.244+03:00  INFO 3393 --- [E_voting] [main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2026-03-25T11:23:27.315+03:00  INFO 3393 --- [E_voting] [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2026-03-25T11:23:27.668+03:00  WARN 3393 --- [E_voting] [main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2026-03-25T11:23:27.773+03:00  INFO 3393 --- [E_voting] [main] o.s.b.a.e.web.EndpointLinksResolver      : Exposing 1 endpoint beneath base path '/actuator'
+2026-03-25T11:23:27.787+03:00  WARN 3393 --- [E_voting] [main] .s.s.UserDetailsServiceAutoConfiguration : 
 
-Using generated security password: a1826a98-4b66-40e8-a974-157525f299a5
+Using generated security password: 2e228932-ccd7-43ed-b241-7d08c26a6569
 
 This generated password is for development use only. Your security configuration must be updated before running your application in production.
 
-2026-03-05T15:13:00.183+03:00  INFO 19880 --- [E_voting] [main] r$InitializeUserDetailsManagerConfigurer : Global AuthenticationManager configured with UserDetailsService bean with name inMemoryUserDetailsManager
-2026-03-05T15:13:00.315+03:00  INFO 19880 --- [E_voting] [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 9097 (http) with context path '/'
-2026-03-05T15:13:00.323+03:00  INFO 19880 --- [E_voting] [main] c.example.E_voting.EVotingApplication    : Started EVotingApplication in 2.279 seconds (process running for 2.407)
-2026-03-05T15:16:35.561+03:00  INFO 19880 --- [E_voting] [http-nio-9097-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
-2026-03-05T15:16:35.561+03:00  INFO 19880 --- [E_voting] [http-nio-9097-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
-2026-03-05T15:16:35.565+03:00  INFO 19880 --- [E_voting] [http-nio-9097-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 4 ms
-2026-03-05T15:35:06.381+03:00  INFO 19880 --- [E_voting] [SpringApplicationShutdownHook] o.s.b.w.e.tomcat.GracefulShutdown        : Commencing graceful shutdown. Waiting for active requests to complete
-2026-03-05T15:35:06.388+03:00  INFO 19880 --- [E_voting] [tomcat-shutdown] o.s.b.w.e.tomcat.GracefulShutdown        : Graceful shutdown complete
-2026-03-05T15:35:06.397+03:00  INFO 19880 --- [E_voting] [SpringApplicationShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
-2026-03-05T15:35:06.403+03:00  INFO 19880 --- [E_voting] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
-2026-03-05T15:35:06.422+03:00  INFO 19880 --- [E_voting] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
-2026-03-05T15:35:11.393+03:00  INFO 20674 --- [E_voting] [main] c.example.E_voting.EVotingApplication    : Starting EVotingApplication using Java 24.0.1 with PID 20674 (/Users/Ahmed/Downloads/Students-E_voting-/target/classes started by user in /Users/Ahmed/Downloads/Students-E_voting-)
-2026-03-05T15:35:11.394+03:00  INFO 20674 --- [E_voting] [main] c.example.E_voting.EVotingApplication    : No active profile set, falling back to 1 default profile: "default"
-2026-03-05T15:35:11.743+03:00  INFO 20674 --- [E_voting] [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
-2026-03-05T15:35:11.774+03:00  INFO 20674 --- [E_voting] [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 28 ms. Found 5 JPA repository interfaces.
-2026-03-05T15:35:11.979+03:00  INFO 20674 --- [E_voting] [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 9097 (http)
-2026-03-05T15:35:11.986+03:00  INFO 20674 --- [E_voting] [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
-2026-03-05T15:35:11.986+03:00  INFO 20674 --- [E_voting] [main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.43]
-2026-03-05T15:35:12.009+03:00  INFO 20674 --- [E_voting] [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
-2026-03-05T15:35:12.009+03:00  INFO 20674 --- [E_voting] [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 598 ms
-2026-03-05T15:35:12.112+03:00  INFO 20674 --- [E_voting] [main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
-2026-03-05T15:35:12.133+03:00  INFO 20674 --- [E_voting] [main] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.6.22.Final
-2026-03-05T15:35:12.146+03:00  INFO 20674 --- [E_voting] [main] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
-2026-03-05T15:35:12.263+03:00  INFO 20674 --- [E_voting] [main] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
-2026-03-05T15:35:12.275+03:00  INFO 20674 --- [E_voting] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
-2026-03-05T15:35:12.481+03:00  INFO 20674 --- [E_voting] [main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@549d14fe
-2026-03-05T15:35:12.482+03:00  INFO 20674 --- [E_voting] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
-2026-03-05T15:35:12.515+03:00  WARN 20674 --- [E_voting] [main] org.hibernate.orm.deprecation            : HHH90000025: MySQLDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
-2026-03-05T15:35:12.521+03:00  INFO 20674 --- [E_voting] [main] org.hibernate.orm.connections.pooling    : HHH10001005: Database info:
+2026-03-25T11:23:27.789+03:00  INFO 3393 --- [E_voting] [main] r$InitializeUserDetailsManagerConfigurer : Global AuthenticationManager configured with UserDetailsService bean with name inMemoryUserDetailsManager
+2026-03-25T11:23:27.928+03:00  INFO 3393 --- [E_voting] [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 9097 (http) with context path '/'
+2026-03-25T11:23:27.936+03:00  INFO 3393 --- [E_voting] [main] c.example.E_voting.EVotingApplication    : Started EVotingApplication in 2.339 seconds (process running for 2.472)
+2026-03-25T11:23:31.655+03:00  INFO 3393 --- [E_voting] [http-nio-9097-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2026-03-25T11:23:31.655+03:00  INFO 3393 --- [E_voting] [http-nio-9097-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2026-03-25T11:23:31.656+03:00  INFO 3393 --- [E_voting] [http-nio-9097-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 1 ms
+2026-03-25T11:30:21.678+03:00  INFO 3393 --- [E_voting] [SpringApplicationShutdownHook] o.s.b.w.e.tomcat.GracefulShutdown        : Commencing graceful shutdown. Waiting for active requests to complete
+2026-03-25T11:30:21.682+03:00  INFO 3393 --- [E_voting] [tomcat-shutdown] o.s.b.w.e.tomcat.GracefulShutdown        : Graceful shutdown complete
+2026-03-25T11:30:21.694+03:00  INFO 3393 --- [E_voting] [SpringApplicationShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2026-03-25T11:30:21.697+03:00  INFO 3393 --- [E_voting] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2026-03-25T11:30:21.704+03:00  INFO 3393 --- [E_voting] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2026-03-25T11:30:26.347+03:00  INFO 3704 --- [E_voting] [main] c.example.E_voting.EVotingApplication    : Starting EVotingApplication using Java 24.0.1 with PID 3704 (/Users/Ahmed/Downloads/Students-E_voting-/target/classes started by user in /Users/Ahmed/Downloads/Students-E_voting-)
+2026-03-25T11:30:26.348+03:00  INFO 3704 --- [E_voting] [main] c.example.E_voting.EVotingApplication    : No active profile set, falling back to 1 default profile: "default"
+2026-03-25T11:30:26.690+03:00  INFO 3704 --- [E_voting] [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2026-03-25T11:30:26.715+03:00  INFO 3704 --- [E_voting] [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 21 ms. Found 7 JPA repository interfaces.
+2026-03-25T11:30:26.913+03:00  INFO 3704 --- [E_voting] [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 9097 (http)
+2026-03-25T11:30:26.921+03:00  INFO 3704 --- [E_voting] [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2026-03-25T11:30:26.921+03:00  INFO 3704 --- [E_voting] [main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.43]
+2026-03-25T11:30:26.948+03:00  INFO 3704 --- [E_voting] [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2026-03-25T11:30:26.948+03:00  INFO 3704 --- [E_voting] [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 583 ms
+2026-03-25T11:30:27.044+03:00  INFO 3704 --- [E_voting] [main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2026-03-25T11:30:27.066+03:00  INFO 3704 --- [E_voting] [main] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.6.22.Final
+2026-03-25T11:30:27.079+03:00  INFO 3704 --- [E_voting] [main] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
+2026-03-25T11:30:27.195+03:00  INFO 3704 --- [E_voting] [main] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2026-03-25T11:30:27.207+03:00  INFO 3704 --- [E_voting] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2026-03-25T11:30:27.402+03:00  INFO 3704 --- [E_voting] [main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@65da4a5d
+2026-03-25T11:30:27.402+03:00  INFO 3704 --- [E_voting] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2026-03-25T11:30:27.433+03:00  WARN 3704 --- [E_voting] [main] org.hibernate.orm.deprecation            : HHH90000025: MySQLDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2026-03-25T11:30:27.439+03:00  INFO 3704 --- [E_voting] [main] org.hibernate.orm.connections.pooling    : HHH10001005: Database info:
 	Database JDBC URL [Connecting through datasource 'HikariDataSource (HikariPool-1)']
 	Database driver: undefined/unknown
 	Database version: 9.3
@@ -158,45 +161,45 @@ This generated password is for development use only. Your security configuration
 	Isolation level: undefined/unknown
 	Minimum pool size: undefined/unknown
 	Maximum pool size: undefined/unknown
-2026-03-05T15:35:12.838+03:00  INFO 20674 --- [E_voting] [main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
-2026-03-05T15:35:12.909+03:00  INFO 20674 --- [E_voting] [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
-2026-03-05T15:35:13.252+03:00  WARN 20674 --- [E_voting] [main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
-2026-03-05T15:35:13.350+03:00  INFO 20674 --- [E_voting] [main] o.s.b.a.e.web.EndpointLinksResolver      : Exposing 1 endpoint beneath base path '/actuator'
-2026-03-05T15:35:13.364+03:00  WARN 20674 --- [E_voting] [main] .s.s.UserDetailsServiceAutoConfiguration : 
+2026-03-25T11:30:27.801+03:00  INFO 3704 --- [E_voting] [main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2026-03-25T11:30:27.869+03:00  INFO 3704 --- [E_voting] [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2026-03-25T11:30:28.222+03:00  WARN 3704 --- [E_voting] [main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2026-03-25T11:30:28.327+03:00  INFO 3704 --- [E_voting] [main] o.s.b.a.e.web.EndpointLinksResolver      : Exposing 1 endpoint beneath base path '/actuator'
+2026-03-25T11:30:28.342+03:00  WARN 3704 --- [E_voting] [main] .s.s.UserDetailsServiceAutoConfiguration : 
 
-Using generated security password: 315d27d1-9640-4c1a-8be2-6ad729d3db1b
+Using generated security password: 59a2ac8b-a10a-4b0e-85cf-a70251d3853b
 
 This generated password is for development use only. Your security configuration must be updated before running your application in production.
 
-2026-03-05T15:35:13.367+03:00  INFO 20674 --- [E_voting] [main] r$InitializeUserDetailsManagerConfigurer : Global AuthenticationManager configured with UserDetailsService bean with name inMemoryUserDetailsManager
-2026-03-05T15:35:13.503+03:00  INFO 20674 --- [E_voting] [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 9097 (http) with context path '/'
-2026-03-05T15:35:13.510+03:00  INFO 20674 --- [E_voting] [main] c.example.E_voting.EVotingApplication    : Started EVotingApplication in 2.296 seconds (process running for 2.433)
-2026-03-05T15:35:15.374+03:00  INFO 20674 --- [E_voting] [http-nio-9097-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
-2026-03-05T15:35:15.374+03:00  INFO 20674 --- [E_voting] [http-nio-9097-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
-2026-03-05T15:35:15.375+03:00  INFO 20674 --- [E_voting] [http-nio-9097-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 1 ms
-2026-03-05T15:41:20.899+03:00  INFO 20674 --- [E_voting] [SpringApplicationShutdownHook] o.s.b.w.e.tomcat.GracefulShutdown        : Commencing graceful shutdown. Waiting for active requests to complete
-2026-03-05T15:41:20.904+03:00  INFO 20674 --- [E_voting] [tomcat-shutdown] o.s.b.w.e.tomcat.GracefulShutdown        : Graceful shutdown complete
-2026-03-05T15:41:20.949+03:00  INFO 20674 --- [E_voting] [SpringApplicationShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
-2026-03-05T15:41:20.953+03:00  INFO 20674 --- [E_voting] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
-2026-03-05T15:41:20.959+03:00  INFO 20674 --- [E_voting] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
-2026-03-05T15:41:26.205+03:00  INFO 20968 --- [E_voting] [main] c.example.E_voting.EVotingApplication    : Starting EVotingApplication using Java 24.0.1 with PID 20968 (/Users/Ahmed/Downloads/Students-E_voting-/target/classes started by user in /Users/Ahmed/Downloads/Students-E_voting-)
-2026-03-05T15:41:26.206+03:00  INFO 20968 --- [E_voting] [main] c.example.E_voting.EVotingApplication    : No active profile set, falling back to 1 default profile: "default"
-2026-03-05T15:41:26.556+03:00  INFO 20968 --- [E_voting] [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
-2026-03-05T15:41:26.580+03:00  INFO 20968 --- [E_voting] [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 21 ms. Found 5 JPA repository interfaces.
-2026-03-05T15:41:26.777+03:00  INFO 20968 --- [E_voting] [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 9097 (http)
-2026-03-05T15:41:26.785+03:00  INFO 20968 --- [E_voting] [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
-2026-03-05T15:41:26.785+03:00  INFO 20968 --- [E_voting] [main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.43]
-2026-03-05T15:41:26.807+03:00  INFO 20968 --- [E_voting] [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
-2026-03-05T15:41:26.808+03:00  INFO 20968 --- [E_voting] [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 585 ms
-2026-03-05T15:41:26.914+03:00  INFO 20968 --- [E_voting] [main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
-2026-03-05T15:41:26.939+03:00  INFO 20968 --- [E_voting] [main] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.6.22.Final
-2026-03-05T15:41:26.952+03:00  INFO 20968 --- [E_voting] [main] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
-2026-03-05T15:41:27.065+03:00  INFO 20968 --- [E_voting] [main] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
-2026-03-05T15:41:27.077+03:00  INFO 20968 --- [E_voting] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
-2026-03-05T15:41:27.283+03:00  INFO 20968 --- [E_voting] [main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@6d0a14c2
-2026-03-05T15:41:27.284+03:00  INFO 20968 --- [E_voting] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
-2026-03-05T15:41:27.317+03:00  WARN 20968 --- [E_voting] [main] org.hibernate.orm.deprecation            : HHH90000025: MySQLDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
-2026-03-05T15:41:27.323+03:00  INFO 20968 --- [E_voting] [main] org.hibernate.orm.connections.pooling    : HHH10001005: Database info:
+2026-03-25T11:30:28.345+03:00  INFO 3704 --- [E_voting] [main] r$InitializeUserDetailsManagerConfigurer : Global AuthenticationManager configured with UserDetailsService bean with name inMemoryUserDetailsManager
+2026-03-25T11:30:28.488+03:00  INFO 3704 --- [E_voting] [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 9097 (http) with context path '/'
+2026-03-25T11:30:28.496+03:00  INFO 3704 --- [E_voting] [main] c.example.E_voting.EVotingApplication    : Started EVotingApplication in 2.323 seconds (process running for 2.454)
+2026-03-25T11:30:32.186+03:00  INFO 3704 --- [E_voting] [http-nio-9097-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2026-03-25T11:30:32.186+03:00  INFO 3704 --- [E_voting] [http-nio-9097-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2026-03-25T11:30:32.187+03:00  INFO 3704 --- [E_voting] [http-nio-9097-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 1 ms
+2026-03-25T11:38:29.464+03:00  INFO 3704 --- [E_voting] [SpringApplicationShutdownHook] o.s.b.w.e.tomcat.GracefulShutdown        : Commencing graceful shutdown. Waiting for active requests to complete
+2026-03-25T11:38:29.469+03:00  INFO 3704 --- [E_voting] [tomcat-shutdown] o.s.b.w.e.tomcat.GracefulShutdown        : Graceful shutdown complete
+2026-03-25T11:38:29.478+03:00  INFO 3704 --- [E_voting] [SpringApplicationShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2026-03-25T11:38:29.483+03:00  INFO 3704 --- [E_voting] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2026-03-25T11:38:29.489+03:00  INFO 3704 --- [E_voting] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2026-03-25T11:38:34.423+03:00  INFO 3987 --- [E_voting] [main] c.example.E_voting.EVotingApplication    : Starting EVotingApplication using Java 24.0.1 with PID 3987 (/Users/Ahmed/Downloads/Students-E_voting-/target/classes started by user in /Users/Ahmed/Downloads/Students-E_voting-)
+2026-03-25T11:38:34.424+03:00  INFO 3987 --- [E_voting] [main] c.example.E_voting.EVotingApplication    : No active profile set, falling back to 1 default profile: "default"
+2026-03-25T11:38:34.781+03:00  INFO 3987 --- [E_voting] [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2026-03-25T11:38:34.809+03:00  INFO 3987 --- [E_voting] [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 23 ms. Found 7 JPA repository interfaces.
+2026-03-25T11:38:35.067+03:00  INFO 3987 --- [E_voting] [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 9097 (http)
+2026-03-25T11:38:35.075+03:00  INFO 3987 --- [E_voting] [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2026-03-25T11:38:35.075+03:00  INFO 3987 --- [E_voting] [main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.43]
+2026-03-25T11:38:35.095+03:00  INFO 3987 --- [E_voting] [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2026-03-25T11:38:35.095+03:00  INFO 3987 --- [E_voting] [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 654 ms
+2026-03-25T11:38:35.199+03:00  INFO 3987 --- [E_voting] [main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2026-03-25T11:38:35.223+03:00  INFO 3987 --- [E_voting] [main] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.6.22.Final
+2026-03-25T11:38:35.236+03:00  INFO 3987 --- [E_voting] [main] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
+2026-03-25T11:38:35.353+03:00  INFO 3987 --- [E_voting] [main] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2026-03-25T11:38:35.365+03:00  INFO 3987 --- [E_voting] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2026-03-25T11:38:35.555+03:00  INFO 3987 --- [E_voting] [main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@3815a7d1
+2026-03-25T11:38:35.556+03:00  INFO 3987 --- [E_voting] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2026-03-25T11:38:35.580+03:00  WARN 3987 --- [E_voting] [main] org.hibernate.orm.deprecation            : HHH90000025: MySQLDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2026-03-25T11:38:35.586+03:00  INFO 3987 --- [E_voting] [main] org.hibernate.orm.connections.pooling    : HHH10001005: Database info:
 	Database JDBC URL [Connecting through datasource 'HikariDataSource (HikariPool-1)']
 	Database driver: undefined/unknown
 	Database version: 9.3
@@ -204,45 +207,45 @@ This generated password is for development use only. Your security configuration
 	Isolation level: undefined/unknown
 	Minimum pool size: undefined/unknown
 	Maximum pool size: undefined/unknown
-2026-03-05T15:41:27.637+03:00  INFO 20968 --- [E_voting] [main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
-2026-03-05T15:41:27.701+03:00  INFO 20968 --- [E_voting] [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
-2026-03-05T15:41:28.037+03:00  WARN 20968 --- [E_voting] [main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
-2026-03-05T15:41:28.139+03:00  INFO 20968 --- [E_voting] [main] o.s.b.a.e.web.EndpointLinksResolver      : Exposing 1 endpoint beneath base path '/actuator'
-2026-03-05T15:41:28.154+03:00  WARN 20968 --- [E_voting] [main] .s.s.UserDetailsServiceAutoConfiguration : 
+2026-03-25T11:38:35.930+03:00  INFO 3987 --- [E_voting] [main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2026-03-25T11:38:36.003+03:00  INFO 3987 --- [E_voting] [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2026-03-25T11:38:36.381+03:00  WARN 3987 --- [E_voting] [main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2026-03-25T11:38:36.490+03:00  INFO 3987 --- [E_voting] [main] o.s.b.a.e.web.EndpointLinksResolver      : Exposing 1 endpoint beneath base path '/actuator'
+2026-03-25T11:38:36.505+03:00  WARN 3987 --- [E_voting] [main] .s.s.UserDetailsServiceAutoConfiguration : 
 
-Using generated security password: 614828dd-6791-4dd3-968d-de0b89ed5542
+Using generated security password: 362998d7-a80e-4d14-ba87-d6b8375a8592
 
 This generated password is for development use only. Your security configuration must be updated before running your application in production.
 
-2026-03-05T15:41:28.156+03:00  INFO 20968 --- [E_voting] [main] r$InitializeUserDetailsManagerConfigurer : Global AuthenticationManager configured with UserDetailsService bean with name inMemoryUserDetailsManager
-2026-03-05T15:41:28.292+03:00  INFO 20968 --- [E_voting] [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 9097 (http) with context path '/'
-2026-03-05T15:41:28.299+03:00  INFO 20968 --- [E_voting] [main] c.example.E_voting.EVotingApplication    : Started EVotingApplication in 2.27 seconds (process running for 2.405)
-2026-03-05T15:41:28.651+03:00  INFO 20968 --- [E_voting] [http-nio-9097-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
-2026-03-05T15:41:28.652+03:00  INFO 20968 --- [E_voting] [http-nio-9097-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
-2026-03-05T15:41:28.652+03:00  INFO 20968 --- [E_voting] [http-nio-9097-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 0 ms
-2026-03-05T15:47:24.545+03:00  INFO 20968 --- [E_voting] [SpringApplicationShutdownHook] o.s.b.w.e.tomcat.GracefulShutdown        : Commencing graceful shutdown. Waiting for active requests to complete
-2026-03-05T15:47:24.550+03:00  INFO 20968 --- [E_voting] [tomcat-shutdown] o.s.b.w.e.tomcat.GracefulShutdown        : Graceful shutdown complete
-2026-03-05T15:47:24.560+03:00  INFO 20968 --- [E_voting] [SpringApplicationShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
-2026-03-05T15:47:24.564+03:00  INFO 20968 --- [E_voting] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
-2026-03-05T15:47:24.568+03:00  INFO 20968 --- [E_voting] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
-2026-03-05T15:51:13.860+03:00  INFO 21323 --- [E_voting] [main] c.example.E_voting.EVotingApplication    : Starting EVotingApplication using Java 24.0.1 with PID 21323 (/Users/Ahmed/Downloads/Students-E_voting-/target/classes started by user in /Users/Ahmed/Downloads/Students-E_voting-)
-2026-03-05T15:51:13.861+03:00  INFO 21323 --- [E_voting] [main] c.example.E_voting.EVotingApplication    : No active profile set, falling back to 1 default profile: "default"
-2026-03-05T15:51:14.296+03:00  INFO 21323 --- [E_voting] [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
-2026-03-05T15:51:14.320+03:00  INFO 21323 --- [E_voting] [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 20 ms. Found 5 JPA repository interfaces.
-2026-03-05T15:51:14.534+03:00  INFO 21323 --- [E_voting] [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 9097 (http)
-2026-03-05T15:51:14.544+03:00  INFO 21323 --- [E_voting] [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
-2026-03-05T15:51:14.544+03:00  INFO 21323 --- [E_voting] [main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.43]
-2026-03-05T15:51:14.572+03:00  INFO 21323 --- [E_voting] [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
-2026-03-05T15:51:14.572+03:00  INFO 21323 --- [E_voting] [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 693 ms
-2026-03-05T15:51:14.685+03:00  INFO 21323 --- [E_voting] [main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
-2026-03-05T15:51:14.707+03:00  INFO 21323 --- [E_voting] [main] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.6.22.Final
-2026-03-05T15:51:14.720+03:00  INFO 21323 --- [E_voting] [main] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
-2026-03-05T15:51:14.897+03:00  INFO 21323 --- [E_voting] [main] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
-2026-03-05T15:51:14.909+03:00  INFO 21323 --- [E_voting] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
-2026-03-05T15:51:15.151+03:00  INFO 21323 --- [E_voting] [main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@2bd2430f
-2026-03-05T15:51:15.152+03:00  INFO 21323 --- [E_voting] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
-2026-03-05T15:51:15.190+03:00  WARN 21323 --- [E_voting] [main] org.hibernate.orm.deprecation            : HHH90000025: MySQLDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
-2026-03-05T15:51:15.196+03:00  INFO 21323 --- [E_voting] [main] org.hibernate.orm.connections.pooling    : HHH10001005: Database info:
+2026-03-25T11:38:36.508+03:00  INFO 3987 --- [E_voting] [main] r$InitializeUserDetailsManagerConfigurer : Global AuthenticationManager configured with UserDetailsService bean with name inMemoryUserDetailsManager
+2026-03-25T11:38:36.647+03:00  INFO 3987 --- [E_voting] [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 9097 (http) with context path '/'
+2026-03-25T11:38:36.654+03:00  INFO 3987 --- [E_voting] [main] c.example.E_voting.EVotingApplication    : Started EVotingApplication in 2.413 seconds (process running for 2.55)
+2026-03-25T11:38:37.822+03:00  INFO 3987 --- [E_voting] [http-nio-9097-exec-2] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2026-03-25T11:38:37.823+03:00  INFO 3987 --- [E_voting] [http-nio-9097-exec-2] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2026-03-25T11:38:37.824+03:00  INFO 3987 --- [E_voting] [http-nio-9097-exec-2] o.s.web.servlet.DispatcherServlet        : Completed initialization in 1 ms
+2026-03-25T11:41:10.394+03:00  INFO 3987 --- [E_voting] [SpringApplicationShutdownHook] o.s.b.w.e.tomcat.GracefulShutdown        : Commencing graceful shutdown. Waiting for active requests to complete
+2026-03-25T11:41:10.399+03:00  INFO 3987 --- [E_voting] [tomcat-shutdown] o.s.b.w.e.tomcat.GracefulShutdown        : Graceful shutdown complete
+2026-03-25T11:41:10.406+03:00  INFO 3987 --- [E_voting] [SpringApplicationShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2026-03-25T11:41:10.409+03:00  INFO 3987 --- [E_voting] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2026-03-25T11:41:10.413+03:00  INFO 3987 --- [E_voting] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2026-03-25T11:44:09.863+03:00  INFO 4214 --- [E_voting] [main] c.example.E_voting.EVotingApplication    : Starting EVotingApplication using Java 24.0.1 with PID 4214 (/Users/Ahmed/Downloads/Students-E_voting-/target/classes started by user in /Users/Ahmed/Downloads/Students-E_voting-)
+2026-03-25T11:44:09.864+03:00  INFO 4214 --- [E_voting] [main] c.example.E_voting.EVotingApplication    : No active profile set, falling back to 1 default profile: "default"
+2026-03-25T11:44:10.207+03:00  INFO 4214 --- [E_voting] [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2026-03-25T11:44:10.233+03:00  INFO 4214 --- [E_voting] [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 22 ms. Found 7 JPA repository interfaces.
+2026-03-25T11:44:10.434+03:00  INFO 4214 --- [E_voting] [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 9097 (http)
+2026-03-25T11:44:10.442+03:00  INFO 4214 --- [E_voting] [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2026-03-25T11:44:10.442+03:00  INFO 4214 --- [E_voting] [main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.43]
+2026-03-25T11:44:10.468+03:00  INFO 4214 --- [E_voting] [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2026-03-25T11:44:10.468+03:00  INFO 4214 --- [E_voting] [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 586 ms
+2026-03-25T11:44:10.566+03:00  INFO 4214 --- [E_voting] [main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2026-03-25T11:44:10.591+03:00  INFO 4214 --- [E_voting] [main] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.6.22.Final
+2026-03-25T11:44:10.606+03:00  INFO 4214 --- [E_voting] [main] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
+2026-03-25T11:44:10.723+03:00  INFO 4214 --- [E_voting] [main] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2026-03-25T11:44:10.735+03:00  INFO 4214 --- [E_voting] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2026-03-25T11:44:10.931+03:00  INFO 4214 --- [E_voting] [main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@3ef46749
+2026-03-25T11:44:10.931+03:00  INFO 4214 --- [E_voting] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2026-03-25T11:44:10.956+03:00  WARN 4214 --- [E_voting] [main] org.hibernate.orm.deprecation            : HHH90000025: MySQLDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2026-03-25T11:44:10.962+03:00  INFO 4214 --- [E_voting] [main] org.hibernate.orm.connections.pooling    : HHH10001005: Database info:
 	Database JDBC URL [Connecting through datasource 'HikariDataSource (HikariPool-1)']
 	Database driver: undefined/unknown
 	Database version: 9.3
@@ -250,45 +253,47 @@ This generated password is for development use only. Your security configuration
 	Isolation level: undefined/unknown
 	Minimum pool size: undefined/unknown
 	Maximum pool size: undefined/unknown
-2026-03-05T15:51:15.516+03:00  INFO 21323 --- [E_voting] [main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
-2026-03-05T15:51:15.585+03:00  INFO 21323 --- [E_voting] [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
-2026-03-05T15:51:15.920+03:00  WARN 21323 --- [E_voting] [main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
-2026-03-05T15:51:16.019+03:00  INFO 21323 --- [E_voting] [main] o.s.b.a.e.web.EndpointLinksResolver      : Exposing 1 endpoint beneath base path '/actuator'
-2026-03-05T15:51:16.033+03:00  WARN 21323 --- [E_voting] [main] .s.s.UserDetailsServiceAutoConfiguration : 
+2026-03-25T11:44:11.298+03:00  INFO 4214 --- [E_voting] [main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2026-03-25T11:44:11.368+03:00  INFO 4214 --- [E_voting] [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2026-03-25T11:44:11.716+03:00  WARN 4214 --- [E_voting] [main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2026-03-25T11:44:11.818+03:00  INFO 4214 --- [E_voting] [main] o.s.b.a.e.web.EndpointLinksResolver      : Exposing 1 endpoint beneath base path '/actuator'
+2026-03-25T11:44:11.832+03:00  WARN 4214 --- [E_voting] [main] .s.s.UserDetailsServiceAutoConfiguration : 
 
-Using generated security password: c13188fa-c183-4c74-8efe-5e3897c07b8a
+Using generated security password: 23210bbe-5a3c-4a75-bf73-138e8bc51e01
 
 This generated password is for development use only. Your security configuration must be updated before running your application in production.
 
-2026-03-05T15:51:16.036+03:00  INFO 21323 --- [E_voting] [main] r$InitializeUserDetailsManagerConfigurer : Global AuthenticationManager configured with UserDetailsService bean with name inMemoryUserDetailsManager
-2026-03-05T15:51:16.168+03:00  INFO 21323 --- [E_voting] [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 9097 (http) with context path '/'
-2026-03-05T15:51:16.175+03:00  INFO 21323 --- [E_voting] [main] c.example.E_voting.EVotingApplication    : Started EVotingApplication in 2.499 seconds (process running for 2.706)
-2026-03-05T15:51:58.784+03:00  INFO 21323 --- [E_voting] [http-nio-9097-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
-2026-03-05T15:51:58.785+03:00  INFO 21323 --- [E_voting] [http-nio-9097-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
-2026-03-05T15:51:58.791+03:00  INFO 21323 --- [E_voting] [http-nio-9097-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 6 ms
-2026-03-05T15:52:34.360+03:00  INFO 21323 --- [E_voting] [SpringApplicationShutdownHook] o.s.b.w.e.tomcat.GracefulShutdown        : Commencing graceful shutdown. Waiting for active requests to complete
-2026-03-05T15:52:34.365+03:00  INFO 21323 --- [E_voting] [tomcat-shutdown] o.s.b.w.e.tomcat.GracefulShutdown        : Graceful shutdown complete
-2026-03-05T15:52:34.372+03:00  INFO 21323 --- [E_voting] [SpringApplicationShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
-2026-03-05T15:52:34.375+03:00  INFO 21323 --- [E_voting] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
-2026-03-05T15:52:34.382+03:00  INFO 21323 --- [E_voting] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
-2026-03-05T15:56:49.599+03:00  INFO 21584 --- [E_voting] [main] c.example.E_voting.EVotingApplication    : Starting EVotingApplication using Java 24.0.1 with PID 21584 (/Users/Ahmed/Downloads/Students-E_voting-/target/classes started by user in /Users/Ahmed/Downloads/Students-E_voting-)
-2026-03-05T15:56:49.600+03:00  INFO 21584 --- [E_voting] [main] c.example.E_voting.EVotingApplication    : No active profile set, falling back to 1 default profile: "default"
-2026-03-05T15:56:49.954+03:00  INFO 21584 --- [E_voting] [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
-2026-03-05T15:56:49.979+03:00  INFO 21584 --- [E_voting] [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 21 ms. Found 5 JPA repository interfaces.
-2026-03-05T15:56:50.177+03:00  INFO 21584 --- [E_voting] [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 9097 (http)
-2026-03-05T15:56:50.186+03:00  INFO 21584 --- [E_voting] [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
-2026-03-05T15:56:50.186+03:00  INFO 21584 --- [E_voting] [main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.43]
-2026-03-05T15:56:50.207+03:00  INFO 21584 --- [E_voting] [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
-2026-03-05T15:56:50.207+03:00  INFO 21584 --- [E_voting] [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 588 ms
-2026-03-05T15:56:50.308+03:00  INFO 21584 --- [E_voting] [main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
-2026-03-05T15:56:50.333+03:00  INFO 21584 --- [E_voting] [main] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.6.22.Final
-2026-03-05T15:56:50.347+03:00  INFO 21584 --- [E_voting] [main] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
-2026-03-05T15:56:50.471+03:00  INFO 21584 --- [E_voting] [main] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
-2026-03-05T15:56:50.483+03:00  INFO 21584 --- [E_voting] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
-2026-03-05T15:56:50.715+03:00  INFO 21584 --- [E_voting] [main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@549d14fe
-2026-03-05T15:56:50.716+03:00  INFO 21584 --- [E_voting] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
-2026-03-05T15:56:50.749+03:00  WARN 21584 --- [E_voting] [main] org.hibernate.orm.deprecation            : HHH90000025: MySQLDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
-2026-03-05T15:56:50.755+03:00  INFO 21584 --- [E_voting] [main] org.hibernate.orm.connections.pooling    : HHH10001005: Database info:
+2026-03-25T11:44:11.835+03:00  INFO 4214 --- [E_voting] [main] r$InitializeUserDetailsManagerConfigurer : Global AuthenticationManager configured with UserDetailsService bean with name inMemoryUserDetailsManager
+2026-03-25T11:44:11.972+03:00  INFO 4214 --- [E_voting] [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 9097 (http) with context path '/'
+2026-03-25T11:44:11.980+03:00  INFO 4214 --- [E_voting] [main] c.example.E_voting.EVotingApplication    : Started EVotingApplication in 2.292 seconds (process running for 2.427)
+2026-03-25T11:44:14.689+03:00  INFO 4214 --- [E_voting] [http-nio-9097-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2026-03-25T11:44:14.690+03:00  INFO 4214 --- [E_voting] [http-nio-9097-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2026-03-25T11:44:14.691+03:00  INFO 4214 --- [E_voting] [http-nio-9097-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 1 ms
+2026-03-25T12:10:06.196+03:00  WARN 4214 --- [E_voting] [HikariPool-1:housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=54s864ms).
+2026-03-25T12:17:57.770+03:00  WARN 4214 --- [E_voting] [HikariPool-1:housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=7m51s575ms).
+2026-03-25T12:17:59.182+03:00  INFO 4214 --- [E_voting] [SpringApplicationShutdownHook] o.s.b.w.e.tomcat.GracefulShutdown        : Commencing graceful shutdown. Waiting for active requests to complete
+2026-03-25T12:17:59.188+03:00  INFO 4214 --- [E_voting] [tomcat-shutdown] o.s.b.w.e.tomcat.GracefulShutdown        : Graceful shutdown complete
+2026-03-25T12:17:59.197+03:00  INFO 4214 --- [E_voting] [SpringApplicationShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2026-03-25T12:17:59.201+03:00  INFO 4214 --- [E_voting] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2026-03-25T12:17:59.206+03:00  INFO 4214 --- [E_voting] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2026-03-25T12:18:03.722+03:00  INFO 4814 --- [E_voting] [main] c.example.E_voting.EVotingApplication    : Starting EVotingApplication using Java 24.0.1 with PID 4814 (/Users/Ahmed/Downloads/Students-E_voting-/target/classes started by user in /Users/Ahmed/Downloads/Students-E_voting-)
+2026-03-25T12:18:03.723+03:00  INFO 4814 --- [E_voting] [main] c.example.E_voting.EVotingApplication    : No active profile set, falling back to 1 default profile: "default"
+2026-03-25T12:18:04.091+03:00  INFO 4814 --- [E_voting] [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2026-03-25T12:18:04.117+03:00  INFO 4814 --- [E_voting] [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 22 ms. Found 7 JPA repository interfaces.
+2026-03-25T12:18:04.322+03:00  INFO 4814 --- [E_voting] [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 9097 (http)
+2026-03-25T12:18:04.329+03:00  INFO 4814 --- [E_voting] [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2026-03-25T12:18:04.330+03:00  INFO 4814 --- [E_voting] [main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.43]
+2026-03-25T12:18:04.357+03:00  INFO 4814 --- [E_voting] [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2026-03-25T12:18:04.358+03:00  INFO 4814 --- [E_voting] [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 605 ms
+2026-03-25T12:18:04.457+03:00  INFO 4814 --- [E_voting] [main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2026-03-25T12:18:04.480+03:00  INFO 4814 --- [E_voting] [main] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.6.22.Final
+2026-03-25T12:18:04.493+03:00  INFO 4814 --- [E_voting] [main] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
+2026-03-25T12:18:04.608+03:00  INFO 4814 --- [E_voting] [main] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2026-03-25T12:18:04.620+03:00  INFO 4814 --- [E_voting] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2026-03-25T12:18:04.816+03:00  INFO 4814 --- [E_voting] [main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@24dc150c
+2026-03-25T12:18:04.817+03:00  INFO 4814 --- [E_voting] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2026-03-25T12:18:04.852+03:00  WARN 4814 --- [E_voting] [main] org.hibernate.orm.deprecation            : HHH90000025: MySQLDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2026-03-25T12:18:04.857+03:00  INFO 4814 --- [E_voting] [main] org.hibernate.orm.connections.pooling    : HHH10001005: Database info:
 	Database JDBC URL [Connecting through datasource 'HikariDataSource (HikariPool-1)']
 	Database driver: undefined/unknown
 	Database version: 9.3
@@ -296,24 +301,70 @@ This generated password is for development use only. Your security configuration
 	Isolation level: undefined/unknown
 	Minimum pool size: undefined/unknown
 	Maximum pool size: undefined/unknown
-2026-03-05T15:56:51.064+03:00  INFO 21584 --- [E_voting] [main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
-2026-03-05T15:56:51.130+03:00  INFO 21584 --- [E_voting] [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
-2026-03-05T15:56:51.467+03:00  WARN 21584 --- [E_voting] [main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
-2026-03-05T15:56:51.566+03:00  INFO 21584 --- [E_voting] [main] o.s.b.a.e.web.EndpointLinksResolver      : Exposing 1 endpoint beneath base path '/actuator'
-2026-03-05T15:56:51.580+03:00  WARN 21584 --- [E_voting] [main] .s.s.UserDetailsServiceAutoConfiguration : 
+2026-03-25T12:18:05.186+03:00  INFO 4814 --- [E_voting] [main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2026-03-25T12:18:05.248+03:00  INFO 4814 --- [E_voting] [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2026-03-25T12:18:05.619+03:00  WARN 4814 --- [E_voting] [main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2026-03-25T12:18:05.738+03:00  INFO 4814 --- [E_voting] [main] o.s.b.a.e.web.EndpointLinksResolver      : Exposing 1 endpoint beneath base path '/actuator'
+2026-03-25T12:18:05.753+03:00  WARN 4814 --- [E_voting] [main] .s.s.UserDetailsServiceAutoConfiguration : 
 
-Using generated security password: 3db076bb-11b1-4a7b-aa11-ef529ee7c605
+Using generated security password: 28542674-cc4e-45db-9d9c-2d01912eb9c6
 
 This generated password is for development use only. Your security configuration must be updated before running your application in production.
 
-2026-03-05T15:56:51.583+03:00  INFO 21584 --- [E_voting] [main] r$InitializeUserDetailsManagerConfigurer : Global AuthenticationManager configured with UserDetailsService bean with name inMemoryUserDetailsManager
-2026-03-05T15:56:51.721+03:00  INFO 21584 --- [E_voting] [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 9097 (http) with context path '/'
-2026-03-05T15:56:51.729+03:00  INFO 21584 --- [E_voting] [main] c.example.E_voting.EVotingApplication    : Started EVotingApplication in 2.31 seconds (process running for 2.445)
-2026-03-05T15:56:54.600+03:00  INFO 21584 --- [E_voting] [http-nio-9097-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
-2026-03-05T15:56:54.601+03:00  INFO 21584 --- [E_voting] [http-nio-9097-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
-2026-03-05T15:56:54.603+03:00  INFO 21584 --- [E_voting] [http-nio-9097-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 2 ms
-2026-03-05T15:57:30.587+03:00  INFO 21584 --- [E_voting] [SpringApplicationShutdownHook] o.s.b.w.e.tomcat.GracefulShutdown        : Commencing graceful shutdown. Waiting for active requests to complete
-2026-03-05T15:57:30.591+03:00  INFO 21584 --- [E_voting] [tomcat-shutdown] o.s.b.w.e.tomcat.GracefulShutdown        : Graceful shutdown complete
-2026-03-05T15:57:30.601+03:00  INFO 21584 --- [E_voting] [SpringApplicationShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
-2026-03-05T15:57:30.603+03:00  INFO 21584 --- [E_voting] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
-2026-03-05T15:57:30.608+03:00  INFO 21584 --- [E_voting] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2026-03-25T12:18:05.756+03:00  INFO 4814 --- [E_voting] [main] r$InitializeUserDetailsManagerConfigurer : Global AuthenticationManager configured with UserDetailsService bean with name inMemoryUserDetailsManager
+2026-03-25T12:18:05.896+03:00  INFO 4814 --- [E_voting] [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 9097 (http) with context path '/'
+2026-03-25T12:18:05.904+03:00  INFO 4814 --- [E_voting] [main] c.example.E_voting.EVotingApplication    : Started EVotingApplication in 2.366 seconds (process running for 2.505)
+2026-03-25T12:18:08.348+03:00  INFO 4814 --- [E_voting] [http-nio-9097-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2026-03-25T12:18:08.348+03:00  INFO 4814 --- [E_voting] [http-nio-9097-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2026-03-25T12:18:08.349+03:00  INFO 4814 --- [E_voting] [http-nio-9097-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 1 ms
+2026-03-25T12:30:55.851+03:00  INFO 4814 --- [E_voting] [SpringApplicationShutdownHook] o.s.b.w.e.tomcat.GracefulShutdown        : Commencing graceful shutdown. Waiting for active requests to complete
+2026-03-25T12:30:55.855+03:00  INFO 4814 --- [E_voting] [tomcat-shutdown] o.s.b.w.e.tomcat.GracefulShutdown        : Graceful shutdown complete
+2026-03-25T12:30:55.863+03:00  INFO 4814 --- [E_voting] [SpringApplicationShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2026-03-25T12:30:55.865+03:00  INFO 4814 --- [E_voting] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2026-03-25T12:30:55.869+03:00  INFO 4814 --- [E_voting] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2026-03-25T12:31:01.522+03:00  INFO 5138 --- [E_voting] [main] c.example.E_voting.EVotingApplication    : Starting EVotingApplication using Java 24.0.1 with PID 5138 (/Users/Ahmed/Downloads/Students-E_voting-/target/classes started by user in /Users/Ahmed/Downloads/Students-E_voting-)
+2026-03-25T12:31:01.523+03:00  INFO 5138 --- [E_voting] [main] c.example.E_voting.EVotingApplication    : No active profile set, falling back to 1 default profile: "default"
+2026-03-25T12:31:01.867+03:00  INFO 5138 --- [E_voting] [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2026-03-25T12:31:01.892+03:00  INFO 5138 --- [E_voting] [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 21 ms. Found 7 JPA repository interfaces.
+2026-03-25T12:31:02.085+03:00  INFO 5138 --- [E_voting] [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 9097 (http)
+2026-03-25T12:31:02.092+03:00  INFO 5138 --- [E_voting] [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2026-03-25T12:31:02.092+03:00  INFO 5138 --- [E_voting] [main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.43]
+2026-03-25T12:31:02.112+03:00  INFO 5138 --- [E_voting] [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2026-03-25T12:31:02.112+03:00  INFO 5138 --- [E_voting] [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 572 ms
+2026-03-25T12:31:02.211+03:00  INFO 5138 --- [E_voting] [main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2026-03-25T12:31:02.233+03:00  INFO 5138 --- [E_voting] [main] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.6.22.Final
+2026-03-25T12:31:02.247+03:00  INFO 5138 --- [E_voting] [main] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
+2026-03-25T12:31:02.375+03:00  INFO 5138 --- [E_voting] [main] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2026-03-25T12:31:02.387+03:00  INFO 5138 --- [E_voting] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2026-03-25T12:31:02.570+03:00  INFO 5138 --- [E_voting] [main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@62b42406
+2026-03-25T12:31:02.570+03:00  INFO 5138 --- [E_voting] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2026-03-25T12:31:02.594+03:00  WARN 5138 --- [E_voting] [main] org.hibernate.orm.deprecation            : HHH90000025: MySQLDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2026-03-25T12:31:02.599+03:00  INFO 5138 --- [E_voting] [main] org.hibernate.orm.connections.pooling    : HHH10001005: Database info:
+	Database JDBC URL [Connecting through datasource 'HikariDataSource (HikariPool-1)']
+	Database driver: undefined/unknown
+	Database version: 9.3
+	Autocommit mode: undefined/unknown
+	Isolation level: undefined/unknown
+	Minimum pool size: undefined/unknown
+	Maximum pool size: undefined/unknown
+2026-03-25T12:31:02.936+03:00  INFO 5138 --- [E_voting] [main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2026-03-25T12:31:02.993+03:00  INFO 5138 --- [E_voting] [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2026-03-25T12:31:03.336+03:00  WARN 5138 --- [E_voting] [main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2026-03-25T12:31:03.443+03:00  INFO 5138 --- [E_voting] [main] o.s.b.a.e.web.EndpointLinksResolver      : Exposing 1 endpoint beneath base path '/actuator'
+2026-03-25T12:31:03.457+03:00  WARN 5138 --- [E_voting] [main] .s.s.UserDetailsServiceAutoConfiguration : 
+
+Using generated security password: 768dadde-ff00-4afd-8879-9c6484caf002
+
+This generated password is for development use only. Your security configuration must be updated before running your application in production.
+
+2026-03-25T12:31:03.460+03:00  INFO 5138 --- [E_voting] [main] r$InitializeUserDetailsManagerConfigurer : Global AuthenticationManager configured with UserDetailsService bean with name inMemoryUserDetailsManager
+2026-03-25T12:31:03.594+03:00  INFO 5138 --- [E_voting] [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 9097 (http) with context path '/'
+2026-03-25T12:31:03.602+03:00  INFO 5138 --- [E_voting] [main] c.example.E_voting.EVotingApplication    : Started EVotingApplication in 2.254 seconds (process running for 2.386)
+2026-03-25T12:31:03.924+03:00  INFO 5138 --- [E_voting] [http-nio-9097-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2026-03-25T12:31:03.924+03:00  INFO 5138 --- [E_voting] [http-nio-9097-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2026-03-25T12:31:03.925+03:00  INFO 5138 --- [E_voting] [http-nio-9097-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 1 ms
+2026-03-25T12:32:05.494+03:00  INFO 5138 --- [E_voting] [SpringApplicationShutdownHook] o.s.b.w.e.tomcat.GracefulShutdown        : Commencing graceful shutdown. Waiting for active requests to complete
+2026-03-25T12:32:05.501+03:00  INFO 5138 --- [E_voting] [tomcat-shutdown] o.s.b.w.e.tomcat.GracefulShutdown        : Graceful shutdown complete
+2026-03-25T12:32:05.507+03:00  INFO 5138 --- [E_voting] [SpringApplicationShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2026-03-25T12:32:05.509+03:00  INFO 5138 --- [E_voting] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2026-03-25T12:32:05.513+03:00  INFO 5138 --- [E_voting] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.

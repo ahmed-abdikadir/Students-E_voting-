@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Apply for Position — E-Voting</title>
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+    <style>
+        .apply-hero {
+            background: linear-gradient(135deg, var(--teal-600), var(--blue-700));
+            color: white;
+            padding: 40px 32px;
+            border-radius: var(--radius-lg);
+            margin-bottom: 32px;
+            text-align: center;
+        }
+        .apply-hero h1 { font-size: 1.75rem; font-weight: 700; margin-bottom: 8px; }
+        .apply-hero p { font-size: 1rem; opacity: 0.9; max-width: 500px; margin: 0 auto; }
+
+        .apply-form-card {
+            background: var(--white);
+            border: 1px solid var(--slate-200);
+            border-radius: var(--radius-lg);
+            padding: 32px;
+            box-shadow: var(--shadow-md);
+        }
+
+        .apply-form-card h2 {
+            font-size: 1.1rem;
+            font-weight: 700;
+            color: var(--slate-900);
+            margin-bottom: 4px;
+        }
+
+        .apply-form-card .subtitle {
+            font-size: 0.875rem;
+            color: var(--slate-500);
+            margin-bottom: 28px;
+        }
+
+        textarea.form-control {
+            resize: vertical;
+            min-height: 120px;
+        }
+
+        .char-count {
+            font-size: 0.78rem;
+            color: var(--slate-400);
+            margin-top: 4px;
+            text-align: right;
+        }
+
+        .form-actions {
+            display: flex;
+            gap: 12px;
+            margin-top: 8px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Top Navbar -->
+    <nav class="student-navbar">
+        <span class="navbar-brand">E-Voting System</span>
+        <div class="navbar-user">
+            <span th:text="${session.username}" style="font-weight:600;"></span>
+            <a th:href="@{/student/dashboard}" class="btn btn-sm btn-secondary">← Dashboard</a>
+            <a th:href="@{/login}" class="btn btn-sm btn-ghost">Sign Out</a>
+        </div>
+    </nav>
+
+    <div class="student-page-body">
+        <div style="width:100%; max-width:640px;">
+
+            <!-- Hero -->
+            <div class="apply-hero">
+                <div style="font-size: 2.5rem; margin-bottom: 12px;">🏛️</div>
+                <h1>Run for Office</h1>
+                <p>Apply to become a candidate in an upcoming election. Share your vision and let your peers know why they should vote for you.</p>
+            </div>
+
+            <!-- Alerts -->
+            <div th:if="${applySuccess}" class="alert alert-success" th:text="${applySuccess}"></div>
+            <div th:if="${applyError}" class="alert alert-danger" th:text="${applyError}"></div>
+
+            <!-- Application Form -->
+            <div class="apply-form-card">
+                <h2>Submit Your Application</h2>
+                <p class="subtitle">Your application will be reviewed by an administrator before you appear as a candidate.</p>
+
+                <form th:action="@{/student/apply}" method="post">
+                    <div class="form-group">
+                        <label class="form-label" for="electionId">Select Election</label>
+                        <select id="electionId" name="electionId" class="form-control" required>
+                            <option value="" disabled selected>— Choose an election —</option>
+                            <option th:each="election : ${elections}" th:value="${election.id}" th:text="${election.name}">Election</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="form-label" for="motive">Your Manifesto / Motive</label>
+                        <textarea id="motive" name="motive" class="form-control" rows="5"
+                            placeholder="Why should students vote for you? Share your vision, goals, and what you plan to achieve..."
+                            required maxlength="1000" oninput="updateCharCount()"></textarea>
+                        <p class="char-count"><span id="charCount">0</span> / 1000</p>
+                    </div>
+
+                    <div class="form-actions">
+                        <button type="submit" class="btn btn-primary btn-lg">Submit Application</button>
+                        <a th:href="@{/student/dashboard}" class="btn btn-secondary btn-lg">Cancel</a>
+                    </div>
+                </form>
+            </div>
+
+        </div>
+    </div>
+
+    <script>
+        function updateCharCount() {
+            const textarea = document.getElementById('motive');
+            document.getElementById('charCount').innerText = textarea.value.length;
+        }
+    </script>
+</body>
+</html>

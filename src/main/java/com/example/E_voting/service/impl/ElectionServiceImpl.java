@@ -1,10 +1,12 @@
 package com.example.E_voting.service.impl;
 
 import com.example.E_voting.model.Candidate;
+import com.example.E_voting.model.CandidateApplication;
 import com.example.E_voting.model.Election;
 import com.example.E_voting.model.Vote;
 import com.example.E_voting.model.User;
 import org.springframework.transaction.annotation.Transactional;
+import com.example.E_voting.repository.CandidateApplicationRepository;
 import com.example.E_voting.repository.CandidateRepository;
 import com.example.E_voting.repository.ElectionRepository;
 import com.example.E_voting.repository.VoteRepository;
@@ -35,12 +37,17 @@ public class ElectionServiceImpl implements ElectionService {
     private UserRepository userRepository;
 
     @Autowired
+    private CandidateApplicationRepository candidateApplicationRepository;
+
+    @Autowired
     private PasswordEncoder passwordEncoder;
 
-    public ElectionServiceImpl(ElectionRepository electionRepository, CandidateRepository candidateRepository, VoteRepository voteRepository) {
+    public ElectionServiceImpl(ElectionRepository electionRepository, CandidateRepository candidateRepository,
+            VoteRepository voteRepository, CandidateApplicationRepository candidateApplicationRepository) {
         this.electionRepository = electionRepository;
         this.candidateRepository = candidateRepository;
         this.voteRepository = voteRepository;
+        this.candidateApplicationRepository = candidateApplicationRepository;
         seedDatabase();
     }
 
@@ -93,6 +100,11 @@ public class ElectionServiceImpl implements ElectionService {
     public boolean hasVoted(String studentId, Long electionId) {
         return voteRepository.existsByStudentIdAndElection_Id(studentId, electionId);
     }
+    
+    @Override
+    public List<com.example.E_voting.model.Vote> getVotesByStudentId(String studentId) {
+        return voteRepository.findByStudentId(studentId);
+    }
 
     @Override
     @Transactional
@@ -100,17 +112,17 @@ public class ElectionServiceImpl implements ElectionService {
         if (hasVoted(studentId, electionId)) {
             return;
         }
-        
+
         if (electionId == null || candidateId == null) {
             throw new IllegalArgumentException("Election ID and Candidate ID cannot be null");
         }
-        
+
         Election election = electionRepository.findById(electionId)
-            .orElseThrow(() -> new IllegalArgumentException("Election not found with id: " + electionId));
-        
+                .orElseThrow(() -> new IllegalArgumentException("Election not found with id: " + electionId));
+
         Candidate candidate = candidateRepository.findById(candidateId)
-            .orElseThrow(() -> new IllegalArgumentException("Candidate not found with id: " + candidateId));
-        
+                .orElseThrow(() -> new IllegalArgumentException("Candidate not found with id: " + candidateId));
+
         Vote vote = new Vote(studentId);
         vote.setElection(election);
         vote.setCandidate(candidate);
@@ -130,8 +142,7 @@ public class ElectionServiceImpl implements ElectionService {
         return candidates.stream()
                 .collect(Collectors.toMap(
                         Candidate::getName,
-                        candidate -> voteCounts.getOrDefault(candidate.getId(), 0L)
-                ));
+                        candidate -> voteCounts.getOrDefault(candidate.getId(), 0L)));
     }
 
     @Override
@@ -167,7 +178,7 @@ public class ElectionServiceImpl implements ElectionService {
         }
         return null;
     }
-    
+
     @Override
     @Transactional
     public void deleteElection(Long electionId) {
@@ -175,17 +186,17 @@ public class ElectionServiceImpl implements ElectionService {
             if (electionId == null) {
                 throw new IllegalArgumentException("Election ID cannot be null");
             }
-            
+
             // First check if election exists
             Election election = electionRepository.findById(electionId)
-                .orElseThrow(() -> new IllegalArgumentException("Election not found with id: " + electionId));
-            
+                    .orElseThrow(() -> new IllegalArgumentException("Election not found with id: " + electionId));
+
             // Delete all votes for this election
             voteRepository.deleteByElection_Id(electionId);
-            
+
             // Delete all candidates for this election using the corrected method name
             candidateRepository.deleteByElection_Id(electionId);
-            
+
             // Finally delete the election
             if (election != null) {
                 electionRepository.delete(election);
@@ -200,42 +211,42 @@ public class ElectionServiceImpl implements ElectionService {
         if (name == null || name.trim().isEmpty()) {
             throw new IllegalArgumentException("Candidate name cannot be empty");
         }
-        
+
         if (electionId == null) {
             throw new IllegalArgumentException("Election ID cannot be null");
         }
-        
+
         Election election = electionRepository.findById(electionId)
-            .orElseThrow(() -> new IllegalArgumentException("Election not found with id: " + electionId));
-        
+                .orElseThrow(() -> new IllegalArgumentException("Election not found with id: " + electionId));
+
         Candidate candidate = new Candidate();
         candidate.setName(name);
         candidate.setElection(election);
-        
+
         return candidateRepository.save(candidate);
     }
-    
+
     @Override
     public List<Candidate> getAllCandidates() {
         return candidateRepository.findAll();
     }
-    
+
     @Override
     @Transactional
     public void deleteCandidate(Long candidateId) {
         if (candidateId == null) {
             throw new IllegalArgumentException("Candidate ID cannot be null");
         }
-        
+
         Candidate candidate = candidateRepository.findById(candidateId)
-            .orElseThrow(() -> new IllegalArgumentException("Candidate not found with id: " + candidateId));
-        
+                .orElseThrow(() -> new IllegalArgumentException("Candidate not found with id: " + candidateId));
+
         // Delete all votes for this candidate
         List<Vote> votes = voteRepository.findByCandidate_Id(candidateId);
         if (votes != null && !votes.isEmpty()) {
             voteRepository.deleteAll(votes);
         }
-        
+
         // Delete the candidate
         if (candidate != null) {
             candidateRepository.delete(candidate);
@@ -261,74 +272,156 @@ public class ElectionServiceImpl implements ElectionService {
         int successCount = 0;
         int failureCount = 0;
         StringBuilder errorMessages = new StringBuilder();
-        
+
         try (java.io.BufferedReader reader = new java.io.BufferedReader(new java.io.InputStreamReader(csvFile))) {
             String line;
             int lineNumber = 0;
-            
+
             // Skip header line
             if (reader.readLine() != null) {
                 lineNumber++;
             }
-            
+
             while ((line = reader.readLine()) != null) {
                 lineNumber++;
-                
+
                 if (line.trim().isEmpty()) {
                     continue;
                 }
-                
+
                 String[] parts = line.split(",");
                 if (parts.length < 3) {
                     errorMessages.append("Line ").append(lineNumber).append(": Invalid format\n");
                     failureCount++;
                     continue;
                 }
-                
+
                 String username = parts[0].trim();
                 String roleStr = parts[2].trim().toUpperCase();
-                
+
                 if (username.isEmpty() || roleStr.isEmpty()) {
                     errorMessages.append("Line ").append(lineNumber).append(": Empty fields\n");
                     failureCount++;
                     continue;
                 }
-                
+
                 User.Role role;
                 try {
                     role = User.Role.valueOf(roleStr);
                 } catch (IllegalArgumentException e) {
-                    errorMessages.append("Line ").append(lineNumber).append(": Invalid role '").append(roleStr).append("'\n");
+                    errorMessages.append("Line ").append(lineNumber).append(": Invalid role '").append(roleStr)
+                            .append("'\n");
                     failureCount++;
                     continue;
                 }
-                
+
                 if (userRepository.existsById(username)) {
-                    errorMessages.append("Line ").append(lineNumber).append(": User '").append(username).append("' exists\n");
+                    errorMessages.append("Line ").append(lineNumber).append(": User '").append(username)
+                            .append("' exists\n");
                     failureCount++;
                     continue;
                 }
-                
+
                 User user = new User();
                 user.setUsername(username);
                 user.setRole(role);
                 user.setPassword(passwordEncoder.encode(username));
-                
+
                 userRepository.save(user);
                 successCount++;
             }
         }
-        
+
         results.put("success", String.valueOf(successCount));
         results.put("failure", String.valueOf(failureCount));
         results.put("errors", errorMessages.toString());
         results.put("total", String.valueOf(successCount + failureCount));
-        
+
         return results;
     }
 
     @Override
     public void importStudentsFromCSV(InputStream csvFile) throws java.io.IOException {
         importStudentsFromCSVWithResult(csvFile);
+    }
+
+    // --- Candidate Applications ---
+
+    @Override
+    @Transactional
+    public CandidateApplication applyForCandidate(String username, Long electionId, String motive) {
+        if (username == null || electionId == null) {
+            throw new IllegalArgumentException("Username and Election ID must be provided");
+        }
+
+        // Prevent duplicate pending or approved applications
+        List<CandidateApplication> existingApps = candidateApplicationRepository
+                .findByUserUsernameAndElectionId(username, electionId);
+        for (CandidateApplication app : existingApps) {
+            if (app.getStatus() != CandidateApplication.Status.REJECTED) {
+                throw new IllegalStateException("You already have an active application for this election.");
+            }
+        }
+
+        User user = userRepository.findById(username)
+                .orElseThrow(() -> new IllegalArgumentException("User not found"));
+        Election election = electionRepository.findById(electionId)
+                .orElseThrow(() -> new IllegalArgumentException("Election not found"));
+
+        CandidateApplication app = new CandidateApplication();
+        app.setUser(user);
+        app.setElection(election);
+        app.setMotive(motive);
+        app.setStatus(CandidateApplication.Status.PENDING);
+
+        return candidateApplicationRepository.save(app);
+    }
+
+    @Override
+    public List<CandidateApplication> getPendingApplications() {
+        return candidateApplicationRepository.findByStatus(CandidateApplication.Status.PENDING);
+    }
+
+    @Override
+    public List<CandidateApplication> getApplicationsByUsername(String username) {
+        return candidateApplicationRepository.findByUserUsername(username);
+    }
+
+    @Override
+    public List<CandidateApplication> getApprovedApplicationsByElection(Long electionId) {
+        return candidateApplicationRepository.findByElectionIdAndStatus(electionId, CandidateApplication.Status.APPROVED);
+    }
+
+    @Override
+    @Transactional
+    public CandidateApplication approveApplication(Long applicationId) {
+        CandidateApplication app = candidateApplicationRepository.findById(applicationId)
+                .orElseThrow(() -> new IllegalArgumentException("Application not found"));
+
+        if (app.getStatus() != CandidateApplication.Status.PENDING) {
+            throw new IllegalStateException("Only pending applications can be approved.");
+        }
+
+        app.setStatus(CandidateApplication.Status.APPROVED);
+        candidateApplicationRepository.save(app);
+
+        // Auto-create Candidate
+        createCandidate(app.getUser().getUsername(), app.getElection().getId());
+
+        return app;
+    }
+
+    @Override
+    @Transactional
+    public CandidateApplication rejectApplication(Long applicationId) {
+        CandidateApplication app = candidateApplicationRepository.findById(applicationId)
+                .orElseThrow(() -> new IllegalArgumentException("Application not found"));
+
+        if (app.getStatus() != CandidateApplication.Status.PENDING) {
+            throw new IllegalStateException("Only pending applications can be rejected.");
+        }
+
+        app.setStatus(CandidateApplication.Status.REJECTED);
+        return candidateApplicationRepository.save(app);
     }
 }
