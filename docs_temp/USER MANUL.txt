@@ -1,0 +1,115 @@
+PROJECT TITLE: ONLINE VOTING SYSTEMS IN
+EDUCATIONAL INSTITUTIONS
+
+PROPONENT: STACY WAMBUI KIMINDIRI
+EMAIL ADDRESS: 2204134@students.kcau.ac.ke
+REGISTRATION NUMBER: 22/04134
+
+SUPERVISOR: MARTIN MURIKI
+
+COURSE: BSc. BSD
+
+UNIT CODE: 2205
+
+
+
+USER MANUAL
+
+
+
+
+
+
+General information
+Elections are believed to be the key pillars of democracy and voting is one of the electoral process of ensuring the sustenance of democracy in any civil society. In educational institutions such as universities, university student leaders are the core link between the university students and the university administration. These leaders are therefore elected democratically to represent the interests of the students as per the university act.
+Online voting systems in educational institutions have been introduced in order to provide a secure, more reliable, and more efficient way of voting and holding elections in the institutions. It is a platform for simplifying the electoral process for all institutions that employ voting in decision making.
+An online voting system contains a database which is maintained and in which names of students with some basic information are stored. The individual votes are submitted in the database which can be queried to find out which of the aspirants for a given post has the highest number of votes.The implementation of online voting systems in universities and other educational institutions have been driven by;
+a. Increased participation from students and the school faculty.
+b. The need for security and transparency throughout the entire voting period
+c. Cost efficiency and time
+Traditional voting methods such as use of paper ballots are time-consuming and resource-intensive and may limit participation. An online voting system can address these challenges by creating a user-friendly environment that is secure, more accessible and more reliable for voting.The main advantage of these traditional voting methods is that ballot papers are easily human auditable.
+
+Intended users
+Voters
+They register and verify their eligibility to vote, cast votes in the election and receive
+confirmation that their vote has been submitted successfully.
+Administrators
+They manage the voter database, monitor the voting process to ensure it runs smoothly, resolve issues related to voter access or system functionality and publish results after the election concludes.
+
+
+
+Candidates
+They represent parties, individuals, or options voters can select and they may indirectly interact
+with the system to verify their inclusion in the candidate list.
+Auditors
+They:
+ Conduct system audits to ensure compliance with regulations and standards.
+ Conduct system audits to ensure compliance with regulations and standards.
+ Verify that votes are counted accurately and securely.
+ Assess system security and detect potential fraud or irregularities.
+
+System Summary
+The Online voting system is a system designed to assist students and school administration in conducting and carrying out an effective electoral process. It integrates various hardware components with specialized software to provide accurate and efficient voting capabilities.
+Use of system software and hardware requirements
+Hardware Requirements
+	•	User Devices:
+	•	Devices like computers, smartphones, or tablets allow voters to access the system.
+	•	Central Server:
+	•	Hosts the voting platform, manages user authentication, and processes vote submissions.
+	•	Networking Equipment:
+	•	Ensures reliable communication between users and the server via the internet.
+Software Requirements
+	•	Web/Mobile Application:
+	•	Provides a platform for voters to interact with the system and cast their votes.
+
+	•	Database Management System (DBMS):         
+	•	Stores election data, such as voter records and ballots.
+	•	Encryption and Security Tools:
+	•	Protect voter privacy and secure data transmission.
+	•	Operating System:
+	•	Supports the server and client applications.
+
+System Behaviour in Case of Contingencies:
+	•	Power Outages:
+	•	System data is secured using backups and uninterruptible power supply (UPS) for servers.
+	•	Network Failures:
+	•	Automatic reconnection attempts and offline vote queuing for later submission.
+	•	Hardware Failures:
+	•	Redundant servers and backup devices ensure continued operation.
+	•	Security Breaches:
+	•	Immediate alerts, lockdown of the system, and fail-safe mechanisms to secure data.
+	•	Software Errors:
+	•	Error detection tools and automated recovery protocols minimize disruptions.
+
+Getting Started
+Voters:
+	•	Login:
+	•	Enter login credentials provided by the election body.
+	•	Verify Identity:
+	•	Complete additional security checks (e.g., OTP or biometrics).
+	•	Select Election:
+	•	Choose the ongoing election from a list.
+	•	Cast Vote:
+	•	Review candidates and cast a vote by clicking on the preferred option.
+Administrators:
+	•	Manage voter registration.
+	•	Configure election settings such as candidates.
+	•	Monitor voting activity and generate reports post-election.
+
+System Reporting 
+The reporting module of an online voting system provides comprehensive insights into election processes. These reports ensure accountability and facilitate post-election analysis.
+This includes:
+	•	Voter Turnout Reports:
+	•	Displays the number of registered voters who participated.
+	•	Election Results:
+	•	Summarizes votes per candidate or option, ensuring accuracy and transparency.
+	•	Audit Logs:
+	•	Tracks system activities, including login attempts, vote submissions, and administrative actions.
+	•	Error Reports:
+	•	Details system malfunctions or failed processes for troubleshooting.
+	•	Security Reports:
+	•	Highlights suspicious activities or potential threats detected during the election.
+	•	Customizable Analytics:
+	•	Offers charts and summaries for deeper insights into voter behavior and election trends.
+These reports ensure accountability and facilitate post-election analysis.
+

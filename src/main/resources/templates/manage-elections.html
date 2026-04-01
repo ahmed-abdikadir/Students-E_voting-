@@ -1,221 +1,398 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
-
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Manage Elections — E-Voting</title>
     <link rel="stylesheet" th:href="@{/css/style.css}">
+    <style>
+        /* Slide-in Panel */
+        .panel-overlay {
+            position: fixed;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background-color: rgba(15, 23, 42, 0.4);
+            backdrop-filter: blur(2px);
+            z-index: 100;
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 250ms ease, visibility 250ms ease;
+        }
+        .panel-overlay.open { opacity: 1; visibility: visible; }
+        
+        .slide-panel {
+            position: fixed;
+            top: 0; right: -400px;
+            width: 400px;
+            height: 100vh;
+            background-color: var(--color-surface);
+            box-shadow: -10px 0 30px rgba(0,0,0,0.1);
+            z-index: 101;
+            transition: right 250ms ease-out;
+            display: flex;
+            flex-direction: column;
+        }
+        .slide-panel.open { right: 0; }
+        @media(max-width: 400px) { .slide-panel { width: 100%; right: -100%; } }
+        
+        .panel-header {
+            padding: var(--space-lg);
+            border-bottom: 1px solid var(--color-border);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .panel-header h2 { margin: 0; font-size: var(--text-h2); }
+        .panel-body { padding: var(--space-xl) var(--space-lg); flex: 1; overflow-y: auto; }
+        .panel-footer {
+            padding: var(--space-lg);
+            border-top: 1px solid var(--color-border);
+            display: flex;
+            justify-content: flex-end;
+            gap: var(--space-sm);
+        }
+
+        /* Floating Label Form */
+        .group-floating { position: relative; margin-bottom: var(--space-lg); }
+        .group-floating input {
+            width: 100%;
+            height: 48px;
+            padding: 16px 12px 0 12px;
+            border: 1px solid var(--color-border-focus); /* initial */
+            border: 1px solid #CBD5E1;
+            border-radius: var(--r-md);
+            font-family: var(--font-sans);
+            font-size: 14px;
+            outline: none;
+            transition: border-color 150ms;
+        }
+        .group-floating input:focus { border: 2px solid var(--color-accent); padding-left: 11px; padding-top: 15px;}
+        .group-floating label {
+            position: absolute;
+            left: 12px;
+            top: 14px;
+            font-size: 14px;
+            color: var(--color-text-muted);
+            transition: all 150ms ease-out;
+            pointer-events: none;
+            transform-origin: left top;
+        }
+        .group-floating input:focus + label,
+        .group-floating input:not(:placeholder-shown) + label {
+            transform: translateY(-8px) scale(0.85);
+            color: var(--color-accent);
+        }
+
+        /* Destructive Modal */
+        .modal-overlay {
+            position: fixed;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background-color: rgba(15, 23, 42, 0.4);
+            backdrop-filter: blur(4px);
+            z-index: 200;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 200ms ease, visibility 200ms cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        .modal-overlay.open { opacity: 1; visibility: visible; }
+        
+        .modal-content {
+            background-color: var(--color-surface);
+            border-radius: var(--r-xl);
+            width: 100%;
+            max-width: 420px;
+            padding: var(--space-xl);
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+            transform: scale(0.95);
+            transition: transform 200ms cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        .modal-overlay.open .modal-content { transform: scale(1); }
+        
+        .modal-header { display: flex; gap: 16px; margin-bottom: var(--space-md); }
+        .modal-icon { width: 48px; height: 48px; border-radius: 50%; background: #fee2e2; color: #dc2626; display: flex; align-items: center; justify-content: center; flex-shrink:0; }
+        .modal-title { font-size: var(--text-h2); font-weight: 600; color: var(--color-text-heading); margin-top:6px; margin-bottom: 4px; }
+        .modal-desc { font-size: 13px; color: var(--color-text-muted); line-height: 1.5; }
+        .modal-actions { display: flex; justify-content: flex-end; gap: 12px; margin-top: var(--space-xl); }
+        
+        /* Loading Spinner */
+        .spinner {
+            border: 2px solid rgba(255,255,255,0.3);
+            border-radius: 50%;
+            border-top: 2px solid white;
+            width: 16px;
+            height: 16px;
+            animation: spin 1s linear infinite;
+            display: none;
+        }
+        .btn.loading .spinner { display: inline-block; }
+        .btn.loading .btn-text { display: none; }
+        @keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
+
+        /* Topbar specific */
+        .actions-top { display: flex; justify-content: space-between; align-items: center; margin-bottom: var(--space-lg); }
+    </style>
 </head>
+<body class="light">
 
-<body>
-    <div class="admin-layout">
+<div class="page-wrapper">
+    <!-- Sidebar -->
+    <aside class="sidebar">
+        <a href="/admin/dashboard" class="sidebar-logo-area">
+            <svg class="sidebar-logo-icon" viewBox="0 0 24 24"><path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-7 9h-2V7h-2v5H6v2h2v5h2v-5h2v-2z"/></svg>
+            <span class="sidebar-logo-text">E-VOTING ADMIN</span>
+        </a>
+        <nav class="sidebar-nav">
+            <a th:href="@{/admin/dashboard}" class="sidebar-nav-item">
+                <svg class="sidebar-nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7"></rect><rect x="14" y="3" width="7" height="7"></rect><rect x="14" y="14" width="7" height="7"></rect><rect x="3" y="14" width="7" height="7"></rect></svg>
+                <span class="sidebar-nav-text">Dashboard</span>
+            </a>
+            <a th:href="@{/admin/elections}" class="sidebar-nav-item active">
+                <svg class="sidebar-nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-6 9l2 2 4-4"></path></svg>
+                <span class="sidebar-nav-text">Elections</span>
+            </a>
+            <a th:href="@{/admin/candidates}" class="sidebar-nav-item">
+                <svg class="sidebar-nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"></path></svg>
+                <span class="sidebar-nav-text">Candidates</span>
+            </a>
+            <a th:href="@{/admin/applications}" class="sidebar-nav-item">
+                <svg class="sidebar-nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path></svg>
+                <span class="sidebar-nav-text">Applications</span>
+            </a>
+            <a th:href="@{/admin/announcements}" class="sidebar-nav-item">
+                <svg class="sidebar-nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M11 5.882V19.24a1.76 1.76 0 01-3.417.592l-2.147-6.15M18 13a3 3 0 100-6M5.436 13.683A4.001 4.001 0 017 6h1.832c4.1 0 7.625-1.234 9.168-3v14c-1.543-1.766-5.067-3-9.168-3H7a3.988 3.988 0 01-1.564-.317z"></path></svg>
+                <span class="sidebar-nav-text">Announcements</span>
+            </a>
+            <a th:href="@{/admin/students}" class="sidebar-nav-item">
+                <svg class="sidebar-nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0"></path></svg>
+                <span class="sidebar-nav-text">Students</span>
+            </a>
+        </nav>
+        <div class="sidebar-footer">
+            <a th:href="@{/login}" class="sidebar-nav-item sign-out">
+                <svg class="sidebar-nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"></path><polyline points="16 17 21 12 16 7"></polyline><line x1="21" y1="12" x2="9" y2="12"></line></svg>
+                <span class="sidebar-nav-text">Sign Out</span>
+            </a>
+        </div>
+    </aside>
 
-        <!-- Sidebar -->
-        <aside class="sidebar">
-            <div class="sidebar-brand">
-                <div class="sidebar-brand-name">E-Voting System</div>
-                <div class="sidebar-brand-title">Admin Panel</div>
+    <main class="main-content">
+        <!-- Topbar -->
+        <nav class="topbar">
+            <div class="topbar-left">
+                <h2 class="page-title">Manage Elections</h2>
             </div>
-            <ul class="sidebar-nav">
-                <li><a href="/admin/dashboard">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="none" viewBox="0 0 24 24"
-                            stroke="currentColor" stroke-width="2">
-                            <rect x="3" y="3" width="7" height="7" />
-                            <rect x="14" y="3" width="7" height="7" />
-                            <rect x="3" y="14" width="7" height="7" />
-                            <rect x="14" y="14" width="7" height="7" />
-                        </svg>
-                        Dashboard
-                    </a></li>
-                <li><a href="/admin/elections" class="active">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="none" viewBox="0 0 24 24"
-                            stroke="currentColor" stroke-width="2">
-                            <path
-                                d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-6 9l2 2 4-4" />
-                        </svg>
-                        Elections
-                    </a></li>
-                <li><a href="/admin/candidates">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="none" viewBox="0 0 24 24"
-                            stroke="currentColor" stroke-width="2">
-                            <path d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
-                        </svg>
-                        Candidates
-                    </a></li>
-                <li><a href="/admin/applications">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="none" viewBox="0 0 24 24"
-                            stroke="currentColor" stroke-width="2">
-                            <path d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
-                        </svg>
-                        Applications
-                    </a></li>
-                <li><a href="/admin/announcements">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="none" viewBox="0 0 24 24"
-                            stroke="currentColor" stroke-width="2">
-                            <path d="M11 5.882V19.24a1.76 1.76 0 01-3.417.592l-2.147-6.15M18 13a3 3 0 100-6M5.436 13.683A4.001 4.001 0 017 6h1.832c4.1 0 7.625-1.234 9.168-3v14c-1.543-1.766-5.067-3-9.168-3H7a3.988 3.988 0 01-1.564-.317z" />
-                        </svg>
-                        Announcements
-                    </a></li>
-                <li><a href="/admin/students">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="none" viewBox="0 0 24 24"
-                            stroke="currentColor" stroke-width="2">
-                            <path
-                                d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0" />
-                        </svg>
-                        Students
-                    </a></li>
-                <li><a href="/admin/profile">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="none" viewBox="0 0 24 24"
-                            stroke="currentColor" stroke-width="2">
-                            <path stroke-linecap="round" stroke-linejoin="round"
-                                d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
-                        </svg>
-                        Profile
-                    </a></li>
-            </ul>
-            <div class="sidebar-footer">
-                <a th:href="@{/login}">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="none" viewBox="0 0 24 24"
-                        stroke="currentColor" stroke-width="2">
-                        <path
-                            d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1" />
-                    </svg>
-                    Sign Out
-                </a>
+            <div class="topbar-right">
+                <div class="avatar-circle" th:text="${#strings.substring(session.username,0,1)}">A</div>
+                <span class="topbar-username" th:text="${session.username}">Admin</span>
+                <button class="icon-btn" id="themeToggle" title="Toggle Dark Mode">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>
+                </button>
             </div>
-        </aside>
+        </nav>
 
-        <!-- Main -->
-        <div class="admin-main">
-            <div class="admin-topbar">
-                <span class="admin-topbar-title">Manage Elections</span>
-                <div style="display: flex; align-items: center; gap: 12px;">
-                    <span class="admin-topbar-user">Signed in as <strong th:text="${session.username}">Admin</strong></span>
-                    <button class="theme-toggle" id="themeToggle" title="Toggle Dark Mode" style="background:none; border:none; cursor:pointer; font-size:1.2rem;">🌙</button>
-                </div>
+        <div class="page-container">
+
+            <div class="actions-top">
+                <p class="caption" style="margin:0; font-size:13px;">Manage all election instances, statuses, and configurations.</p>
+                <button class="btn btn-primary" onclick="openPanel()">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line></svg>
+                    New Election
+                </button>
             </div>
 
-            <div class="admin-content">
+            <!-- Alerts -->
+            <div th:if="${successMessage}" class="card" style="border-left: 4px solid var(--color-success); font-size:13px; font-weight:500; margin-bottom:16px;" th:text="${successMessage}"></div>
+            <div th:if="${errorMessage}" class="card" style="border-left: 4px solid var(--color-danger); font-size:13px; font-weight:500; margin-bottom:16px;" th:text="${errorMessage}"></div>
 
-                <!-- Alerts -->
-                <div th:if="${successMessage}" class="alert alert-success" th:text="${successMessage}"></div>
-                <div th:if="${errorMessage}" class="alert alert-danger" th:text="${errorMessage}"></div>
+            <!-- Elections Table -->
+            <div class="table-wrapper">
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th style="width: 80px;">ID</th>
+                            <th>Name</th>
+                            <th>Status</th>
+                            <th style="text-align: right">Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr th:each="election : ${elections}">
+                            <td class="id-col mono" th:text="${'#' + election.id}"></td>
+                            <td th:text="${election.name}"></td>
+                            <td>
+                                <!-- Scannable Badges with Animations -->
+                                <span class="badge badge-created" th:if="${election.status?.name() == 'CREATED'}">
+                                    <span class="pulse-dot"></span> Created
+                                </span>
+                                <span class="badge badge-open" th:if="${election.status?.name() == 'OPEN'}">
+                                    <span class="pulse-dot anim-pulse"></span> Open
+                                </span>
+                                <span class="badge badge-closed" th:if="${election.status?.name() == 'CLOSED'}">
+                                    <span class="pulse-dot" style="background:#94a3b8;"></span> Closed
+                                </span>
+                            </td>
+                            <td class="actions-col">
+                                <div style="display:flex; gap:12px; justify-content: flex-end; align-items:center;">
+                                    <form th:action="@{/admin/elections/open/{id}(id=${election.id})}" method="post" style="margin:0;" th:if="${election.status?.name() == 'CREATED'}">
+                                        <button type="submit" class="btn btn-sm btn-success">Open</button>
+                                    </form>
+                                    <form th:action="@{/admin/elections/close/{id}(id=${election.id})}" method="post" style="margin:0;" th:if="${election.status?.name() == 'OPEN'}">
+                                        <button type="submit" class="btn btn-sm btn-secondary">Close</button>
+                                    </form>
+                                    <!-- Delete Button (Ghost Danger) -->
+                                    <button type="button" class="btn btn-sm btn-danger-ghost" th:data-id="${election.id}" th:data-name="${election.name}" onclick="confirmDelete(this)">Delete</button>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr th:if="${elections.isEmpty()}">
+                            <td colspan="4" style="text-align:center; padding: 48px 0;">
+                                <div style="color:var(--color-text-muted); font-size:14px; display:flex; flex-direction:column; align-items:center; gap:8px;">
+                                    <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect><line x1="3" y1="9" x2="21" y2="9"></line><line x1="9" y1="21" x2="9" y2="9"></line></svg>
+                                    <h3 style="margin:0;color:var(--color-text-heading);">No elections yet</h3>
+                                    <span>Click "New Election" to get started.</span>
+                                </div>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
 
-                <!-- Create Election Form -->
-                <div style="margin-bottom: 32px;">
-                    <div class="section-header">
-                        <h2>Create New Election</h2>
-                    </div>
-                    <div class="card" style="max-width: 480px; padding: 24px 28px;">
-                        <form th:action="@{/admin/elections/create}" method="post">
-                            <div class="form-group">
-                                <label for="name" class="form-label">Election Name</label>
-                                <input type="text" id="name" name="name" class="form-control"
-                                    placeholder="e.g. Student Council Election 2025" required>
-                            </div>
-                            <button type="submit" class="btn btn-primary">Create Election</button>
-                        </form>
-                    </div>
-                </div>
+        </div>
+    </main>
+</div>
 
-                <!-- Elections Table -->
-                <div class="section-header">
-                    <h2>All Elections</h2>
-                </div>
-                <div class="data-table-wrapper">
-                    <table class="table">
-                        <thead>
-                            <tr>
-                                <th>ID</th>
-                                <th>Name</th>
-                                <th>Status</th>
-                                <th>Actions</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr th:each="election : ${elections}">
-                                <td style="color:var(--slate-400); font-size:0.8rem;" th:text="${election.id}"></td>
-                                <td style="font-weight:500;" th:text="${election.name}"></td>
-                                <td>
-                                    <span class="badge"
-                                        th:classappend="${election.status?.name() == 'OPEN'} ? 'badge-green' : (${election.status?.name() == 'CLOSED'} ? 'badge-red' : 'badge-blue')"
-                                        th:text="${election.status?.name()?.toLowerCase()}">
-                                    </span>
-                                </td>
-                                <td>
-                                    <div style="display:flex; gap:6px; flex-wrap:wrap; align-items:center;">
-                                        <form th:action="@{/admin/elections/open/{id}(id=${election.id})}" method="post"
-                                            style="display:inline;" th:if="${election.status?.name() == 'CREATED'}">
-                                            <button type="submit" class="btn btn-sm btn-success">Open</button>
-                                        </form>
-                                        <form th:action="@{/admin/elections/close/{id}(id=${election.id})}"
-                                            method="post" style="display:inline;"
-                                            th:if="${election.status?.name() == 'OPEN'}">
-                                            <button type="submit" class="btn btn-sm btn-secondary">Close</button>
-                                        </form>
-                                        <span th:if="${election.status?.name() == 'CLOSED'}"
-                                            style="font-size:0.8rem; color:var(--slate-400);">Closed</span>
-                                        <button type="button" class="btn btn-sm btn-danger" th:data-id="${election.id}"
-                                            onclick="confirmDeleteElection(this)">Delete</button>
-                                    </div>
-                                </td>
-                            </tr>
-                            <tr th:if="${elections.isEmpty()}">
-                                <td colspan="4" style="text-align:center; padding:40px 20px; color:var(--slate-400);">
-                                    No elections yet. Create one above.
-                                </td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
+<!-- Slide-in Panel: Create Election -->
+<div class="panel-overlay" id="panelOverlay" onclick="closePanel()"></div>
+<div class="slide-panel" id="slidePanel">
+    <div class="panel-header">
+        <h2>Create Election</h2>
+        <button class="icon-btn" onclick="closePanel()">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+        </button>
+    </div>
+    <form th:action="@{/admin/elections/create}" method="post" id="createForm" onsubmit="submitForm(event)">
+        <div class="panel-body">
+            <p class="caption" style="margin-top:0; margin-bottom:var(--space-xl);">Enter the official title for the new election. You can add candidates to it afterwards.</p>
+            
+            <div class="group-floating">
+                <input type="text" id="electionName" name="name" placeholder=" " required autocomplete="off">
+                <label for="electionName">Election Name</label>
+            </div>
+            
+        </div>
+        <div class="panel-footer">
+            <button type="button" class="btn btn-secondary" onclick="closePanel()">Cancel</button>
+            <button type="submit" class="btn btn-primary" id="submitBtn">
+                <span class="btn-text">Create Election</span>
+                <span class="spinner"></span>
+            </button>
+        </div>
+    </form>
+</div>
 
+<!-- Destructive Action Modal -->
+<div class="modal-overlay" id="deleteModal">
+    <div class="modal-content">
+        <div class="modal-header">
+            <div class="modal-icon">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"></path><line x1="12" y1="9" x2="12" y2="13"></line><line x1="12" y1="17" x2="12.01" y2="17"></line></svg>
+            </div>
+            <div>
+                <h3 class="modal-title" id="deleteModalTitle">Delete Election?</h3>
+                <p class="modal-desc">This action cannot be undone. All associated votes and candidate records will be permanently removed.</p>
             </div>
         </div>
+        <div class="modal-actions">
+            <button class="btn btn-secondary" onclick="closeModal()">Cancel</button>
+            <button class="btn" style="background-color:#DC2626; color:white;" id="confirmDeleteBtn">Yes, Delete</button>
+        </div>
     </div>
+</div>
 
-    <script th:inline="javascript">
-        const themeToggle = document.getElementById('themeToggle');
-        if (localStorage.getItem('theme') === 'dark') {
-            document.body.classList.add('dark-mode');
-            if(themeToggle) themeToggle.innerText = '☀️';
-        }
-        if(themeToggle) {
-            themeToggle.addEventListener('click', () => {
-                document.body.classList.toggle('dark-mode');
-                if (document.body.classList.contains('dark-mode')) {
-                    localStorage.setItem('theme', 'dark');
-                    themeToggle.innerText = '☀️';
-                } else {
-                    localStorage.setItem('theme', 'light');
-                    themeToggle.innerText = '🌙';
-                }
-            });
-        }
+<script th:inline="javascript">
+    const toggle = document.getElementById('themeToggle');
+    if (localStorage.getItem('theme') === 'dark') document.body.classList.add('dark');
+    if(toggle) {
+        toggle.addEventListener('click', () => {
+            document.body.classList.toggle('dark');
+            localStorage.setItem('theme', document.body.classList.contains('dark') ? 'dark' : 'light');
+        });
+    }
 
-        function confirmDeleteElection(button) {
-            if (confirm('Are you sure you want to delete this election? This action cannot be undone and will also delete all associated votes and candidates.')) {
-                const electionId = button.getAttribute('data-id');
-                fetch(`/admin/elections/delete/${electionId}`, {
-                    method: 'DELETE',
-                    headers: { 'X-Requested-With': 'XMLHttpRequest' },
-                    credentials: 'same-origin'
-                })
-                    .then(response => {
-                        const ct = response.headers.get('content-type');
-                        if (ct && ct.includes('application/json')) {
-                            return response.json().then(data => ({ ok: response.ok, data }));
-                        }
-                        return response.text().then(text => ({ ok: response.ok, data: { message: text } }));
-                    })
-                    .then(result => {
-                        if (!result.ok) throw new Error(result.data.message || 'Failed to delete election');
-                        window.location.reload();
-                    })
-                    .catch(error => alert(error.message || 'Failed to delete election. Please try again.'));
+    // Panel Logic
+    function openPanel() {
+        document.getElementById('panelOverlay').classList.add('open');
+        document.getElementById('slidePanel').classList.add('open');
+        setTimeout(() => document.getElementById('electionName').focus(), 300);
+    }
+    
+    function closePanel() {
+        document.getElementById('panelOverlay').classList.remove('open');
+        document.getElementById('slidePanel').classList.remove('open');
+    }
+
+    function submitForm(e) {
+        // Show spinner, prevent multiple submits
+        const btn = document.getElementById('submitBtn');
+        btn.classList.add('loading');
+        btn.setAttribute('disabled', 'true');
+    }
+
+    // Modal Logic
+    let deleteTargetId = null;
+
+    function confirmDelete(button) {
+        deleteTargetId = button.getAttribute('data-id');
+        const name = button.getAttribute('data-name');
+        document.getElementById('deleteModalTitle').innerText = `Delete "${name}"?`;
+        document.getElementById('deleteModal').classList.add('open');
+    }
+
+    function closeModal() {
+        document.getElementById('deleteModal').classList.remove('open');
+        deleteTargetId = null;
+    }
+
+    document.getElementById('confirmDeleteBtn').addEventListener('click', () => {
+        if (!deleteTargetId) return;
+        
+        const btn = document.getElementById('confirmDeleteBtn');
+        btn.innerHTML = '<span class="spinner" style="display:inline-block;"></span>';
+        btn.setAttribute('disabled', 'true');
+
+        fetch(`/admin/elections/delete/${deleteTargetId}`, {
+            method: 'DELETE',
+            headers: { 'X-Requested-With': 'XMLHttpRequest' },
+            credentials: 'same-origin'
+        })
+        .then(response => {
+            const ct = response.headers.get('content-type');
+            if (ct && ct.includes('application/json')) {
+                return response.json().then(data => ({ ok: response.ok, data }));
             }
-        }
-    </script>
-</body>
+            return response.text().then(text => ({ ok: response.ok, data: { message: text } }));
+        })
+        .then(result => {
+            if (!result.ok) throw new Error(result.data.message || 'Failed to delete election');
+            window.location.reload();
+        })
+        .catch(error => {
+            alert(error.message || 'Failed to delete election.');
+            btn.innerHTML = 'Yes, Delete';
+            btn.removeAttribute('disabled');
+            closeModal();
+        });
+    });
 
+    // Close overlays with Escape
+    document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape') {
+            closePanel();
+            closeModal();
+        }
+    });
+</script>
+</body>
 </html>

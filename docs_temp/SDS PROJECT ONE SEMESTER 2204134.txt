@@ -1,0 +1,428 @@
+PROJECT TITLE: ONLINE VOTING SYSTEMS IN EDUCATIONAL INSTITUTIONS
+
+PROPONENT: STACY WAMBUI KIMINDIRI
+EMAIL ADDRESS: 2204134@students.kcau.ac.ke
+REGISTRATION NUMBER: 22/04134
+
+SUPERVISOR: MARTIN MURIKI
+COURSE: BSc. BSD
+UNIT CODE: 2205
+
+SYSTEM DESIGN SPECIFICATION DOCUMENT
+
+
+16th November 2024
+
+
+
+
+
+
+
+
+
+
+
+Declaration 
+I declare that this project is my original work and has not been presented for the award of a degree in any other university. 
+Student: Name: Stacy Wambui 
+Date: 31/10/2024 					Signature: (Stacy, 16/11/2024) 
+	
+
+Supervisor: Name: Mr. Martin Muriki 
+Date:…………………… 					Signature:…………………
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Contents
+1.0 INTRODUCTION	5
+1.1 Purpose	5
+1.2 Scope	5
+1.3 System Design Constraints	5
+1.4 Design Goals and Objectives	6
+1.5 Document Overview	6
+2.0 SYSTEM ARCHITEURE	7
+2.1 Introduction	7
+2.2 Client-Server model	7
+2.3 Design Approach	7
+2.4 Architectural Design	7
+2.5 Logical Design	7
+2.6 Use Case Diagram	7
+2.6.1 Actors	8
+2.7 Activity Diagram	10
+2.8 Class Diagram	11
+2.9 Sequence Diagram	11
+2.10 Deployment Diagram	13
+3.0 DATABASE DESIGN	14
+3.1 Introduction	14
+3.2 Normalization	14
+3.3 Entity Relationship Diagram	16
+4.0	USER INTERFACE DESIGN	17
+4.1 Internal Machine Interfaces	17
+4.2 External System Interfaces	17
+4.3 Human Interface	17
+4.4User Interface Design	17
+4.4.1 Description of the user interface	17
+4.4.2 System Display	18
+4.4 3 Software Context	18
+4.4.4 Expected software response	19
+4.4.5 Packaging and installation issues	19
+5.0 CONCLUSION	19
+
+
+LIST OF FIGURES
+Figure 1	9
+Figure 2	10
+Figure 3	11
+Figure 4	12
+Figure 5	13
+Figure 6	16
+Figure 7	18
+
+
+LIST OF TABLES
+Table 1	14
+Table 2	15
+Table 3	15
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+1.0 INTRODUCTION
+The Software Design Specification Document is a document aiming to aid in the process of developing software by providing the system details on how it will be built. Within a Software Design Document, various forms of graphical documentation are used to give a clear display of the system’s functionality. 
+This document provides the details regarding the design of the Online voting system for Kcau University. Its design aims to meet the new system’s requirements while achieving a high-quality standard.
+System design is concerned with creating a system with the following standards;
+	•	Secure.
+	•	Reliable. 
+	•	Ease of interoperability. 
+	•	Easy to use.
+
+
+1.1 Purpose
+The purpose of this document is to provide a clear description of the system design allowing for it to be implemented in software development and bringing clarity as to what the system should and will do after the design process.
+ 
+1.2 Scope
+This Software Design Specification Document will provide an overview of the system with a base-level focused view of the functionality of the system. 
+This document is a complete description of the design of the Online Voting System with the basic architecture being an Application server.
+
+
+1.3 System Design Constraints 
+The major design constraint is the requirements specifications document, which was garnered during the system analysis phase. The requirements specification document contains all the requirements as expressed and agreed upon by the stakeholders of the system to be included in the design of the new system.
+
+
+
+Another design constraint is the environmental constraint. 
+This includes the implications of the new system on the hardware and software of the current machines. It includes;
+	•	Increase in memory and storage capacity for data in terms of hardware.
+	•	Interoperability of the previous and incoming system. 
+	•	Database management techniques require knowledge of databases. 
+
+
+1.4 Design Goals and Objectives 
+The goal of the Online voting system is to develop a system which bridges the gap in functionality between the old and the new system supporting the electoral process in higher educational institution.
+Software design specifically focuses on ensuring a quality system. The design ensures a stable system serving as the foundation for the development of the system. 
+Objectives; 
+	•	Reliability - The system design should ensure that the system achieves full reliability for the system users. 
+	•	Security - The system design should ensure that access to the system is limited to the respective users.
+	•	Ease of Use - System design should implement a user-friendly view of the system.
+
+1.5 Document Overview
+The Software Design Document is in sections containing subsections. 
+These sections include; 
+Section 2 - Architectural Design. 
+-The architectural design specifies how the entities in the system interact. With the architectural design, the system design is broken down into its various components.
+Section 3 - Database Design and Normalization. 
+-Normalization aims to optimize the database in terms of storage, redundancy and logical structure of data 
+Section 4- User interface design
+Section 5 – Conclusion
+
+2.0 SYSTEM ARCHITEURE
+ 2.1 Introduction 
+As the blueprint of the system, the system architecture aims to provide an overview of the system and its functionalities. This is achieved by breaking down the system into its various components and then applying the requirements and building the modules themselves. 
+
+2.2 Client-Server model 
+The client-server architecture as a distributed system model allows the server to give access to other workstations in terms of data and enhancing accessibility. 
+	•	With the main server offering services to other sub-systems it creates an effective workstation by creating a system of distribution. 
+	•	Clients, on the other hand, use the services offered by the server concurrently across all the workstations.
+	•	A network aims to connect the clients to the server, with the clients accessing the server through remote procedure calls.
+
+2.3 Design Approach 
+Modularity is the main factor in the design approach. With separate modules, the system is more effective in the case of system failure since the whole system will not fail but the specific module hence allowing for the rest of the system to continue functioning like before.
+
+ 2.4 Architectural Design 
+For the architectural design, the structure of the program comes to a mold. Defining the data flow within the system, together with the interfaces that have been developed in the program gives a clear picture of the architectural design.
+
+ 2.5 Logical Design 
+The logical design of the system is concerned with the system functions. What the system can do and how it will be done are the main concerns. 
+
+2.6 Use Case Diagram 
+A use case diagram is a graphical depiction of a user’s interaction with the system.
+These actors ensure the system operates effectively, securely, and transparently, maintaining trust in the voting process.
+
+
+2.6.1 Actors
+The actors are the users interacting with the system. The actors in this system are;
+Voters
+They register and verify their eligibility to vote, cast votes in the election and receive confirmation that their vote has been submitted successfully.
+Administrators
+They manage the voter database, monitor the voting process to ensure it runs smoothly, resolve issues related to voter access or system functionality and publish results after the election concludes.
+Candidates
+They represent parties, individuals, or options voters can select and they may indirectly interact with the system to verify their inclusion in the candidate list.
+
+
+Auditors
+They:
+	•	Conduct system audits to ensure compliance with regulations and standards.
+	•	Verify that votes are counted correctly and securely.
+	•	Assess system security and detect potential fraud or irregularities.
+
+System
+The role of the system as an actor includes;
+	•	Authenticate users and provide access controls.
+	•	Facilitate the casting and recording of votes.
+	•	Encrypt and secure voter data and ballots.
+	•	Generate and display real-time or post-election results
+
+
+
+
+
+
+Use case diagram
+
+Figure 1
+
+
+
+
+
+
+
+
+
+
+
+2.7 Activity Diagram
+An activity diagram is a depiction of how the flow of control in the system is from activity to activity. The system is broken down into sequential steps to emulate the computational steps. 
+Figure 2
+An activity can therefore be described as an ongoing non-atomic execution within a state machine.
+
+
+2.8 Class Diagram
+A class diagram is a static structure diagram that describes the structure of a system by showing the system’s classes, their attributes and the relationships between the classes. The system’s class diagram is as shown below;
+
+Figure 3
+
+2.9 Sequence Diagram
+
+This visual representation of how objects in a system interact with each other over time. It used to illustrate the order and timing of messages or events exchanged between different system elements.
+This helps in understanding the sequence of operations or processes involved.
+
+Figure 4
+2.10 Deployment Diagram 
+With a deployment diagram, a blueprint of the system is brought to mind in terms of hardware deployment. 
+The database and the client achieve communication through a LAN which is in place. 
+
+
+The communication will appear as follows;
+
+
+Figure 5
+
+
+
+
+
+
+
+
+
+
+
+3.0 DATABASE DESIGN 
+3.1 Introduction
+ A database is an organized collection of structured data typically stored electronically in a computer system. An effective database maintains consistency while managing access to data through the use of privileges. 
+SQL acts as a standard language to be used in database management, with SQL statements, we can create interactive queries to perform operations on data. The database of this project is going to be used together with the MySQL database management system.
+Reasons for using MySQL includes:
+	•	Scalability: Handles large voter databases efficiently, supporting growing election data.
+	•	Security: Provides robust authentication, encryption, and data access controls, crucial for sensitive voting data.
+	•	Reliability: Ensures high availability and fault tolerance for uninterrupted voting processes.
+	•	Performance: Optimized for fast read/write operations, ensuring quick responses during peak voting periods.
+	•	Flexibility: Supports integration with web applications and diverse programming languages.
+	•	Cost-Effective: Open-source and free to use, reducing overall project costs.
+3.2 Normalization 
+Normalization is the process of organizing data in a database. 
+Normalization includes creating tables and establishing relationships between the tables according to the rules concerning data protection and eliminating redundancy and inconsistency dependency.
+Normalization generally aims to correct the anomalies in the database.
+
+1st Normal Form (1NF)
+Table
+
+Attributes
+
+
+
+Voters
+voterID (PK), name, email, passwordHash, isEligible
+Administrators
+adminID (PK), name, email, passwordHash
+Candidates
+candidateID (PK), name, party, electionID (FK)
+Auditors
+auditorID (PK), name, email, passwordHash
+Elections
+electionID (PK), name, startDate, endDate
+
+
+
+Votes
+voteID (PK), voterID (FK), candidateID (FK), electionID (FK), voteTimestamp
+Table 1
+2nd Normal Form (2NF)
+Table
+
+Attributes
+
+
+
+Voters
+voterID (PK), name, email, passwordHash, isEligible
+Administrators
+adminID (PK), name, email, passwordHash
+Candidates
+candidateID (PK), name, party, electionID (FK)
+Auditors
+auditorID (PK), name, email, passwordHash
+Elections
+electionID (PK), name, startDate, endDate
+
+
+
+Votes
+voteID (PK), voterID (FK), candidateID (FK), electionID (FK), voteTimestamp
+Table 2
+No changes needed as all tables already follow 2NF.
+3rd Normal Form (3NF)
+Table
+
+Attributes
+
+
+
+Voters
+voterID (PK), name, email, passwordHash, isEligible
+Administrators
+adminID (PK), name, email, passwordHash
+Candidates
+candidateID (PK), name, party, electionID (FK)
+Auditors
+auditorID (PK), name, email, passwordHash
+Elections
+electionID (PK), name, startDate, endDate
+
+
+
+Votes
+voteID (PK), voterID (FK), candidateID (FK), electionID (FK), voteTimestamp
+Table 3
+No changes needed as all tables already follow 3NF.
+
+
+
+
+
+
+
+3.3 Entity Relationship Diagram
+
+An Entity- relationship diagram is a specialized graphic that illustrates the relationships between entities in a database
+
+
+Figure 6
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+	•	USER INTERFACE DESIGN
+
+4.1 Internal Machine Interfaces 
+
+
+The existing network and the system will be installed on the server. Users use the network on the local machines. 
+Data consistency is ensured from the workstation to the server. 
+
+4.2 External System Interfaces
+
+ External devices such as scanners can be used by all the workstations via the network. The output devices however require to be connected directly to the workstations.
+
+4.3 Human Interface 
+
+The human interface is curated to favor the system users. With the rights to access specific data and perform specific operations, the administrators of the system are allowed to access the server.
+
+4.4User Interface Design 
+
+It describes the communication between the user and the system. 
+
+4.4.1 Description of the user interface
+	•	Drop-down menus - These are used in the system to show the various available choices for a specific action. 
+	•	Buttons - The buttons allow for submission responses, or for actions to be performed such as save 
+	•	Textboxes - Textboxes allow for data input into the system by a patient or any other user.
+	•	Icons - Icons represent certain functions within the system.
+	•	Menu bar - The menu bar shows the various sectors that can be accessed in the system. 
+
+
+
+
+
+
+4.4.2 System Display
+The system display aims to explain how the system appears during its run time.
+
+
+
+Figure 7
+
+4.4 3 Software Context 
+The system will include several intertwined modules to achieve accessibility across the whole system. 
+
+
+4.4.4 Expected software response 
+The system should function normally with little to no error expected. In the case of a system error, one should troubleshoot. 
+4.4.5 Packaging and installation issues 
+The system is available on the administrator's hard drive together with a user manual on issues concerning installation 
+5.0 CONCLUSION
+The design specification derived from the system requirements specification document helps to create the system as per the users' requirements.

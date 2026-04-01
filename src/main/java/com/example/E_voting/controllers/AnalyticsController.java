@@ -29,6 +29,7 @@ public class AnalyticsController {
         var election = electionService.getElectionById(electionId);
         var candidates = electionService.getCandidatesByElectionId(electionId);
         var results = electionService.getElectionResults(electionId);
+        var allElections = electionService.getAllElections();
         
         System.out.println("[ANALYTICS] Dashboard - Election: " + electionId + ", Candidates: " + candidates.size() + ", Results: " + results);
         
@@ -36,6 +37,7 @@ public class AnalyticsController {
         model.addAttribute("candidates", candidates);
         model.addAttribute("electionId", electionId);
         model.addAttribute("results", results);
+        model.addAttribute("allElections", allElections);
         
         return "analytics-dashboard";
     }

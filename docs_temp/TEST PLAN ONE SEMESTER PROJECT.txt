@@ -1,0 +1,124 @@
+PROJECT TITLE: ONLINE VOTING SYSTEMS IN EDUCATIONAL INSTITUTIONS
+
+PROPONENT: STACY WAMBUI KIMINDIRI
+EMAIL ADDRESS: 2204134@students.kcau.ac.ke
+REGISTRATION NUMBER: 22/04134
+
+SUPERVISOR: MARTIN MURIKI
+COURSE: BSc. BSD
+UNIT CODE: 2205
+
+TEST PLAN
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Table of Contents
+1.0 Introduction	3
+2.0 Testing Objectives	3
+3.0 Test scope	3
+4.0 Test Scenarios	3
+5.0 Test Cases	4
+6.0 Test Environment	4
+7.0 Resources	4
+8.0 Test Execution	5
+9.0 Performance Testing	5
+10.0 Security Testing	5
+11.0 Testing Usability	5
+12.0 Regression Testing	5
+13.0 Test Reporting	5
+14.0 Test Closure	6
+15.0 Maintenance Planning	6
+16.0 Conclusion	6
+
+
+1.0 Introduction 
+This test plan outlines the approach, scope, objectives, resources, and schedule for testing the Online Voting System.
+The purpose of testing is to ensure the system’s functionality, performance, security, and usability meet the specified requirements and quality standards.
+This test plan serves as a structured approach to validate and verify the functionality, performance, and other critical aspects. The scope of testing encompasses all modules, features, and interfaces of the online voting system both functional and non-functional aspects will be thoroughly tested to ensure comprehensive coverage.
+
+2.0 Testing Objectives
+	•	To validate the functionality of the online voting system.
+	•	To assess the performance of the system under various load conditions to ensure scalability and responsiveness 
+	•	To evaluate the security of the system to identify and mitigate potential vulnerabilities and risks
+	•	Measure the usability of the system to ensure it meets the needs of end-users and stake holders.
+
+
+3.0 Test scope 
+The test scope includes all modules, features, and interfaces of the online voting system.
+Testing will cover both functional and non-functional requirements, including user interactions, system integrations, and performance benchmarks. 
+Out-of-scope items include third-party integrations not directly related to the online voting system and hardware-specific testing.
+
+4.0 Test Scenarios 
+Test scenarios are derived from user stories, requirements, and use cases.
+Scenarios cover various aspects of the system, such as:
+	•	User Login and Authentication Verify that only authorized students, staff, and faculty members can log in using their credentials and multi-factor authentication (e.g., OTP or email verification).
+	•	Eligibility Verification Verify that only eligible users (e.g., enrolled students or faculty) are allowed to register for specific elections.
+	•	Vote Casting Ensure that voters can cast their vote successfully and that the system records the vote securely.
+	•	Candidate Management Verify that administrators can add, edit, or remove candidates for elections.
+	•	Response Time Verify that the system responds quickly to user actions, such as logging in, accessing ballots, and casting votes, even under heavy load.
+	•	Data Encryption Ensure that all data, including login credentials and vote details, is encrypted during transmission and storage.
+	•	Multi-Device Compatibility Verify that the system works seamlessly across different devices (desktop, mobile, tablet) and browsers.
+	•	Verifiable Results
+Ensure that election results are verifiable and traceable without compromising voter anonymity.
+
+
+5.0 Test Cases 
+Test cases are documented for each identified scenario, detailing inputs, expected outputs, preconditions, and post conditions. 
+Positive test cases validate expected system behavior under normal conditions. Negative test cases simulate error conditions, boundary cases, and edge cases to validate error handling and resilience.
+
+
+6.0 Test Environment
+A dedicated test environment is set up to closely resemble the production environment. 
+Hardware, software, networks, and databases are configured to support testing activities.
+Test environment stability, scalability, and isolation from production systems are ensured.
+
+7.0 Resources
+Skilled personnel with domain expertise are assigned to testing activities, including testers,      developers, and stakeholders.
+Test management tools, automation frameworks, and simulation tools are provided to support testing efforts.
+Roles and responsibilities are defined for team members involved in testing activities. 
+
+
+8.0 Test Execution 
+Test cases are executed according to the defined test plan. Test results, including defects and issues encountered during testing, are recorded and tracked. Test execution progress is monitored regularly, and deviations from the test plan are addressed promptly.
+
+9.0 Performance Testing
+ Performance testing is conducted to evaluate the system's scalability, responsiveness, and resource utilization.
+ Load testing, stress testing, and endurance testing are performed to identify performance bottlenecks and limitations.
+
+10.0 Security Testing 
+Security testing is conducted to identify and mitigate potential vulnerabilities and risks. Techniques such as penetration testing, vulnerability scanning, and security code reviews are employed to assess the system's security posture. 
+
+
+11.0 Testing Usability
+Usability testing is conducted to evaluate the system's ease of use, learnability, and user satisfaction. User feedback is collected through surveys, interviews, and usability testing sessions to identify usability issues and improvement opportunities.
+
+
+12.0 Regression Testing 
+Regression testing is performed to ensure that new changes or updates do not introduce any regressions or unintended side effects. Test cases are reused, and regression tests are prioritized based on the impact of changes. 
+
+
+13.0 Test Reporting 
+Test results, including test logs, defect reports, and test summaries, are documented and communicated to stakeholders. Findings, observations, and recommendations are provided to stakeholders and project managers for review and validation. 
+
+14.0 Test Closure 
+Testing activities are concluded once all test objectives have been met, and the system is deemed ready for deployment. Sign-off is obtained from stakeholders, indicating their satisfaction with the quality and reliability of the system.
+
+
+15.0 Maintenance Planning 
+A plan for ongoing maintenance and support is developed, including future testing efforts, bug fixes, and system updates. Procedures for handling change requests, managing defects, and monitoring system performance post-deployment are established. 
+
+16.0 Conclusion 
+The test plan outlines the approach, scope, objectives, resources, and schedule for testing the online voting system.
+
+

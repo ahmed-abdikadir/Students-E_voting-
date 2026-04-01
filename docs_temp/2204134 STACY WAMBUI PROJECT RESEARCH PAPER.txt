@@ -1,0 +1,1305 @@
+					
+
+PROJECT TITLE: ONLINE VOTING SYSTEMS IN EDUCTATIONAL INSTITUTIONS SUCH AS UNIVERSITIES.
+					DEGREE OF
+				     BACHELOR OF SCIENCE
+					         In
+				   SOFTWARE DEVELOPMENT
+					         At
+				          KCA UNIVERSITY
+
+     Author:
+				STACY WAMBUI KIMINDIRI (22/04134)
+
+				Under the guidance of: Mr. Martin Muriki
+					
+
+
+
+
+
+
+
+
+TABLE OF CONTENTS
+Contents
+1. CHAPTER ONE	5
+1.0 Background Information	5
+1.2 Problem Statement	6
+1.3 Justification	7
+1.4 Research Questions	8
+1.5 Hypothesis	8
+1.6 Objectives	8
+1.6.0 Main objectives	8
+1.6.1 Specific Objectives	8
+1.7 Scope	9
+1.8 Stakeholders matrix	9
+2. CHAPTER TWO	10
+2.0 Literature Review	10
+2.1 Types and variation of voting	11
+2.2 Characteristics of a Good Voting System	13
+3. CHAPTER THREE	13
+3.0 Materials and Methods	13
+3.1 Study Site and Study Population	14
+3.2 Study Design	15
+3.3 Significance of the Study Project	15
+3.4 Limitations of the Study Project	15
+3.5 Budget and Resources	15
+3.6 Project Schedule	16
+4. CHAPTER FOUR	16
+System Requirement Specification	16
+4.0 Purpose	16
+4.1 Project Proposal	16
+4.2 Overall Description	18
+4.2.1 Product Perspective	18
+4.2.2 Product Features	18
+4.3 System Environment	19
+4.4 Functional Requirement Specification	19
+4.5 Entity Relation Diagram	20
+4.6 System work data flow diagram	21
+4.7 Non Functional Requirements	22
+4.7.1 External user interfaces requirements	22
+4.7.2 Hardware Interfaces	22
+4.7.3 Software Interfaces	22
+4.7.5 Security Requirements	23
+4.8 System Design	23
+4.8.1 Description of procedures and functions	23
+4.9	Implementing and testing	23
+4.9.1 Introduction	23
+4.9.2 Databases used to implement this system include:	23
+5.	CHAPTER FIVE	27
+SYSTEM DESIGN SPECIFICATION DOCUMENT	27
+5.0 Introduction	27
+5.1 Purpose	27
+5.2 Scope	27
+5.3 System Design Constraints	27
+5.4 Design Goals and Objectives	28
+5.5 Document Overview	28
+5.6 System Architecture	29
+5.6.1 Introduction	29
+5.6.2 Client-Server model	29
+5.6.3 Design Approach	29
+5.6.4 Architectural Design	29
+5.6.5 Logical Design	29
+5.6.6 Use Case Diagram	29
+5.6.7 Actors	30
+5.7 Activity Diagram	32
+5.8 Class Diagram	33
+5.9 Sequence Diagram	33
+5.1.0 Deployment Diagram	35
+5.1.1 Database Design	36
+5.1.1.1 Introduction	36
+5.1.1.2 Normalization	36
+5.1.1.3 Entity Relationship Diagram	38
+5.1.2 User interface Design	39
+5.1.2.1 Internal Machine Interfaces	39
+5.1.2.2 External System Interfaces	39
+5.1.2.3 Human Interface	39
+5.1.2.4 User Interface Design	39
+Description of the user interface	39
+5.1.3 System Display	40
+5.1.4 Software Context	40
+6. CHAPTER SIX	41
+6.0 Executive Summary	41
+6.1 Project Initiation:	41
+6.2 Requirement Gathering and Analysis:	41
+6.3 System Design:	41
+6.4 Development:	41
+6.5 Testing:	42
+6.6 Deployment:	42
+6.7 Training and Documentation:	42
+6.8 Maintenance and Support:	42
+6.9 Security Considerations:	42
+6.1.1 Compliance and regulations:	43
+6.1.2 Continuous Improvement:	43
+7.	CHAPTER SEVEN	43
+7.0 Introduction	43
+7.1 Testing Objectives	43
+7.2 Test scope	43
+7.3 Test Scenarios	44
+7.4 Test Cases	44
+7.5 Test Environment	44
+7.6 Resources	45
+7.7 Test Execution	45
+7.8 Performance Testing	45
+7.9 Security Testing	45
+7.1.1 Testing Usability	45
+7.1.2 Regression Testing	46
+7.1.3 Test Reporting	46
+7.1.4 Test Closure	46
+7.1.5 Maintenance Planning	46
+7.1.6 Conclusion	46
+8.	CHAPTER EIGHT	47
+8.0 User Manual	47
+8.1 General information	47
+8.2 Intended users	47
+8.3 System Summary	48
+8.3.1 Use of system software and hardware requirements	48
+8.3.2 System Behaviour in Case of Contingencies:	49
+8.4 Getting Started	49
+8.5 System Reporting	50
+
+
+
+
+
+
+
+
+
+
+
+1. CHAPTER ONE
+1.0 Background Information
+	•	Elections are believed to be the key pillars of democracy and voting is one of the electoral process of ensuring the sustenance of democracy in any civil society. In educational institutions such as universities, university student leaders are the core link between the university students and the university administration. These leaders are therefore elected democratically to represent the interests of the students as per the university act.
+	•	Online voting systems in educational institutions have been introduced in order to provide a secure, a more reliable and a more efficient way of voting and holding elections in the institutions. It is a platform for simplifying the electoral process for all institutions that employ voting in decision making.
+	•	An online voting system contains a database which is maintained and in which names of students with some basic information are stored. The individual votes are submitted in the database which can be queried to find out which of the aspirants for a given post has the highest number of votes. 
+	•	The implementation of online voting systems in universities and other educational institutions have been driven by;
+	•	Increased participation from students and the school faculty.
+	•	The need for security and transparency throughout the entire voting period
+	•	Cost efficiency and time
+	•	Traditional voting methods such as use of paper ballots are time consuming and resource intensive and may limit participation. An online voting system can address these challenges by creating a user friendly environment that is secure, more accessible and more reliable for voting.
+	•	The main advantage of these traditional voting methods is that ballot papers are easily human auditable.
+
+
+
+
+
+
+
+
+
+
+
+
+
+1.2 Problem Statement
+
+In many educational institutions such as universities use of traditional methods such as manual counting or use paper ballot are time consuming, resource intensive and are prone to a lot of human errors, therefore, resulting to low turnout of voters since a number of students study off campus and remotely, delayed results and logistical challenges.
+Additionally use of such voting methods may raise concern over integrity of elections with risks to fraud and tampering with the results.
+An online voting system is therefore essential in order to address the challenges faced by use of traditional voting method.
+By proposing and implementing the use of online voting systems in universities such as kca university would ensure the above challenges of security, accessibility, reliability and resources are faced.
+By modernizing the electoral process to an online voting system the university can;
+	•	Improve voting security.
+	•	Increase voter’s turnout.
+	•	Increase the efficiency and reduce the cost of the voting process.
+	•	Ensure inclusivity.
+The proposed system will provide an interactive platform for both the voters and aspirants. The System will perform some sort of tallying where results and statistics on the expected election will be shown and updated properly.
+
+1.3 Justification
+The success of this research will ensure the scalability of SOVS to be used in other institutions of higher levels and even the secondary schools since the benefits upon the successful implementation of the proposed system justifies its system development as well as its deployment. 
+Implementing this proposed system is important and necessary to our society because it creates a platform where by students and the school faculty are able to vote and elect effectively and fasten the voting process, this can be justified through:
+	•	Increase of voter’s turnout since it is easier to now vote remotely of off-campus.
+	•	Minimizing the cost of carrying out an electoral process since there is no need for physical infrastructure and materials to carry out a voting process.
+	•	Efficiency and reliability since it is easier and faster to obtain the results.
+	•	Enhanced Security since a well-designed online voting system can incorporate comprehensive security measures such as use of user authentication and data encryption.
+	•	Inclusivity since anyone could vote remotely even people with mobility issues.
+
+Its success can be replicated in other universities.
+
+1.4 Research Questions
+	•	How can the user interface ensure participation from all students and the school faculty (inclusivity)?
+	•	What are the hardware and software components that are required for a successful implementation and deployment of the project in order to develop a secure and user friendly interface?
+	•	What are the necessary training recourses need for the students to be able to effectively use the online voting system in order to ensure that more students get to vote increasing the voters turn out?
+	•	How can user feedback be used to improve the system security and the system generally?
+1.5 Hypothesis
+The implementation and deployment of an online voting system in campuses will lead to increased voter participation, improved security and enhance user satisfaction.
+1.6 Objectives
+1.6.0 Main objectives
+To design, develop and implement an efficient, user friendly, interactive web based online voting system for students.
+
+1.6.1 Specific Objectives
+	•	To improve voting security.
+	•	To ensure inclusivity.
+	•	To develop a secure and user friendly voting platform for university elections.
+	•	To increase voters turnout.
+	•	To increase the efficiency and reduce the cost of the voting process.
+1.7 Scope
+This project is aimed to develop a platform that is user friendly, easily accessible and more reliable in terms of voting in Kenyan universities. It is aims to increase the voters turn out, student engagement in the electoral process in their respective universities and enhance the transparency and integrity of a voting process in the educational institution.
+The target audience are all registered students in the university, the university administration and the electoral committee. Primarily the project aims to only address undergraduate student elections.
+A case study of KCA University student organization student council will be used. The study assumes that voter registration can be completed successfully and the students can have login credentials to log in, interact on the forum and cast a vote.
+The proposed system will only work on a web platform. 
+The project is estimated to take a duration of 6 – 12 months from the research stage to the development stage to the testing and evaluation stage. 
+
+1.8 Stakeholders matrix
+Table 1
+Stakeholder
+interest
+influence
+impact
+Engagement Strategy
+Student
+High participation in the elections
+Medium
+High
+Feedback loops
+Surveys
+Electoral Committee
+Adherence to the policies in place
+High
+Medium
+Regular Consultations
+University Administration
+Compliance with the rules and regulations
+High
+High
+Collaborative planning
+Regular meetings
+IT department 
+Implementation of the system
+Maintenance of the system
+High
+High
+Testing and updating the system
+External Auditors
+System security
+Medium
+Medium
+Pre-launching and testing 
+Vendors
+Successful implementation of the system
+Medium
+Medium
+Clear and precise communication of requirements
+Government Regulators
+Compliance with electoral laws and regulations
+High
+Medium
+Regular Reporting
+
+
+
+
+
+
+
+
+
+
+
+
+		
+2. CHAPTER TWO
+2.0 Literature Review
+Election is the process that gives the citizens the rights to select representatives that would represent their interests to an administration. For this to happen a voting process is carried out to allow for democracy by voters choosing their preferred aspirant.
+Due to the fast development of technology and networks, the world is gravitating towards the use and implementation of the e – technology in every aspect, online voting is one of the e technologies.
+Online voting systems have increasingly shown to be better alternatives to traditional voting methods. They have increased accessibility, efficiency and reliability among the voters, therefore, increasing the voter turnout.
+Online voting systems in educational institutions are made for students to be able to vote for their representatives from any part of the globe. This system is aimed to have a modernized electoral process and electorates are able to cast their votes through an electronic device remotely.
+In educational institutions such as universities student governance plays a crucial role in fostering democratic practices within the institution therefore there is need for voting and electing people that would lead the school. However, the current voting methods face challenges such as low voter turnout, fraud, logistical difficulties and intensive use of resources to conduct the electoral process. Implementing an online system could address these issues by simplifying the voting process and enhancing transparency, integrity and improving student’s engagement in voting and governance. 
+For a successful implementation and deployment of an online voting system it requires a comprehensive technological architecture that includes: 
+	•	Friendly user interface design.
+	•	Data encryption and privacy.
+	•	Secure authentication.  
+In Kenya there are legal and ethical considerations governing electronic voting that include:
+	•	Compliance with the data protection act of 2019
+	•	Transparency and Audit trials
+An online voting system technology can include the use optical scan voting systems and specialized voting kiosks. It can also involve transmission of ballots and votes via telephones, a private computer network or through the internet.
+
+
+
+
+
+2.1 Types and variation of voting
+There are various types of voting:
+	•	Paper Ballots
+These are hand written paper ballots that were introduced in Rome in 139 BCE, their first use was in America 1629 to choose a pastor for the Salem church. These early paper ballots offered only modest voter privacy and they were fairly easy targets for various forms of election frauds.
+The modern system of election using paper ballots was adopted in the Australian state of Victoria in 1856 and the paper ballot system thereafter became known as the “Australian ballot”. A properly administered Australian paper ballot sets a very high standard, assuring voter privacy. 
+	•	Punch cards
+Punch card data processing dates back to the 1890s but IBM did not introduce the votomatic punched card voting system until 1964.
+Using this means the voter uses metallic hole – punch to punch a hole on the blank ballot. It can count votes automatically but if the voters’ perforation is incomplete, the result is probably determined wrongfully.
+	•	Mechanical Lever Voting Machine
+Lever voting machines were first used in 1892 in New York and were slowly adopted across the country. They offer excellent voter privacy since the completely eliminate most of the approaches to manipulating the vote count that were endemic a century ago and they can be easily configured to handle a complex general election ballot.
+
+In the machine each lever is assigned to a corresponding candidate. The voter pulls the lever to poll of his favorite aspirant. This kind of voting machine can count up the ballots automatically. But since its user interface is not user-friendly enough, giving some training to voter is advisable and necessary.
+	•	Electronic voting
+This is where by the recording, casting and counting of votes involves information and communication technology. Its main principle is the replica of the regular voting system as much as possible.
+This system gives loopholes to election theft and manipulation of votes especially during the collection of votes. 
+
+	•	Optical Mark Sense Ballots
+Optical mark-sense voting systems were developed in the early 1970s by American Information Systems of Omaha in completion with and in cooperation with Westinghouse Learning Systems of Iowa City. The latter was the University of Iowa patents on the optical mark sense scanning machine.
+
+They are based on scanners that can recognize the voters’ choice on special machine readable ballot papers. OMR systems can either be central count systems (where ballot papers are scanned and counted in special counting centers) or precinct count optical scanning (PCOS) systems. (Gordon 1998).
+
+
+	•	Online Voting
+This is just like an electronic voting, the only difference is this is a web based system. Here votes are transferred via the internet to a central counting server. Votes can be cast either from public computers or from voting kiosks in polling stations or more commonly from any internet connected computer accessible to voter.
+
+
+In this paper the proposed system should be easy to use, secure and transparent. The new scheme can be easily used by universities and colleges countrywide or even worldwide since it allows for eligible voters to effectively log in and cast their voted over a web based system.
+The identified gaps between this scheme and others is the:
+	•	Lack of transparency in the election systems.
+	•	Lack of a robust, comprehensive and error free systems for the election process.
+
+2.2 Characteristics of a Good Voting System
+	•	Voting systems must be transparent and comprehensible enough that voters and candidates can readily accept the results. – Shamos (2004) states that for a voting system to be considered transparent and comprehensible some important criteria must be met otherwise it may lead to indecisive or inaccurate election results. These criteria may include:
+	•	The anonymity of the voters’ ballot must be preserved.
+	•	A guarantee that the voters have no evidence that proves which particular candidates received their votes.
+	•	The voting system must be tamper-proof in order to prevent a wide range of attacks both by voters and insiders (poll officials).
+	•	The system should be user friendly. This means that it should be easily comprehensible and usable by the entire voting population.
+
+
+
+
+
+
+
+
+					3. CHAPTER THREE
+3.0 Materials and Methods
+Research Methodology
+The Research methodology aims at answering the following:
+	•	How can the user interface ensure participation from all students and the school faculty (inclusivity)?
+	•	What are the hardware and software components that are required for a successful implementation and deployment of the project in order to develop a secure and user friendly interface?
+	•	What is the estimated budget for deployment of the project and its maintenance required in order to lower use of many resources and reduce the overall cost of the voting system?
+	•	What are the necessary training recourses need for the students to be able to effectively use the online voting system in order to ensure that more students get to vote increasing the voters turn out?
+	•	How can user feedback be used to improve the system security and the system generally?
+	•	What are the legal and ethical considerations that govern the use of electronic/online voting system?
+The ways used carry out the research are:
+	•	Data collection 
+	•	The project used both secondary and primary set of data in order to generate a vast knowledge about the system and its significance over existing ways of voting. These sources include published books and papers as well as journals.
+	•	Interviews
+	•	This contributed to facts and information of the subject at hand through verbal interactions with respondents. It also gave the room for suggestions of what should be and not be in the system as wells as the expectations from the target audience. 
+	•	Direct observation
+	•	This helped me to get the real time scenario of what was happening in the area of study and what was required to design the system.
+
+The scientific methodologies used for development are:
+	•	Waterfall model
+-consists of distinct phases such as requirements, design, implementation and maintenance.
+	•	Agile methodology
+-Agile methodologies, like Scrum and Kanban are iterative and flexible approaches that are well suited where requirements may evolve overtime. It encourages collaboration together with adaptability.
+
+
+Analysis
+Analysis was conducted on the current existing system failures and strength to allow a better understanding of what is required. The problem statement, the objectives as well as the system requirements were also critically evaluated for better understanding and for the researcher to completely comprehend what is needed of him.
+During the analysis a few things were looked at these are the:
+	•	Physical Design of the System 
+-this includes the system architecture and its integrated components that are put together in order to achieve the desired goal and its objectives. It modelled the user interfaces, the server architecture and the database models.
+	•	Logical Design of the System
+-this primarily shows the movement of data from the input to the output stage as well as the security checks in the system.
+
+3.1 Study Site and Study Population
+The main study site is KCA University.
+The study population as well as the target audience are students from Kca University.
+3.2 Study Design
+The study and design of this project involves developing a secure, efficient and accessible online voting system tailored for university elections.
+3.3 Significance of the Study Project
+The importance of having this study and implementing this project include:
+	•	Integrity and transparency
+	•	The use of this online voting systems there will be real time monitoring that will enhance and improve transparency by reducing frauds during the voting process.
+	•	Accessibility 
+	•	Online voting systems provide a convenient way of voting to all voters since it is easily accessible to all students even those with who study remotely and off campus. 
+	•	Increased efficiency and reliability
+	•	Since it is a faster way to obtain the results of the voting reducing the administrative burden.
+	•	Providence of better data management
+	•	Due to better data collection and analysis allowing the university to look and track the student participation. This could also improve future electoral process based on the feedback given by the voters.
+	•	Adaptability 
+	•	Since it can be updated and improved overtime with the technological advancements.
+3.4 Limitations of the Study Project
+	•	Hardware constraints – In terms of infrastructure like the internet access.
+	•	Financial constraints – in terms of the budget limitations for funding the software development, maintenance and training as well as the cost of infrastructure for the initial setup and ongoing operational costs.
+	•	Time constraints – in terms of the feedback loops and implementation timeline.
+
+3.5 Budget and Resources
+These includes the required resources that are needed for testing and implementation of this system.
+Table 2
+Item
+Quantity
+Price(ksh)
+Routers
+5
+25,000
+Servers
+1
+100,000
+Computers
+10
+32,000
+Back – up systems
+2
+60,000
+Touch screen displays
+10
+6,000
+
+
+
+3.6 Project Schedule
+This is my work plan.
+Table 3
+TASK
+PLANNED START DATE
+ACTUAL START DATE
+PLANNED COMPLETION DATE
+ACTUAL COMPLETION DATA
+Project idea
+4/08/2024
+23/09/2024
+23/09/2024
+30/09/2024
+Project Proposal
+7/08/2024
+25/09/2024
+29/09/2024
+30/09/2024
+System Requirement Specification
+3/10/2024
+5/10/2024
+14/10/2024
+18/10/2024
+System Design Specification
+
+20/10/2024
+1/11/2024
+23/10/2024
+3/11/2024
+Implementation Strategies
+25/10/2024
+2/11/2024
+31/10/2024
+3/11/2024
+
+Test Plan
+1/11/2024
+4/11/2024
+2/11/2024
+5/11/2024
+User Manual
+15/11/2024
+17/11/2024
+20/11/2024
+20/11/2024
+
+
+
+4. CHAPTER FOUR
+System Requirement Specification
+4.0 Purpose
+
+The intended purpose of this program is to come up with a system that is user friendly and is able to register eligible voters and allow them to choose their desired aspirant.
+This system requirement specification will provide a clear picture of how the system will work including the newly specified requirements and functions.
+It will also show how the system will function under certain constraints.
+It will also go a long way in helping to identify the requirements for the developers just before the design phase.
+
+4.1 Project Proposal
+	•	Online voting systems in educational institutions have been introduced in order to provide a secure, a more reliable and a more efficient way of voting and holding elections in the institutions.
+	•	The implementation of online voting systems in universities and other educational institutions have been driven by;
+	•	Increased participation from students and the school faculty.
+	•	The need for security and transparency throughout the entire voting period
+	•	Cost efficiency and time
+
+This project is aimed to develop a platform that is user friendly, easily accessible and more reliable in terms of voting in Kenyan universities. It is aims to increase the voters turn out, student engagement in the electoral process in their respective universities and enhance the transparency and integrity of a voting process in the educational institution.
+The target audience are all registered students in the university, the university administration and the electoral committee. Primarily the project aims to only address undergraduate student elections.
+A case study of KCA University student organization student council will be used. The study assumes that voter registration can be completed successfully and the students can have login credentials to log in, interact on the forum and cast a vote.
+The proposed system will only work on a web platform. 
+The project is estimated to take a duration of 6 – 12 months from the research stage to the development stage to the testing and evaluation stage. 
+
+
+4.2 Overall Description
+4.2.1 Product Perspective
+
+This OVS will bring out a whole new view of the previously existing system. It will be a web based application that is accessible too eligible users within the university. It will integrate with existing school systems and database in order to ensure data consistency and a streamlined workflow.
+
+Here is a detailed product view of the OVS:
+	•	Integration with the school registration system:
+
+The OVS must seamlessly integrate with this system in order to determine who is eligible for voting, this is because in order to log into the system the voter should enter their students email that was registered to the school administration system.
+
+	•	Integration with the survey and feedback systems:
+
+This is to allow for assessment of the voting process and candidates satisfaction through gathering of student feedback post elections.
+
+4.2.2 Product Features
+
+User registration and authentication:
+This is in order to come up with a secure registration process and a multi factor verification and authentication for voters.
+
+Voting process:
+Here is whereby the user can select their desired aspirant, review selections before submission and are able to change votes prior the final submission.
+
+Accessibility:
+The compliance with accessibility standards and the support for multiple languages.
+
+Integration capabilities:
+API for integration with existing election systems and database.
+
+Mobile compatibility:
+To create a responsive design for mobile devices in order to make it easier for many voters to turn out and cast their votes.
+
+User support:
+Helpdesk and support channels for voter assistance.
+4.3 System Environment
+
+Figure 1
+Figure 1
+Credentials
+Credentials
+Voters
+Voters
+Online voting
+Online voting
+Voting web service
+Voting web service
+Vote database
+Vote database
+
+Administrator
+Administrator
+Voter
+Voter
+Votes
+Votes
+Votes
+Votes
+
+
+
+
+
+
+
+
+
+4.4 Functional Requirement Specification
+	•	Web server services.
+The execution of this process relies on the user’s ability to access web server services.
+	•	Network services.
+The user requires a connection to the internet through a LAN network facility.
+	•	Web browser.
+A web browser will be the first point of contact between the user and the web server hosting the database.
+User use case
+Figure 2
+Figure 2
+Voter
+Web server
+Administrator
+Voter
+Web server
+Administrator
+
+Description and Priority
+The user accesses the system through the browser and on the web server, the user can access the interface. 
+Stimulus/Response Sequences
+The stimulus for this use case is to be connected to the LAN.
+	•	The user connects to the database server through the web server.
+	•	The database server stores the user’s credentials.
+	•	The web server allows the user to log into the system.
+
+
+4.5 Entity Relation Diagram
+
+
+Figure 3
+
+4.6 System work data flow diagram
+Figure 4
+Figure 4
+  Start
+User authentication
+Accessing the voting portal
+Cast vote
+Vote confirmation
+Log out
+End 
+  Start
+User authentication
+Accessing the voting portal
+Cast vote
+Vote confirmation
+Log out
+End 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+No
+No
+
+
+
+
+
+
+
+
+
+
+Yes
+Yes
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+4.7 Non Functional Requirements
+4.7.1 External user interfaces requirements
+ User Interfaces
+The User Interface is required since it determines the input and output processes of the system. This will be applied through the use of web browsers such as Google Chrome.
+ Menu
+The Interface will contain a menu designed with tools to increase accessibility and ease of use of the system hence increasing usability.
+Graphical user interface
+With the use of a Graphical user interface, the use of the system will be widened as command line interface will limit it to those bearing technical skills.
+4.7.2 Hardware Interfaces
+LAN
+A Local Area Network will work perfectly in creating a connection between the school workstations. Hence all the network components can communicate effectively.
+TCP/IP Protocol
+This will act as a communication-based protocol between the system and its database server.
+
+4.7.3 Software Interfaces
+Operating System
+The system is designed to work at its optimum using a Windows or Linux Operating System.
+ Database
+Using MYSQL as a database system will deliver optimal performance on the system.
+
+4.7.4 Other Non-functional Requirements
+Performance Requirements
+For optimal performance, the system requires;
+	•	100 GB Disk Space.
+	•	3 GB RAM.
+	•	A web browser.
+
+
+4.7.5 Security Requirements
+Secure Networks.
+The users are advised to use secure networks while accessing the system.
+Password Safety.
+The users of the system should not share their passwords with any other person to ensure their data is not compromised.
+
+
+4.8 System Design
+4.8.1 Description of procedures and functions 
+	•	The web app was designed in HTML, CSS and as front end while backend was developed by php and sql.
+	•	The application works on all operating systems 
+
+	•	Implementing and testing
+4.9.1 Introduction 
+The web app was implemented on vs code 
+It will contain the following interfaces 
+1. Register new Account 
+2. Log in 
+3. The main page 
+4.9.2 Databases used to implement this system include:
+	•	User database 
+      2.  Service provider’s database
+
+
+
+
+
+
+Layouts
+
+Figure 5
+
+	
+Figure 6
+
+
+
+	
+Figure 7
+
+
+
+
+
+
+	•	CHAPTER FIVE
+SYSTEM DESIGN SPECIFICATION DOCUMENT
+5.0 Introduction
+The Software Design Specification Document is a document aiming to aid in the process of developing software by providing the system details on how it will be built. Within a Software Design Document, various forms of graphical documentation are used to give a clear display of the system’s functionality. 
+This document provides the details regarding the design of the Online voting system for Kcau University. Its design aims to meet the new system’s requirements while achieving a high-quality standard.
+System design is concerned with creating a system with the following standards;
+	•	Secure.
+	•	Reliable. 
+	•	Ease of interoperability. 
+	•	Easy to use.
+
+
+5.1 Purpose
+The purpose of this document is to provide a clear description of the system design allowing for it to be implemented in software development and bringing clarity as to what the system should and will do after the design process.
+ 
+5.2 Scope
+This Software Design Specification Document will provide an overview of the system with a base-level focused view of the functionality of the system. 
+This document is a complete description of the design of the Online Voting System with the basic architecture being an Application server.
+
+
+5.3 System Design Constraints 
+The major design constraint is the requirements specifications document, which was garnered during the system analysis phase. The requirements specification document contains all the requirements as expressed and agreed upon by the stakeholders of the system to be included in the design of the new system.
+
+
+
+Another design constraint is the environmental constraint. 
+This includes the implications of the new system on the hardware and software of the current machines. It includes;
+	•	Increase in memory and storage capacity for data in terms of hardware.
+	•	Interoperability of the previous and incoming system. 
+	•	Database management techniques require knowledge of databases. 
+
+
+5.4 Design Goals and Objectives 
+The goal of the Online voting system is to develop a system which bridges the gap in functionality between the old and the new system supporting the electoral process in higher educational institution.
+Software design specifically focuses on ensuring a quality system. The design ensures a stable system serving as the foundation for the development of the system. 
+Objectives; 
+	•	Reliability - The system design should ensure that the system achieves full reliability for the system users. 
+	•	Security - The system design should ensure that access to the system is limited to the respective users.
+	•	Ease of Use - System design should implement a user-friendly view of the system.
+
+5.5 Document Overview
+The Software Design Document is in sections containing subsections. 
+These sections include; 
+Section 2 - Architectural Design. 
+-The architectural design specifies how the entities in the system interact. With the architectural design, the system design is broken down into its various components.
+Section 3 - Database Design and Normalization. 
+-Normalization aims to optimize the database in terms of storage, redundancy and logical structure of data 
+Section 4- User interface design
+Section 5 – Conclusion
+
+5.6 System Architecture 
+ 5.6.1 Introduction 
+As the blueprint of the system, the system architecture aims to provide an overview of the system and its functionalities. This is achieved by breaking down the system into its various components and then applying the requirements and building the modules themselves. 
+
+5.6.2 Client-Server model 
+The client-server architecture as a distributed system model allows the server to give access to other workstations in terms of data and enhancing accessibility. 
+	•	With the main server offering services to other sub-systems it creates an effective workstation by creating a system of distribution. 
+	•	Clients, on the other hand, use the services offered by the server concurrently across all the workstations.
+	•	A network aims to connect the clients to the server, with the clients accessing the server through remote procedure calls.
+
+5.6.3 Design Approach 
+Modularity is the main factor in the design approach. With separate modules, the system is more effective in the case of system failure since the whole system will not fail but the specific module hence allowing for the rest of the system to continue functioning like before.
+
+ 5.6.4 Architectural Design 
+For the architectural design, the structure of the program comes to a mold. Defining the data flow within the system, together with the interfaces that have been developed in the program gives a clear picture of the architectural design.
+
+ 5.6.5 Logical Design 
+The logical design of the system is concerned with the system functions. What the system can do and how it will be done are the main concerns. 
+
+5.6.6 Use Case Diagram 
+A use case diagram is a graphical depiction of a user’s interaction with the system.
+These actors ensure the system operates effectively, securely, and transparently, maintaining trust in the voting process.
+
+
+5.6.7 Actors
+The actors are the users interacting with the system. The actors in this system are;
+Voters
+They register and verify their eligibility to vote, cast votes in the election and receive confirmation that their vote has been submitted successfully.
+Administrators
+They manage the voter database, monitor the voting process to ensure it runs smoothly, resolve issues related to voter access or system functionality and publish results after the election concludes.
+Candidates
+They represent parties, individuals, or options voters can select and they may indirectly interact with the system to verify their inclusion in the candidate list.
+
+
+Auditors
+They:
+	•	Conduct system audits to ensure compliance with regulations and standards.
+	•	Verify that votes are counted correctly and securely.
+	•	Assess system security and detect potential fraud or irregularities.
+
+System
+The role of the system as an actor includes;
+	•	Authenticate users and provide access controls.
+	•	Facilitate the casting and recording of votes.
+	•	Encrypt and secure voter data and ballots.
+	•	Generate and display real-time or post-election results
+
+
+
+
+
+
+Use case diagram
+
+Figure 1
+
+
+
+
+
+
+
+
+
+
+
+5.7 Activity Diagram
+An activity diagram is a depiction of how the flow of control in the system is from activity to activity. The system is broken down into sequential steps to emulate the computational steps. 
+Figure 2
+An activity can therefore be described as an ongoing non-atomic execution within a state machine.
+
+
+5.8 Class Diagram
+A class diagram is a static structure diagram that describes the structure of a system by showing the system’s classes, their attributes and the relationships between the classes. The system’s class diagram is as shown below;
+
+Figure 3
+
+5.9 Sequence Diagram
+
+This visual representation of how objects in a system interact with each other over time. It used to illustrate the order and timing of messages or events exchanged between different system elements.
+This helps in understanding the sequence of operations or processes involved.
+
+Figure 4
+5.1.0 Deployment Diagram 
+With a deployment diagram, a blueprint of the system is brought to mind in terms of hardware deployment. 
+The database and the client achieve communication through a LAN which is in place. 
+
+
+The communication will appear as follows;
+
+
+Figure 5
+
+
+
+
+
+
+
+
+
+
+
+5.1.1 Database Design 
+5.1.1.1 Introduction
+ A database is an organized collection of structured data typically stored electronically in a computer system. An effective database maintains consistency while managing access to data through the use of privileges. 
+SQL acts as a standard language to be used in database management, with SQL statements, we can create interactive queries to perform operations on data. The database of this project is going to be used together with the MySQL database management system.
+Reasons for using MySQL includes:
+	•	Scalability: Handles large voter databases efficiently, supporting growing election data.
+	•	Security: Provides robust authentication, encryption, and data access controls, crucial for sensitive voting data.
+	•	Reliability: Ensures high availability and fault tolerance for uninterrupted voting processes.
+	•	Performance: Optimized for fast read/write operations, ensuring quick responses during peak voting periods.
+	•	Flexibility: Supports integration with web applications and diverse programming languages.
+	•	Cost-Effective: Open-source and free to use, reducing overall project costs.
+5.1.1.2 Normalization 
+Normalization is the process of organizing data in a database. 
+Normalization includes creating tables and establishing relationships between the tables according to the rules concerning data protection and eliminating redundancy and inconsistency dependency.
+Normalization generally aims to correct the anomalies in the database.
+
+1st Normal Form (1NF)
+Table
+
+Attributes
+
+
+
+Voters
+voterID (PK), name, email, passwordHash, isEligible
+Administrators
+adminID (PK), name, email, passwordHash
+Candidates
+candidateID (PK), name, party, electionID (FK)
+Auditors
+auditorID (PK), name, email, passwordHash
+Elections
+electionID (PK), name, startDate, endDate
+
+
+
+Votes
+voteID (PK), voterID (FK), candidateID (FK), electionID (FK), voteTimestamp
+Table 1
+2nd Normal Form (2NF)
+Table
+
+Attributes
+
+
+
+Voters
+voterID (PK), name, email, passwordHash, isEligible
+Administrators
+adminID (PK), name, email, passwordHash
+Candidates
+candidateID (PK), name, party, electionID (FK)
+Auditors
+auditorID (PK), name, email, passwordHash
+Elections
+electionID (PK), name, startDate, endDate
+
+
+
+Votes
+voteID (PK), voterID (FK), candidateID (FK), electionID (FK), voteTimestamp
+Table 2
+No changes needed as all tables already follow 2NF.
+3rd Normal Form (3NF)
+Table
+
+Attributes
+
+
+
+Voters
+voterID (PK), name, email, passwordHash, isEligible
+Administrators
+adminID (PK), name, email, passwordHash
+Candidates
+candidateID (PK), name, party, electionID (FK)
+Auditors
+auditorID (PK), name, email, passwordHash
+Elections
+electionID (PK), name, startDate, endDate
+
+
+
+Votes
+voteID (PK), voterID (FK), candidateID (FK), electionID (FK), voteTimestamp
+Table 3
+No changes needed as all tables already follow 3NF.
+
+
+
+
+
+
+
+5.1.1.3 Entity Relationship Diagram
+
+An Entity- relationship diagram is a specialized graphic that illustrates the relationships between entities in a database
+
+
+Figure 6
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+5.1.2 User interface Design
+
+5.1.2.1 Internal Machine Interfaces 
+
+
+The existing network and the system will be installed on the server. Users use the network on the local machines. 
+Data consistency is ensured from the workstation to the server. 
+
+5.1.2.2 External System Interfaces
+
+ External devices such as scanners can be used by all the workstations via the network. The output devices however require to be connected directly to the workstations.
+
+5.1.2.3 Human Interface 
+
+The human interface is curated to favor the system users. With the rights to access specific data and perform specific operations, the administrators of the system are allowed to access the server.
+
+5.1.2.4 User Interface Design 
+
+It describes the communication between the user and the system. 
+Description of the user interface
+	•	Drop-down menus - These are used in the system to show the various available choices for a specific action. 
+	•	Buttons - The buttons allow for submission responses, or for actions to be performed such as save 
+	•	Textboxes - Textboxes allow for data input into the system by a patient or any other user.
+	•	Icons - Icons represent certain functions within the system.
+	•	Menu bar - The menu bar shows the various sectors that can be accessed in the system. 
+
+
+
+
+
+
+5.1.3 System Display
+The system display aims to explain how the system appears during its run time.
+
+
+
+Figure 7
+
+5.1.4 Software Context 
+The system will include several intertwined modules to achieve accessibility across the whole system. 
+Expected software response 
+The system should function normally with little to no error expected. In the case of a system error, one should troubleshoot. 
+Packaging and installation issues 
+The system is available on the administrator's hard drive together with a user manual on issues concerning installation 
+
+6. CHAPTER SIX
+Implementation strategies
+6.0 Executive Summary
+The implementation of an online voting system in educational institutions can significantly streamline election processes, improve accessibility, enhance transparency, and increase voter participation. This document outlines the strategies for successful implementation, focusing on technical, organizational, and operational aspects to ensure a secure, user-friendly, and efficient system.
+6.1 Project Initiation:
+	•	Define the project scope, objectives and stakeholders.
+	•	Establish a project team with relevant expertise including software developers, system architect, testers and domain experts in aviation.
+6.2 Requirement Gathering and Analysis:
+This stage involves identifying, documenting, and analyzing the needs of stakeholders to ensure the system meets its objectives effectively.
+6.3 System Design:
+This focuses on creating the architecture and workflows for the online voting system.
+It involves:
+	•	Defining system components (e.g., front-end, back-end, and database).
+	•	Designing a user-friendly interface.
+	•	Mapping processes like voter authentication and ballot submission.
+	•	Selecting technologies to ensure scalability, security, and integration with existing systems.
+6.4 Development:
+The development phase builds the system based on the design. It includes creating the user interface, developing back-end logic, and implementing secure data storage. Adhering to coding standards, utilizing version control systems, and maintaining regular progress checks ensure a smooth and efficient build process.
+It also involves adopting an iterative development approach such as Agile to continuously deliver working software.
+
+
+
+
+6.5 Testing:
+Testing ensures the system is functional, secure, and performs under expected conditions. It includes;
+	•	Developing comprehensive test cases covering functional, integration, performance, and security testing.
+	•	Conducting unit tests for individual components and integration tests for the entire system.
+6.6 Deployment:
+This involves rolling out the system for use. A pilot launch tests the system on a smaller scale to identify any issues before institution-wide implementation.
+Full deployment follows, with support teams on standby to address problems. A rollback plan is prepared in case of critical failures.
+6.7 Training and Documentation:
+Training equips users and administrators with the knowledge to operate the system effectively. Documentation, such as user guides, FAQs, and troubleshooting manuals, supports self-service and reduces dependency on support teams. Training sessions are tailored for different user roles.
+6.8 Maintenance and Support:
+This includes;
+	•	Establishing a support mechanism for addressing user queries, issues, and feature requests.
+	•	Planning regular maintenance activities including software updates, security patches, and bug fixes.
+	•	Monitoring system performance and user feedback to identify areas for improvement.
+
+6.9 Security Considerations:
+	•	Implement robust authentication and authorization mechanisms to ensure data security and user privacy.
+	•	Encrypt sensitive data during transmission and storage.
+	•	Regularly conduct security audits and vulnerability assessments to identify and mitigate potential risks.
+
+
+
+6.1.1 Compliance and regulations:
+The system must comply with institutional policies and data protection laws such as GDPR or HIPAA. 
+This includes safeguarding personal data, ensuring transparency in election processes, and adhering to local election-related regulations.
+6.1.2 Continuous Improvement:
+Feedback from stakeholders and performance metrics guide ongoing enhancements. Regular updates, feature additions, and user feedback integration ensure the system remains effective, secure, and aligned with institutional needs over time.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+	•	CHAPTER SEVEN
+Test Plan
+7.0 Introduction 
+This test plan outlines the approach, scope, objectives, resources, and schedule for testing the Online Voting System.
+The purpose of testing is to ensure the system’s functionality, performance, security, and usability meet the specified requirements and quality standards.
+This test plan serves as a structured approach to validate and verify the functionality, performance, and other critical aspects. The scope of testing encompasses all modules, features, and interfaces of the online voting system both functional and non-functional aspects will be thoroughly tested to ensure comprehensive coverage.
+
+7.1 Testing Objectives
+	•	To validate the functionality of the online voting system.
+	•	To assess the performance of the system under various load conditions to ensure scalability and responsiveness 
+	•	To evaluate the security of the system to identify and mitigate potential vulnerabilities and risks
+	•	Measure the usability of the system to ensure it meets the needs of end-users and stake holders.
+
+
+7.2 Test scope 
+The test scope includes all modules, features, and interfaces of the online voting system.
+Testing will cover both functional and non-functional requirements, including user interactions, system integrations, and performance benchmarks. 
+Out-of-scope items include third-party integrations not directly related to the online voting system and hardware-specific testing.
+
+7.3 Test Scenarios 
+Test scenarios are derived from user stories, requirements, and use cases.
+Scenarios cover various aspects of the system, such as:
+	•	User Login and Authentication Verify that only authorized students, staff, and faculty members can log in using their credentials and multi-factor authentication (e.g., OTP or email verification).
+	•	Eligibility Verification Verify that only eligible users (e.g., enrolled students or faculty) are allowed to register for specific elections.
+	•	Vote Casting Ensure that voters can cast their vote successfully and that the system records the vote securely.
+	•	Candidate Management Verify that administrators can add, edit, or remove candidates for elections.
+	•	Response Time Verify that the system responds quickly to user actions, such as logging in, accessing ballots, and casting votes, even under heavy load.
+	•	Data Encryption Ensure that all data, including login credentials and vote details, is encrypted during transmission and storage.
+	•	Multi-Device Compatibility Verify that the system works seamlessly across different devices (desktop, mobile, tablet) and browsers.
+	•	Verifiable Results
+Ensure that election results are verifiable and traceable without compromising voter anonymity.
+
+
+7.4 Test Cases 
+Test cases are documented for each identified scenario, detailing inputs, expected outputs, preconditions, and post conditions. 
+Positive test cases validate expected system behavior under normal conditions. Negative test cases simulate error conditions, boundary cases, and edge cases to validate error handling and resilience.
+
+
+7.5 Test Environment
+A dedicated test environment is set up to closely resemble the production environment. 
+Hardware, software, networks, and databases are configured to support testing activities.
+Test environment stability, scalability, and isolation from production systems are ensured.
+
+7.6 Resources
+Skilled personnel with domain expertise are assigned to testing activities, including testers,      developers, and stakeholders.
+Test management tools, automation frameworks, and simulation tools are provided to support testing efforts.
+Roles and responsibilities are defined for team members involved in testing activities. 
+
+
+7.7 Test Execution 
+Test cases are executed according to the defined test plan. Test results, including defects and issues encountered during testing, are recorded and tracked. Test execution progress is monitored regularly, and deviations from the test plan are addressed promptly.
+
+7.8 Performance Testing
+ Performance testing is conducted to evaluate the system's scalability, responsiveness, and resource utilization.
+ Load testing, stress testing, and endurance testing are performed to identify performance bottlenecks and limitations.
+
+7.9 Security Testing 
+Security testing is conducted to identify and mitigate potential vulnerabilities and risks. Techniques such as penetration testing, vulnerability scanning, and security code reviews are employed to assess the system's security posture. 
+
+
+7.1.1 Testing Usability
+Usability testing is conducted to evaluate the system's ease of use, learnability, and user satisfaction. User feedback is collected through surveys, interviews, and usability testing sessions to identify usability issues and improvement opportunities.
+
+
+7.1.2 Regression Testing 
+Regression testing is performed to ensure that new changes or updates do not introduce any regressions or unintended side effects. Test cases are reused, and regression tests are prioritized based on the impact of changes. 
+
+
+7.1.3 Test Reporting 
+Test results, including test logs, defect reports, and test summaries, are documented and communicated to stakeholders. Findings, observations, and recommendations are provided to stakeholders and project managers for review and validation. 
+
+7.1.4 Test Closure 
+Testing activities are concluded once all test objectives have been met, and the system is deemed ready for deployment. Sign-off is obtained from stakeholders, indicating their satisfaction with the quality and reliability of the system.
+
+
+7.1.5 Maintenance Planning 
+A plan for ongoing maintenance and support is developed, including future testing efforts, bug fixes, and system updates. Procedures for handling change requests, managing defects, and monitoring system performance post-deployment are established. 
+
+7.1.6 Conclusion 
+The test plan outlines the approach, scope, objectives, resources, and schedule for testing the online voting system.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+	•	CHAPTER EIGHT
+8.0 User Manual
+8.1 General information
+Elections are believed to be the key pillars of democracy and voting is one of the electoral process of ensuring the sustenance of democracy in any civil society. In educational institutions such as universities, university student leaders are the core link between the university students and the university administration. These leaders are therefore elected democratically to represent the interests of the students as per the university act.
+Online voting systems in educational institutions have been introduced in order to provide a secure, more reliable, and more efficient way of voting and holding elections in the institutions. It is a platform for simplifying the electoral process for all institutions that employ voting in decision making.
+An online voting system contains a database which is maintained and in which names of students with some basic information are stored. The individual votes are submitted in the database which can be queried to find out which of the aspirants for a given post has the highest number of votes.The implementation of online voting systems in universities and other educational institutions have been driven by;
+a. Increased participation from students and the school faculty.
+b. The need for security and transparency throughout the entire voting period
+c. Cost efficiency and time
+Traditional voting methods such as use of paper ballots are time-consuming and resource-intensive and may limit participation. An online voting system can address these challenges by creating a user-friendly environment that is secure, more accessible and more reliable for voting.The main advantage of these traditional voting methods is that ballot papers are easily human auditable.
+
+8.2 Intended users
+Voters
+They register and verify their eligibility to vote, cast votes in the election and receive
+confirmation that their vote has been submitted successfully.
+Administrators
+They manage the voter database, monitor the voting process to ensure it runs smoothly, resolve issues related to voter access or system functionality and publish results after the election concludes.
+
+
+
+Candidates
+They represent parties, individuals, or options voters can select and they may indirectly interact
+with the system to verify their inclusion in the candidate list.
+Auditors
+They:
+ Conduct system audits to ensure compliance with regulations and standards.
+ Conduct system audits to ensure compliance with regulations and standards.
+ Verify that votes are counted accurately and securely.
+ Assess system security and detect potential fraud or irregularities.
+
+8.3 System Summary
+The Online voting system is a system designed to assist students and school administration in conducting and carrying out an effective electoral process. It integrates various hardware components with specialized software to provide accurate and efficient voting capabilities.
+8.3.1 Use of system software and hardware requirements
+Hardware Requirements
+	•	User Devices:
+	•	Devices like computers, smartphones, or tablets allow voters to access the system.
+	•	Central Server:
+	•	Hosts the voting platform, manages user authentication, and processes vote submissions.
+	•	Networking Equipment:
+	•	Ensures reliable communication between users and the server via the internet.
+Software Requirements
+	•	Web/Mobile Application:
+	•	Provides a platform for voters to interact with the system and cast their votes.
+
+	•	Database Management System (DBMS):         
+	•	Stores election data, such as voter records and ballots.
+	•	Encryption and Security Tools:
+	•	Protect voter privacy and secure data transmission.
+	•	Operating System:
+	•	Supports the server and client applications.
+
+8.3.2 System Behaviour in Case of Contingencies:
+	•	Power Outages:
+	•	System data is secured using backups and uninterruptible power supply (UPS) for servers.
+	•	Network Failures:
+	•	Automatic reconnection attempts and offline vote queuing for later submission.
+	•	Hardware Failures:
+	•	Redundant servers and backup devices ensure continued operation.
+	•	Security Breaches:
+	•	Immediate alerts, lockdown of the system, and fail-safe mechanisms to secure data.
+	•	Software Errors:
+	•	Error detection tools and automated recovery protocols minimize disruptions.
+
+8.4 Getting Started
+Voters:
+	•	Login:
+	•	Enter login credentials provided by the election body.
+	•	Verify Identity:
+	•	Complete additional security checks (e.g., OTP or biometrics).
+	•	Select Election:
+	•	Choose the ongoing election from a list.
+	•	Cast Vote:
+	•	Review candidates and cast a vote by clicking on the preferred option.
+Administrators:
+	•	Manage voter registration.
+	•	Configure election settings such as candidates.
+	•	Monitor voting activity and generate reports post-election.
+
+8.5 System Reporting 
+The reporting module of an online voting system provides comprehensive insights into election processes. These reports ensure accountability and facilitate post-election analysis.
+This includes:
+	•	Voter Turnout Reports:
+	•	Displays the number of registered voters who participated.
+	•	Election Results:
+	•	Summarizes votes per candidate or option, ensuring accuracy and transparency.
+	•	Audit Logs:
+	•	Tracks system activities, including login attempts, vote submissions, and administrative actions.
+	•	Error Reports:
+	•	Details system malfunctions or failed processes for troubleshooting.
+	•	Security Reports:
+	•	Highlights suspicious activities or potential threats detected during the election.
+	•	Customizable Analytics:
+	•	Offers charts and summaries for deeper insights into voter behavior and election trends.
+These reports ensure accountability and facilitate post-election analysis.
+

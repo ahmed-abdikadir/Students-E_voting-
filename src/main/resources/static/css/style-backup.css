@@ -1,0 +1,1073 @@
+/* ============================================================
+   E-VOTING SYSTEM — Design System
+   Color Palette: Professional Blue + Slate
+   Font: Inter (Google Fonts)
+   ============================================================ */
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+
+/* ---- CSS Variables ---- */
+:root {
+  --blue-900: #1e3a5f;
+  --blue-800: #1e4080;
+  --blue-700: #1d4ed8;
+  --blue-600: #2563eb;
+  --blue-500: #3b82f6;
+  --blue-100: #dbeafe;
+  --blue-50: #eff6ff;
+
+  --teal-600: #0d9488;
+  --teal-700: #0f766e;
+
+  --red-600: #dc2626;
+  --red-700: #b91c1c;
+  --red-100: #fee2e2;
+  --red-50: #fef2f2;
+
+  --amber-400: #fbbf24;
+  --amber-100: #fef3c7;
+  --amber-800: #92400e;
+
+  --green-600: #16a34a;
+  --green-100: #dcfce7;
+
+  --slate-900: #0f172a;
+  --slate-800: #1e293b;
+  --slate-700: #334155;
+  --slate-600: #475569;
+  --slate-500: #64748b;
+  --slate-400: #94a3b8;
+  --slate-300: #cbd5e1;
+  --slate-200: #e2e8f0;
+  --slate-100: #f1f5f9;
+  --slate-50: #f8fafc;
+  --white: #ffffff;
+
+  --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.05);
+  --shadow: 0 1px 3px rgba(0, 0, 0, 0.08), 0 1px 2px rgba(0, 0, 0, 0.06);
+  --shadow-md: 0 4px 6px rgba(0, 0, 0, 0.06), 0 2px 4px rgba(0, 0, 0, 0.05);
+  --shadow-lg: 0 10px 15px rgba(0, 0, 0, 0.07), 0 4px 6px rgba(0, 0, 0, 0.05);
+
+  --radius-sm: 6px;
+  --radius: 10px;
+  --radius-lg: 14px;
+  --radius-xl: 20px;
+
+  /* Semantic Theme Variables (Light Mode Default) */
+  --bg-body: var(--slate-100);
+  --bg-card: var(--white);
+  --bg-sidebar: var(--slate-800);
+  --bg-input: var(--white);
+  --text-main: var(--slate-800);
+  --text-muted: var(--slate-500);
+  --text-heading: var(--slate-900);
+  --border-color: var(--slate-200);
+  --border-input: var(--slate-300);
+  --hover-bg: var(--slate-50);
+}
+
+.dark-mode {
+  --bg-body: #0f172a; /* slate-900 */
+  --bg-card: #1e293b; /* slate-800 */
+  --bg-sidebar: #020617; /* slate-950 */
+  --bg-input: #1e293b;
+  --text-main: #f1f5f9; /* slate-100 */
+  --text-muted: #94a3b8; /* slate-400 */
+  --text-heading: #ffffff;
+  --border-color: #334155; /* slate-700 */
+  --border-input: #475569; /* slate-600 */
+  --hover-bg: #334155;
+  --shadow-md: 0 4px 6px rgba(0, 0, 0, 0.3), 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+/* ---- Reset & Base ---- */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  font-size: 16px;
+}
+
+body {
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  background-color: var(--bg-body);
+  color: var(--text-main);
+  line-height: 1.7;
+  -webkit-font-smoothing: antialiased;
+  transition: background-color 0.2s, color 0.2s;
+}
+
+a {
+  color: var(--blue-600);
+  text-decoration: none;
+  transition: color 0.15s;
+}
+
+a:hover {
+  color: var(--blue-700);
+}
+
+/* ============================================================
+   PAGE LAYOUTS
+   ============================================================ */
+
+/* --- Centered Card Layout (Student pages) --- */
+.page-center {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 24px 16px;
+  background-color: var(--bg-body);
+}
+
+.page-header-brand {
+  text-align: center;
+  margin-bottom: 24px;
+}
+
+.page-header-brand .brand-title {
+  font-size: 1rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--blue-700);
+}
+
+.card {
+  background: var(--bg-card);
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--border-color);
+  box-shadow: var(--shadow-md);
+  padding: 40px 48px;
+  width: 100%;
+}
+
+.card-sm {
+  max-width: 480px;
+}
+
+.card-md {
+  max-width: 580px;
+}
+
+.card-lg {
+  max-width: 760px;
+}
+
+.card-xl {
+  max-width: 960px;
+}
+
+.card-title {
+  font-size: 1.35rem;
+  font-weight: 700;
+  color: var(--text-heading);
+  margin-bottom: 4px;
+}
+
+.card-subtitle {
+  font-size: 0.9rem;
+  color: var(--text-muted);
+  margin-bottom: 24px;
+}
+
+.card-divider {
+  border: none;
+  border-top: 1px solid var(--border-color);
+  margin: 20px 0;
+}
+
+/* --- Admin Sidebar Layout --- */
+.admin-layout {
+  display: flex;
+  min-height: 100vh;
+}
+
+.sidebar {
+  width: 260px;
+  flex-shrink: 0;
+  background-color: var(--bg-sidebar);
+  display: flex;
+  flex-direction: column;
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100vh;
+  z-index: 100;
+  border-right: 1px solid var(--border-color);
+}
+
+.sidebar-brand {
+  padding: 24px 28px 20px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.sidebar-brand-name {
+  font-size: 0.8rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--slate-400);
+}
+
+.sidebar-brand-title {
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--white);
+  margin-top: 2px;
+}
+
+.sidebar-nav {
+  flex: 1;
+  padding: 16px 0;
+  list-style: none;
+}
+
+.sidebar-nav li a {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 12px 28px;
+  font-size: 0.95rem;
+  font-weight: 500;
+  color: var(--slate-400);
+  transition: background 0.15s, color 0.15s;
+  border-left: 3px solid transparent;
+}
+
+.sidebar-nav li a:hover {
+  background-color: rgba(255, 255, 255, 0.06);
+  color: var(--white);
+}
+
+.sidebar-nav li a.active {
+  background-color: rgba(59, 130, 246, 0.15);
+  color: var(--blue-500);
+  border-left-color: var(--blue-500);
+}
+
+.sidebar-nav li a svg,
+.sidebar-nav li a .nav-icon {
+  width: 18px;
+  height: 18px;
+  opacity: 0.8;
+}
+
+.sidebar-footer {
+  padding: 20px 28px;
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.sidebar-footer a {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.875rem;
+  color: var(--slate-400);
+  font-weight: 500;
+}
+
+.sidebar-footer a:hover {
+  color: var(--red-600);
+}
+
+.admin-main {
+  margin-left: 260px;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+.admin-topbar {
+  background: var(--white);
+  border-bottom: 1px solid var(--slate-200);
+  padding: 0 32px;
+  height: 60px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  position: sticky;
+  top: 0;
+  z-index: 50;
+}
+
+.admin-topbar-title {
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--slate-700);
+}
+
+.admin-topbar-user {
+  font-size: 0.875rem;
+  color: var(--slate-500);
+}
+
+.admin-content {
+  padding: 40px;
+  flex: 1;
+}
+
+.page-heading {
+  margin-bottom: 24px;
+}
+
+.page-heading h1 {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--text-heading);
+}
+
+.page-heading p {
+  font-size: 0.9rem;
+  color: var(--text-muted);
+  margin-top: 4px;
+}
+
+/* --- Student Top Navbar --- */
+.student-navbar {
+  background: var(--bg-card);
+  border-bottom: 1px solid var(--border-color);
+  padding: 0 32px;
+  height: 60px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  position: sticky;
+  top: 0;
+  z-index: 50;
+}
+
+.navbar-brand {
+  font-size: 0.85rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--blue-700);
+}
+
+.navbar-user {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  font-size: 0.875rem;
+  color: var(--text-muted);
+}
+
+.student-page-body {
+  background-color: var(--bg-body);
+  min-height: calc(100vh - 60px);
+  padding: 48px 24px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* ============================================================
+   COMPONENTS
+   ============================================================ */
+
+/* --- Buttons --- */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 10px 22px;
+  font-size: 0.875rem;
+  font-weight: 600;
+  font-family: inherit;
+  border: 1px solid transparent;
+  border-radius: var(--radius);
+  cursor: pointer;
+  transition: background 0.15s, box-shadow 0.15s, transform 0.1s;
+  text-decoration: none;
+  white-space: nowrap;
+}
+
+.btn:hover {
+  transform: translateY(-1px);
+}
+
+.btn:active {
+  transform: none;
+}
+
+.btn-primary {
+  background-color: var(--blue-600);
+  color: var(--white);
+  border-color: var(--blue-600);
+}
+
+.btn-primary:hover {
+  background-color: var(--blue-700);
+  border-color: var(--blue-700);
+  color: var(--white);
+}
+
+.btn-success {
+  background-color: var(--teal-700);
+  color: var(--white);
+  border-color: var(--teal-700);
+}
+
+.btn-success:hover {
+  background-color: var(--teal-600);
+  border-color: var(--teal-600);
+  color: var(--white);
+}
+
+.btn-danger {
+  background-color: var(--red-600);
+  color: var(--white);
+  border-color: var(--red-600);
+}
+
+.btn-danger:hover {
+  background-color: var(--red-700);
+  border-color: var(--red-700);
+  color: var(--white);
+}
+
+.btn-secondary {
+  background-color: var(--bg-input);
+  color: var(--text-main);
+  border-color: var(--border-input);
+}
+
+.btn-secondary:hover {
+  background-color: var(--hover-bg);
+  color: var(--text-heading);
+}
+
+.btn-ghost {
+  background-color: transparent;
+  color: var(--text-muted);
+  border-color: transparent;
+}
+
+.btn-ghost:hover {
+  background-color: var(--hover-bg);
+  color: var(--text-main);
+}
+
+.btn-sm {
+  padding: 6px 12px;
+  font-size: 0.8rem;
+}
+
+.btn-lg {
+  padding: 12px 28px;
+  font-size: 1rem;
+}
+
+.btn-full {
+  width: 100%;
+}
+
+/* --- OLD .button class (used by some templates, keep for compat) --- */
+.button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 9px 18px;
+  font-size: 0.875rem;
+  font-weight: 600;
+  font-family: inherit;
+  background-color: var(--blue-600);
+  color: var(--white);
+  border: 1px solid transparent;
+  border-radius: var(--radius);
+  cursor: pointer;
+  text-decoration: none;
+  transition: background 0.15s, transform 0.1s;
+}
+
+.button:hover {
+  background-color: var(--blue-700);
+  color: var(--white);
+  transform: translateY(-1px);
+}
+
+.button:active {
+  transform: none;
+}
+
+/* --- Forms --- */
+.form-group {
+  margin-bottom: 24px;
+}
+
+.form-label {
+  display: block;
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: var(--slate-700);
+  margin-bottom: 6px;
+}
+
+.form-control {
+  width: 100%;
+  padding: 9px 12px;
+  font-size: 0.9rem;
+  font-family: inherit;
+  color: var(--text-main);
+  background-color: var(--bg-input);
+  border: 1px solid var(--border-input);
+  border-radius: var(--radius);
+  outline: none;
+  transition: border-color 0.15s, box-shadow 0.15s;
+}
+
+.form-control:focus {
+  border-color: var(--blue-500);
+  box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.15);
+}
+
+.form-control::placeholder {
+  color: var(--slate-400);
+}
+
+select.form-control {
+  cursor: pointer;
+}
+
+/* --- Tables --- */
+.data-table-wrapper {
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  background: var(--bg-card);
+}
+
+.data-table-header {
+  padding: 16px 20px;
+  border-bottom: 1px solid var(--border-color);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  background: var(--bg-card);
+}
+
+.data-table-header h2 {
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: var(--text-main);
+}
+
+.table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.875rem;
+}
+
+.table thead tr {
+  background-color: var(--hover-bg);
+  border-bottom: 1px solid var(--border-color);
+}
+
+.table thead th {
+  padding: 11px 20px;
+  text-align: left;
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+}
+
+.table tbody tr {
+  border-bottom: 1px solid var(--border-color);
+  transition: background 0.12s;
+}
+
+.table tbody tr:last-child {
+  border-bottom: none;
+}
+
+.table tbody tr:hover {
+  background-color: var(--hover-bg);
+}
+
+.table tbody td {
+  padding: 13px 20px;
+  color: var(--slate-700);
+  vertical-align: middle;
+}
+
+/* --- Status Badges --- */
+.badge {
+  display: inline-flex;
+  align-items: center;
+  padding: 3px 9px;
+  border-radius: 999px;
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.03em;
+  text-transform: capitalize;
+}
+
+.badge-blue {
+  background-color: var(--blue-100);
+  color: var(--blue-800);
+}
+
+.badge-green {
+  background-color: var(--green-100);
+  color: var(--green-600);
+}
+
+.badge-red {
+  background-color: var(--red-100);
+  color: var(--red-700);
+}
+
+.badge-gray {
+  background-color: var(--border-color);
+  color: var(--text-muted);
+}
+
+/* status aliases for existing Thymeleaf classes */
+.status-created {
+  background-color: var(--blue-100);
+  color: var(--blue-800);
+}
+
+.status-open {
+  background-color: var(--green-100);
+  color: var(--green-600);
+}
+
+.status-closed {
+  background-color: var(--red-100);
+  color: var(--red-700);
+}
+
+.status-unknown {
+  background-color: var(--border-color);
+  color: var(--text-muted);
+}
+
+/* --- Alerts --- */
+.alert {
+  padding: 12px 16px;
+  border-radius: var(--radius);
+  font-size: 0.875rem;
+  font-weight: 500;
+  margin-bottom: 16px;
+  border: 1px solid transparent;
+}
+
+.alert-success {
+  background-color: var(--green-100);
+  color: #166534;
+  border-color: #bbf7d0;
+}
+
+.alert-danger {
+  background-color: var(--red-100);
+  color: var(--red-700);
+  border-color: #fecaca;
+}
+
+.alert-warning {
+  background-color: var(--amber-100);
+  color: var(--amber-800);
+  border-color: #fde68a;
+}
+
+.alert-info {
+  background-color: var(--blue-50);
+  color: var(--blue-800);
+  border-color: var(--blue-100);
+}
+
+/* --- Info / Warning Blocks --- */
+.info-block {
+  padding: 14px 16px;
+  border-radius: var(--radius);
+  font-size: 0.875rem;
+  line-height: 1.5;
+  margin-bottom: 20px;
+  border-left: 3px solid;
+}
+
+.info-block-blue {
+  background-color: var(--blue-50);
+  border-color: var(--blue-500);
+  color: var(--blue-800);
+}
+
+.info-block-amber {
+  background-color: var(--amber-100);
+  border-color: var(--amber-400);
+  color: var(--amber-800);
+}
+
+.info-block-red {
+  background-color: var(--red-50);
+  border-color: var(--red-600);
+  color: var(--red-700);
+}
+
+.info-block-green {
+  background-color: var(--green-100);
+  border-color: var(--green-600);
+  color: #166534;
+}
+
+/* --- Admin Cards (dashboard overview tiles) --- */
+.admin-card-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+  gap: 32px;
+  margin-bottom: 40px;
+}
+
+.admin-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-lg);
+  padding: 24px;
+  transition: box-shadow 0.2s, translate 0.2s;
+}
+
+.admin-card:hover {
+  box-shadow: var(--shadow-lg);
+  translate: 0 -2px;
+}
+
+.admin-card h2 {
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: var(--text-heading);
+  margin-bottom: 6px;
+}
+
+.admin-card p {
+  font-size: 0.85rem;
+  color: var(--text-muted);
+  margin-bottom: 16px;
+}
+
+.admin-card-icon {
+  width: 40px;
+  height: 40px;
+  background-color: var(--blue-50);
+  border-radius: var(--radius);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 14px;
+  color: var(--blue-600);
+}
+
+/* --- Election List (Student Dashboard) --- */
+.election-list {
+  list-style: none;
+  width: 100%;
+}
+
+.election-item {
+  background: var(--bg-card);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-lg);
+  padding: 20px 24px;
+  margin-bottom: 14px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  transition: box-shadow 0.15s;
+}
+
+.election-item:hover {
+  box-shadow: var(--shadow-md);
+}
+
+.election-item-name {
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: var(--text-heading);
+}
+
+/* --- Candidate List (Ballot) --- */
+.candidate-list {
+  list-style: none;
+  width: 100%;
+}
+
+.candidate-item {
+  background: var(--white);
+  border: 1px solid var(--slate-200);
+  border-radius: var(--radius);
+  padding: 18px 24px;
+  margin-bottom: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  transition: border-color 0.15s, box-shadow 0.15s;
+}
+
+.candidate-item:hover {
+  border-color: var(--blue-300, #93c5fd);
+  box-shadow: var(--shadow);
+}
+
+.candidate-name {
+  font-size: 0.95rem;
+  font-weight: 500;
+  color: var(--slate-800);
+}
+
+/* --- Vote bars (results) --- */
+.results-bar-container {
+  width: 100%;
+  background-color: var(--slate-100);
+  border-radius: var(--radius-sm);
+  height: 26px;
+  overflow: hidden;
+}
+
+.results-bar-fill {
+  height: 100%;
+  background: linear-gradient(90deg, var(--blue-600), var(--blue-500));
+  border-radius: var(--radius-sm);
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  padding-right: 8px;
+  color: white;
+  font-size: 0.78rem;
+  font-weight: 700;
+  transition: width 0.7s ease;
+  min-width: 4px;
+}
+
+/* vote-bar aliases used by admin-dashboard JS */
+.bar-container {
+  background-color: var(--slate-100);
+  border-radius: var(--radius-sm);
+  height: 24px;
+}
+
+.bar {
+  height: 100%;
+  background: linear-gradient(90deg, var(--blue-600), var(--blue-500));
+  border-radius: var(--radius-sm);
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  color: white;
+  font-weight: 700;
+  font-size: 0.78rem;
+  transition: width 0.7s ease;
+}
+
+.bar-label {
+  padding-right: 8px;
+}
+
+/* vote-bar-fill used by admin live results */
+.vote-bar {
+  background-color: var(--slate-100);
+  border-radius: var(--radius-sm);
+  min-width: 150px;
+  height: 22px;
+  overflow: hidden;
+  position: relative;
+}
+
+.vote-bar-fill {
+  height: 100%;
+  background: linear-gradient(90deg, var(--blue-600), var(--blue-500));
+  border-radius: var(--radius-sm);
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  padding-right: 6px;
+  color: white;
+  font-size: 0.78rem;
+  font-weight: 700;
+  transition: width 0.5s ease;
+}
+
+/* --- Confirmation / Success / Info card states --- */
+.state-icon {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 16px;
+  font-size: 1.6rem;
+}
+
+.state-icon-success {
+  background-color: var(--green-100);
+  color: var(--green-600);
+}
+
+.state-icon-warning {
+  background-color: var(--amber-100);
+  color: var(--amber-800);
+}
+
+.state-icon-info {
+  background-color: var(--blue-50);
+  color: var(--blue-600);
+}
+
+.state-icon-danger {
+  background-color: var(--red-100);
+  color: var(--red-600);
+}
+
+/* --- Section headers inside admin content --- */
+.section-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 20px;
+}
+
+.section-header h2 {
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: var(--slate-800);
+}
+
+/* --- Live results section --- */
+.live-results-container {
+  background: var(--white);
+  border: 1px solid var(--slate-200);
+  border-radius: var(--radius-lg);
+  padding: 24px;
+  margin-top: 28px;
+}
+
+.live-results-container h2 {
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--slate-800);
+  margin-bottom: 16px;
+}
+
+.election-results {
+  border: 1px solid var(--slate-200);
+  border-radius: var(--radius);
+  padding: 20px;
+  margin-bottom: 16px;
+  background: var(--slate-50);
+}
+
+.election-results h3 {
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: var(--slate-800);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 14px;
+}
+
+.election-status {
+  font-size: 0.72rem;
+  padding: 3px 8px;
+  border-radius: 999px;
+  font-weight: 600;
+}
+
+.candidate-vote-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 0;
+  border-bottom: 1px solid var(--slate-200);
+}
+
+.candidate-vote-item:last-child {
+  border-bottom: none;
+}
+
+.vote-count {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.vote-number {
+  font-weight: 700;
+  color: var(--blue-700);
+  font-size: 1rem;
+  min-width: 36px;
+  text-align: right;
+}
+
+.total-votes {
+  margin-top: 14px;
+  padding-top: 14px;
+  border-top: 2px solid var(--slate-200);
+  text-align: right;
+  font-weight: 600;
+  font-size: 0.875rem;
+  color: var(--slate-700);
+}
+
+.no-votes {
+  text-align: center;
+  color: var(--slate-400);
+  font-size: 0.875rem;
+  padding: 12px;
+  font-style: italic;
+}
+
+/* ============================================================
+   RESPONSIVE
+   ============================================================ */
+@media (max-width: 768px) {
+  .sidebar {
+    display: none;
+  }
+
+  .admin-main {
+    margin-left: 0;
+  }
+
+  .admin-content {
+    padding: 32px 20px;
+  }
+
+  .card {
+    padding: 32px 24px;
+  }
+
+  .student-navbar {
+    padding: 0 20px;
+  }
+
+  .student-page-body {
+    padding: 32px 16px;
+  }
+
+
+  .admin-card-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+@media (max-width: 480px) {
+  .admin-card-grid {
+    grid-template-columns: 1fr;
+  }
+}

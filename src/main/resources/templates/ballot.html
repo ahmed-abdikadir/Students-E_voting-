@@ -1,61 +1,271 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ballot — E-Voting</title>
+    <title>Official Ballot — E-Voting</title>
     <link rel="stylesheet" th:href="@{/css/style.css}">
+    <style>
+        .ballot-container {
+            max-width: 720px;
+            margin: 0 auto;
+            padding: var(--space-2xl) var(--space-lg);
+        }
+
+        .ballot-header {
+            text-align: center;
+            margin-bottom: var(--space-2xl);
+        }
+
+        .ballot-title {
+            font-size: var(--text-display);
+            font-weight: var(--weight-display);
+            color: var(--color-text-heading);
+            margin-bottom: var(--space-sm);
+        }
+
+        .ballot-subtitle {
+            font-size: 15px;
+            color: var(--color-text-muted);
+            line-height: 1.6;
+        }
+
+        .candidate-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: var(--space-md);
+            margin-bottom: var(--space-2xl);
+        }
+
+        .candidate-card {
+            background: var(--color-surface);
+            border: 2px solid var(--color-border);
+            border-radius: var(--r-xl);
+            padding: var(--space-xl);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            transition: all 200ms ease;
+            cursor: pointer;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .candidate-card:hover {
+            border-color: rgba(14, 116, 144, 0.4);
+            box-shadow: 0 10px 20px -5px rgba(0, 0, 0, 0.05);
+            transform: translateY(-2px);
+        }
+
+        .candidate-card.selected {
+            border-color: var(--color-accent);
+            background: var(--color-sky-50);
+            box-shadow: 0 0 0 4px rgba(14, 116, 144, 0.1);
+        }
+
+        .candidate-card.selected::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            border: 2px solid var(--color-accent);
+            border-radius: var(--r-xl);
+            pointer-events: none;
+        }
+
+        .cand-info {
+            display: flex;
+            align-items: center;
+            gap: var(--space-lg);
+        }
+
+        .cand-avatar {
+            width: 56px; height: 56px;
+            border-radius: 50%;
+            background-color: var(--color-primary);
+            color: white;
+            font-size: 20px; font-weight: 600;
+            display: flex; align-items: center; justify-content: center;
+            box-shadow: 0 4px 6px -1px rgba(0,0,0,0.1);
+        }
+
+        .cand-name {
+            font-size: 18px;
+            font-weight: 600;
+            color: var(--color-text-heading);
+            margin: 0 0 4px 0;
+        }
+
+        .cand-meta {
+            font-size: 13px;
+            color: var(--color-text-muted);
+        }
+
+        .vote-radio {
+            width: 24px; height: 24px;
+            border-radius: 50%;
+            border: 2px solid var(--color-border);
+            display: flex; align-items: center; justify-content: center;
+            transition: all 150ms ease;
+            background: var(--color-surface);
+        }
+
+        .candidate-card.selected .vote-radio {
+            border-color: var(--color-accent);
+            background: var(--color-accent);
+        }
+
+        .candidate-card.selected .vote-radio::after {
+            content: '';
+            width: 10px; height: 10px;
+            background: white;
+            border-radius: 50%;
+            box-shadow: 0 1px 2px rgba(0,0,0,0.2);
+        }
+
+        /* Topbar specific for student */
+        .student-topbar {
+            background: var(--color-surface);
+            border-bottom: 1px solid var(--color-border);
+            padding: 0 var(--space-2xl);
+            height: 64px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            position: fixed; top: 0; width: 100%; z-index: 50;
+        }
+
+        .sticky-action-bar {
+            background: var(--color-surface);
+            border-top: 1px solid var(--color-border);
+            padding: var(--space-xl);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-radius: var(--r-xl);
+            box-shadow: 0 10px 25px -5px rgba(0,0,0,0.05);
+            margin-top: 32px;
+        }
+    </style>
 </head>
 
-<body>
+<body class="light">
 
-    <nav class="student-navbar">
-        <span class="navbar-brand">E-Voting System</span>
-        <div class="navbar-user">
-            <a th:href="@{/dashboard}" class="btn btn-sm btn-secondary">← Back to Dashboard</a>
+    <nav class="student-topbar">
+        <div style="display:flex; align-items:center; gap: 12px;">
+            <div style="width: 32px; height: 32px; background:var(--color-primary); border-radius:8px; display:flex; align-items:center; justify-content:center; color:white; font-weight:bold;">E</div>
+            <strong style="font-size:15px; color:var(--color-text-heading);">E-Voting System</strong>
+        </div>
+        <div style="display:flex; align-items:center; gap:12px;">
+            <a th:href="@{/student/dashboard}" class="btn btn-secondary btn-sm">Exit Ballot</a>
+            <button class="icon-btn" id="themeToggle" title="Toggle Dark Mode">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>
+            </button>
         </div>
     </nav>
 
-    <div class="student-page-body">
-        <div style="width:100%; max-width:600px;">
+    <main style="padding-top: 64px;">
+        <div class="ballot-container">
 
-            <div class="page-heading">
-                <h1>Ballot</h1>
-                <p th:if="${election}" th:text="${election.name}" style="font-weight:600; color:var(--blue-700);">
-                    Election Name</p>
+            <div class="ballot-header">
+                <h1 class="ballot-title">Official Ballot</h1>
+                <p class="ballot-subtitle" th:if="${election}">
+                    Casting vote for: <strong th:text="${election.name}" style="color:var(--color-text-heading);">Election Name</strong>
+                </p>
+                <div style="margin-top:var(--space-md); display:inline-flex; background:#EFF6FF; border:1px solid #BFDBFE; color:#1D4ED8; padding:12px 16px; border-radius:var(--r-md); font-size:13px; font-weight:500;">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="margin-right:8px;"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="8" x2="12" y2="12"></line><line x1="12" y1="16" x2="12.01" y2="16"></line></svg>
+                    Review the candidates securely below. You can only select one.
+                </div>
             </div>
 
-            <div class="info-block info-block-blue" style="margin-bottom:20px;">
-                Review the candidates below and click <strong>Vote</strong> to select your candidate. You will be asked
-                to confirm before your vote is submitted.
+            <!-- No candidates form -->
+            <div th:if="${candidates == null || #lists.isEmpty(candidates)}" class="card" style="text-align:center; padding: 64px 20px;">
+                <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" style="color:var(--color-text-muted); margin-bottom:16px;"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M23 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg>
+                <h2 style="font-size:18px; color:var(--color-text-heading); margin:0 0 8px 0;">No Candidates Available</h2>
+                <p style="color:var(--color-text-muted); margin:0 0 24px 0;">The ballot is currently empty for this election.</p>
+                <a th:href="@{/student/dashboard}" class="btn btn-primary">Return to Dashboard</a>
             </div>
 
-            <!-- No candidates -->
-            <div th:if="${candidates == null || #lists.isEmpty(candidates)}" class="card"
-                style="text-align:center; padding:40px 32px;">
-                <p style="color:var(--slate-500);">No candidates available for this election.</p>
-            </div>
+            <!-- Candidate Roster form -->
+            <div th:if="${candidates != null && !#lists.isEmpty(candidates)}">
+                
+                <div class="candidate-grid" id="candidateList">
+                    
+                    <div class="candidate-card" th:each="candidate : ${candidates}" th:onclick="'selectCandidate(' + ${candidate.id} + ', this)'">
+                        <div class="cand-info">
+                            <div class="cand-avatar" th:text="${#strings.substring(candidate.name,0,1)}">C</div>
+                            <div>
+                                <h3 class="cand-name" th:text="${candidate.name}">Candidate Name</h3>
+                                <div class="cand-meta">Official Nominee</div>
+                            </div>
+                        </div>
+                        <div class="vote-radio"></div>
+                    </div>
 
-            <!-- Candidate list -->
-            <ul class="candidate-list" th:if="${candidates != null && !#lists.isEmpty(candidates)}">
-                <li class="candidate-item" th:each="candidate : ${candidates}">
-                    <span class="candidate-name" th:text="${candidate.name}">Candidate Name</span>
-                    <button class="btn btn-primary btn-sm"
-                        th:onclick="'selectCandidate(' + ${candidate.id} + ',' + ${election.id} + ')'">
-                        Vote
+                </div>
+
+                <div class="sticky-action-bar">
+                    <div>
+                        <div style="font-size:13px; color:var(--color-text-muted); margin-bottom:4px;">Your Selection</div>
+                        <div id="selectionText" style="font-weight:600; font-size:16px; color:var(--color-text-heading);">None selected</div>
+                    </div>
+                    
+                    <button id="submitVoteBtn" class="btn btn-primary btn-lg" disabled style="opacity:0.5; pointer-events:none;">
+                        Proceed to Confirm
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="margin-left:8px;"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
                     </button>
-                </li>
-            </ul>
+                </div>
+            </div>
 
         </div>
-    </div>
+    </main>
 
-    <script>
-        function selectCandidate(candidateId, electionId) {
-            window.location.href = `/student/vote/confirm?candidateId=${candidateId}&electionId=${electionId}`;
+    <script th:inline="javascript">
+        // Theme toggle
+        const toggle = document.getElementById('themeToggle');
+        if (localStorage.getItem('theme') === 'dark') document.body.classList.add('dark');
+        if(toggle) {
+            toggle.addEventListener('click', () => {
+                document.body.classList.toggle('dark');
+                localStorage.setItem('theme', document.body.classList.contains('dark') ? 'dark' : 'light');
+            });
         }
-    </script>
-</body>
 
+        // Logic
+        let selectedCandidateId = null;
+        let electionId = /*[[${election != null ? election.id : 'null'}]]*/ null;
+
+        function selectCandidate(candidateId, element) {
+            selectedCandidateId = candidateId;
+            
+            // Highlight selected card
+            document.querySelectorAll('.candidate-card').forEach(card => card.classList.remove('selected'));
+            element.classList.add('selected');
+
+            // Update footer
+            const name = element.querySelector('.cand-name').innerText;
+            document.getElementById('selectionText').innerText = name;
+            document.getElementById('selectionText').style.color = 'var(--color-accent)';
+            
+            // Enable button
+            const btn = document.getElementById('submitVoteBtn');
+            btn.removeAttribute('disabled');
+            btn.style.opacity = '1';
+            btn.style.pointerEvents = 'auto';
+        }
+
+        document.getElementById('submitVoteBtn')?.addEventListener('click', () => {
+            if (selectedCandidateId && electionId) {
+                // Add loading state
+                const btn = document.getElementById('submitVoteBtn');
+                btn.innerHTML = '<span style="display:inline-block; width:16px; height:16px; border:2px solid rgba(255,255,255,0.3); border-top-color:white; border-radius:50%; animation:spin 1s linear infinite;"></span>';
+                btn.style.pointerEvents = 'none';
+                
+                // Redirect
+                window.location.href = `/student/vote/confirm?candidateId=${selectedCandidateId}&electionId=${electionId}`;
+            }
+        });
+    </script>
+    <style>@keyframes spin { 100% { transform: rotate(360deg); } }</style>
+</body>
 </html>

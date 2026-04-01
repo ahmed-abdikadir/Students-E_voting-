@@ -1,0 +1,309 @@
+PROJECT TITLE: ONLINE VOTING SYSTEMS IN EDUCATIONAL INSTITUTIONS
+
+PROPONENT: STACY WAMBUI KIMINDIRI
+EMAIL ADDRESS: 2204134@students.kcau.ac.ke
+REGISTRATION NUMBER: 22/04134
+
+SUPERVISOR: MARTIN MURIKI
+COURSE: BSc.BSD
+UNIT CODE: 2205
+
+SYSTEM REQUIREMENTS SPECIFICATION DOCUMENT
+
+
+
+
+
+
+
+
+
+
+
+
+Declaration
+
+I declare that this project is my original work and has not been presented for the award of a degree in any other university.
+Student:
+Name: Stacy Wambui
+Date: 31/10/2024
+
+				Signature: (Stacy, 31/10/2024)
+
+Supervisor:
+Name: Mr. Martin Muriki
+Date:……………………
+
+				Signature:…………………
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+List of Figures
+
+Figure 1	6
+Figure 2	6
+Figure 3	7
+Figure 4	8
+Figure 5	11
+Figure 6	12
+Figure 7	13
+
+
+	•	INTRODUCTION
+	•	Purpose
+
+The intended purpose of this program is to come up with a system that is user friendly and is able to register eligible voters and allow them to choose their desired aspirant.
+This system requirement specification will provide a clear picture of how the system will work including the newly specified requirements and functions.
+It will also show how the system will function under certain constraints.
+It will also go a long way in helping to identify the requirements for the developers just before the design phase.
+
+	•	Project Proposal
+	•	Online voting systems in educational institutions have been introduced in order to provide a secure, a more reliable and a more efficient way of voting and holding elections in the institutions.
+	•	The implementation of online voting systems in universities and other educational institutions have been driven by;
+	•	Increased participation from students and the school faculty.
+	•	The need for security and transparency throughout the entire voting period
+	•	Cost efficiency and time
+
+This project is aimed to develop a platform that is user friendly, easily accessible and more reliable in terms of voting in Kenyan universities. It is aims to increase the voters turn out, student engagement in the electoral process in their respective universities and enhance the transparency and integrity of a voting process in the educational institution.
+The target audience are all registered students in the university, the university administration and the electoral committee. Primarily the project aims to only address undergraduate student elections.
+A case study of KCA University student organization student council will be used. The study assumes that voter registration can be completed successfully and the students can have login credentials to log in, interact on the forum and cast a vote.
+The proposed system will only work on a web platform. 
+The project is estimated to take a duration of 6 – 12 months from the research stage to the development stage to the testing and evaluation stage. 
+
+
+	•	Overall Description
+	•	Product Perspective
+
+This OVS will bring out a whole new view of the previously existing system. It will be a web based application that is accessible too eligible users within the university. It will integrate with existing school systems and database in order to ensure data consistency and a streamlined workflow.
+
+Here is a detailed product view of the OVS:
+	•	Integration with the school registration system:
+
+The OVS must seamlessly integrate with this system in order to determine who is eligible for voting, this is because in order to log into the system the voter should enter their students email that was registered to the school administration system.
+
+	•	Integration with the survey and feedback systems:
+
+This is to allow for assessment of the voting process and candidates satisfaction through gathering of student feedback post elections.
+
+	•	Product Features
+
+User registration and authentication:
+This is in order to come up with a secure registration process and a multi factor verification and authentication for voters.
+
+Voting process:
+Here is whereby the user can select their desired aspirant, review selections before submission and are able to change votes prior the final submission.
+
+Accessibility:
+The compliance with accessibility standards and the support for multiple languages.
+
+Integration capabilities:
+API for integration with existing election systems and database.
+
+Mobile compatibility:
+To create a responsive design for mobile devices in order to make it easier for many voters to turn out and cast their votes.
+
+User support:
+Helpdesk and support channels for voter assistance.
+	•	System Environment
+
+Figure 1
+Figure 1
+Credentials
+Credentials
+Voters
+Voters
+Online voting
+Online voting
+Voting web service
+Voting web service
+Vote database
+Vote database
+
+Administrator
+Administrator
+Voter
+Voter
+Votes
+Votes
+Votes
+Votes
+
+
+
+
+
+
+
+
+
+	•	Functional Requirement Specification
+	•	Web server services.
+The execution of this process relies on the user’s ability to access web server services.
+	•	Network services.
+The user requires a connection to the internet through a LAN network facility.
+	•	Web browser.
+A web browser will be the first point of contact between the user and the web server hosting the database.
+User use case
+Figure 2
+Figure 2
+Voter
+Web server
+Administrator
+Voter
+Web server
+Administrator
+
+ 2.4.1 Description and Priority
+The user accesses the system through the browser and on the web server, the user can access the interface. 
+2.4.2 Stimulus/Response Sequences
+The stimulus for this use case is to be connected to the LAN.
+	•	The user connects to the database server through the web server.
+	•	The database server stores the user’s credentials.
+	•	The web server allows the user to log into the system.
+
+
+	•	Entity Relation Diagram
+
+
+Figure 3
+
+	•	System work data flow diagram
+Figure 4
+Figure 4
+  Start
+User authentication
+Accessing the voting portal
+Cast vote
+Vote confirmation
+Log out
+End 
+  Start
+User authentication
+Accessing the voting portal
+Cast vote
+Vote confirmation
+Log out
+End 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+No
+No
+
+
+
+
+
+
+
+
+
+
+Yes
+Yes
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+	•	Non Functional Requirements
+2.7.1 External user interfaces requirements
+ User Interfaces
+The User Interface is required since it determines the input and output processes of the system. This will be applied through the use of web browsers such as Google Chrome.
+ Menu
+The Interface will contain a menu designed with tools to increase accessibility and ease of use of the system hence increasing usability.
+Graphical user interface
+With the use of a Graphical user interface, the use of the system will be widened as command line interface will limit it to those bearing technical skills.
+2.7.2 Hardware Interfaces
+LAN
+A Local Area Network will work perfectly in creating a connection between the school workstations. Hence all the network components can communicate effectively.
+TCP/IP Protocol
+This will act as a communication-based protocol between the system and its database server.
+
+2.7.3 Software Interfaces
+Operating System
+The system is designed to work at its optimum using a Windows or Linux Operating System.
+ Database
+Using MYSQL as a database system will deliver optimal performance on the system.
+
+2.7.4 Other Non-functional Requirements
+Performance Requirements
+For optimal performance, the system requires;
+	•	100 GB Disk Space.
+	•	3 GB RAM.
+	•	A web browser.
+
+
+2.7.4 Security Requirements
+Secure Networks.
+The users are advised to use secure networks while accessing the system.
+Password Safety.
+The users of the system should not share their passwords with any other person to ensure their data is not compromised.
+
+
+	•	System Design
+	•	Description of procedures and functions 
+	•	The web app was designed in HTML, CSS and as front end while backend was developed by php and sql.
+	•	The application works on all operating systems 
+
+	•	Implementing and testing
+	•	Introduction 
+The web app was implemented on vs code 
+It will contain the following interfaces 
+1. Register new Account 
+2. Log in 
+3. The main page 
+4.2 Databases used to implement this system include:
+	•	User database 
+      2.  Service provider’s database
+
+
+
+
+
+
+5.0 Layouts
+
+Figure 5
+
+	
+Figure 6
+
+
+
+	
+Figure 7
+
+

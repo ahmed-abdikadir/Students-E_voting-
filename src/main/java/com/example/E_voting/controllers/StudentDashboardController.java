@@ -55,12 +55,30 @@ public class StudentDashboardController {
         model.addAttribute("votedElectionIds", votedElectionIds);
         model.addAttribute("hasVotedAtAll", !votedElectionIds.isEmpty());
         
-        // Candidate Profiles
-        Map<Long, List<CandidateApplication>> candidateProfiles = new HashMap<>();
+        // Candidate Data (Join Candidates with Applications for motives)
+        Map<Long, List<Map<String, Object>>> candidateData = new HashMap<>();
         for (Election e : elections) {
-            candidateProfiles.put(e.getId(), electionService.getApprovedApplicationsByElection(e.getId()));
+            List<com.example.E_voting.model.Candidate> candidates = electionService.getCandidatesByElectionId(e.getId());
+            List<CandidateApplication> approvedApps = electionService.getApprovedApplicationsByElection(e.getId());
+            
+            List<Map<String, Object>> electionCandidates = new ArrayList<>();
+            for (var c : candidates) {
+                Map<String, Object> cMap = new HashMap<>();
+                cMap.put("name", c.getName());
+                
+                // Try to find a matching application to get the motive
+                String motive = approvedApps.stream()
+                    .filter(app -> app.getUser().getUsername().equalsIgnoreCase(c.getName()))
+                    .map(CandidateApplication::getMotive)
+                    .findFirst()
+                    .orElse("No manifesto provided.");
+                
+                cMap.put("motive", motive);
+                electionCandidates.add(cMap);
+            }
+            candidateData.put(e.getId(), electionCandidates);
         }
-        model.addAttribute("candidateProfiles", candidateProfiles);
+        model.addAttribute("candidateProfiles", candidateData);
         
         return "dashboard";
     }
@@ -173,6 +191,42 @@ public class StudentDashboardController {
             err.put("error", e.getMessage());
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(err);
         }
+    }
+
+    @GetMapping("/profile")
+    public String showStudentProfile(HttpSession session, Model model) {
+        if (session.getAttribute("username") == null) return "redirect:/login";
+        return "student-profile";
+    }
+
+    @PostMapping("/profile/password")
+    public String updateStudentPassword(
+            @RequestParam String currentPassword,
+            @RequestParam String newPassword,
+            @RequestParam String confirmNewPassword,
+            HttpSession session,
+            Model model) {
+        
+        String username = (String) session.getAttribute("username");
+        if (username == null) return "redirect:/login";
+
+        if (!newPassword.equals(confirmNewPassword)) {
+            model.addAttribute("errorMessage", "New passwords do not match!");
+            return "student-profile";
+        }
+
+        try {
+            boolean success = userService.changePassword(username, currentPassword, newPassword);
+            if (success) {
+                model.addAttribute("successMessage", "Password updated successfully!");
+            } else {
+                model.addAttribute("errorMessage", "Incorrect current password!");
+            }
+        } catch (Exception e) {
+            model.addAttribute("errorMessage", "Error updating password: " + e.getMessage());
+        }
+
+        return "student-profile";
     }
 
     // ── Helpers ───────────────────────────────────────────────────────────────
