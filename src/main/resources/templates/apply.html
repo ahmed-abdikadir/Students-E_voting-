@@ -55,8 +55,8 @@
             </div>
         </nav>
 
-        <div style="display: flex; align-items: center; justify-content: center; flex: 1; padding: var(--space-2xl) 0;">
-            <div class="apply-container">
+        <div class="apply-layout-wrapper" style="display: flex; gap: var(--space-2xl); justify-content: center; padding: var(--space-2xl) var(--space-lg); max-width: 1200px; margin: 0 auto; flex-wrap: wrap; align-items: flex-start;">
+            <div class="apply-container" style="flex: 1; min-width: 320px; max-width: 500px; margin: 0;">
                 <div class="apply-header">
                     <span class="apply-icon">🏛️</span>
                     <h1 class="apply-title">Run for Office</h1>
@@ -104,6 +104,34 @@
                 </form>
             </div>
             </div>
+            
+            <!-- My Applications History -->
+            <div class="my-applications-container" style="flex: 1; min-width: 320px; max-width: 600px; width: 100%;">
+                <div class="apply-header" style="text-align:left; margin-bottom: var(--space-lg);">
+                    <span class="apply-icon">📜</span>
+                    <h2 class="apply-title" style="font-size: 1.5rem;">My Applications</h2>
+                    <p class="apply-subtitle">Track the status of your applications.</p>
+                </div>
+                
+                <div th:if="${#lists.isEmpty(myApplications)}" class="empty-state" style="background:var(--bg-surface); padding: var(--space-xl); border-radius: var(--radius-lg); text-align:center; border: 1px solid var(--border-color); box-shadow: var(--shadow-sm);">
+                    <p style="color:var(--text-secondary); margin:0;">You haven't submitted any applications yet.</p>
+                </div>
+
+                <div th:if="${not #lists.isEmpty(myApplications)}" style="display:flex; flex-direction:column; gap: var(--space-md);">
+                    <div th:each="app : ${myApplications}" class="app-card" style="background:var(--bg-surface); padding: var(--space-lg); border-radius: var(--radius-lg); border: 1px solid var(--border-color); display:flex; justify-content: space-between; align-items:flex-start; box-shadow: var(--shadow-sm); transition: transform 0.2s ease, box-shadow 0.2s ease;">
+                        <div style="flex: 1; margin-right: 16px;">
+                            <h3 th:text="${app.election.name}" style="margin: 0 0 8px 0; font-size: 1.1rem; color: var(--text-primary); font-weight: 600;">Election Name</h3>
+                            <p th:text="${app.motive}" style="margin: 0; font-size: 0.95rem; color: var(--text-secondary); line-height: 1.5; display: -webkit-box; -webkit-line-clamp: 3; line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden;"></p>
+                        </div>
+                        <div style="flex-shrink: 0; margin-top: 4px;">
+                            <span th:if="${app.status.name() == 'PENDING'}" class="badge" style="background: rgba(245, 158, 11, 0.15); color: #b45309; padding: 4px 12px; border-radius: 99px; font-size: 0.85rem; font-weight: 600; border: 1px solid rgba(245, 158, 11, 0.3);">Pending</span>
+                            <span th:if="${app.status.name() == 'APPROVED'}" class="badge" style="background: rgba(16, 185, 129, 0.15); color: #047857; padding: 4px 12px; border-radius: 99px; font-size: 0.85rem; font-weight: 600; border: 1px solid rgba(16, 185, 129, 0.3);">Approved</span>
+                            <span th:if="${app.status.name() == 'REJECTED'}" class="badge" style="background: rgba(239, 68, 68, 0.15); color: #b91c1c; padding: 4px 12px; border-radius: 99px; font-size: 0.85rem; font-weight: 600; border: 1px solid rgba(239, 68, 68, 0.3);">Denied</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
         </div>
     </main>
 </div>

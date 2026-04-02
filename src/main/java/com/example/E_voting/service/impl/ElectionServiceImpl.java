@@ -424,4 +424,19 @@ public class ElectionServiceImpl implements ElectionService {
         app.setStatus(CandidateApplication.Status.REJECTED);
         return candidateApplicationRepository.save(app);
     }
+
+    @Override
+    @Transactional
+    public CandidateApplication requestApplicationReview(Long applicationId, String justification) {
+        CandidateApplication app = candidateApplicationRepository.findById(applicationId)
+                .orElseThrow(() -> new IllegalArgumentException("Application not found"));
+
+        if (app.getStatus() != CandidateApplication.Status.REJECTED) {
+            throw new IllegalStateException("Only rejected applications can be reviewed.");
+        }
+
+        app.setStatus(CandidateApplication.Status.PENDING);
+        app.setMotive(app.getMotive() + "\n\n[REVIEW REQUEST]: " + justification);
+        return candidateApplicationRepository.save(app);
+    }
 }

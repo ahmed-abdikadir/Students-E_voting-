@@ -63,4 +63,6 @@ public interface ElectionService {
     CandidateApplication rejectApplication(Long applicationId);
     
     List<CandidateApplication> getApprovedApplicationsByElection(Long electionId);
+
+    CandidateApplication requestApplicationReview(Long applicationId, String justification);
 }

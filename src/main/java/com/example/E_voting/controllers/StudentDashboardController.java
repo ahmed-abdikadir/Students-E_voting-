@@ -80,6 +80,9 @@ public class StudentDashboardController {
         }
         model.addAttribute("candidateProfiles", candidateData);
         
+        // Add User Applications
+        model.addAttribute("myApplications", electionService.getApplicationsByUsername(username));
+
         return "dashboard";
     }
 
@@ -130,7 +133,9 @@ public class StudentDashboardController {
     public String applyPage(Model model, HttpSession session) {
         if (!isStudent(session))
             return "redirect:/login";
+        String username = (String) session.getAttribute("username");
         model.addAttribute("elections", electionService.getAllElections());
+        model.addAttribute("myApplications", electionService.getApplicationsByUsername(username));
         return "apply";
     }
 
@@ -149,6 +154,28 @@ public class StudentDashboardController {
             redirectAttributes.addFlashAttribute("applyError", e.getMessage());
         }
         return "redirect:/student/apply";
+    }
+
+    @PostMapping("/apply/review")
+    public String requestApplicationReview(@RequestParam Long applicationId,
+                                           @RequestParam String justification,
+                                           HttpSession session,
+                                           RedirectAttributes redirectAttributes) {
+        if (!isStudent(session))
+            return "redirect:/login";
+        
+        try {
+            electionService.requestApplicationReview(applicationId, justification);
+            redirectAttributes.addFlashAttribute("applySuccess", "Your review request has been submitted.");
+            redirectAttributes.addFlashAttribute("successMessage", "Your review request has been submitted."); // For Dashboard
+        } catch (Exception e) {
+            redirectAttributes.addFlashAttribute("applyError", e.getMessage());
+            redirectAttributes.addFlashAttribute("errorMessage", e.getMessage());
+        }
+        
+        // Let's redirect back to wherever they came from. In this case, usually /student/dashboard or /student/apply
+        // We will default to dashboard.  (Can improve by checking referer if needed)
+        return "redirect:/student/dashboard";
     }
 
     // ── Live Votes API (student-accessible) ───────────────────────────────────
