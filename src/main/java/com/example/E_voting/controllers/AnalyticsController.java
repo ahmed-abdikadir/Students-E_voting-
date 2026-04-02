@@ -27,6 +27,9 @@ public class AnalyticsController {
         }
         
         var election = electionService.getElectionById(electionId);
+        if (election == null) {
+            return "redirect:/admin/elections";
+        }
         var candidates = electionService.getCandidatesByElectionId(electionId);
         var results = electionService.getElectionResults(electionId);
         var allElections = electionService.getAllElections();

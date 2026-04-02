@@ -142,7 +142,8 @@ public class ElectionServiceImpl implements ElectionService {
         return candidates.stream()
                 .collect(Collectors.toMap(
                         Candidate::getName,
-                        candidate -> voteCounts.getOrDefault(candidate.getId(), 0L)));
+                        candidate -> voteCounts.getOrDefault(candidate.getId(), 0L),
+                        (a, b) -> a != null && b != null ? a + b : a != null ? a : b));
     }
 
     @Override
