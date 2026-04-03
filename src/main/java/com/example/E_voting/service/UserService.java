@@ -12,4 +12,6 @@ public interface UserService {
     User findByUsername(String username);
 
     long countStudents();
+
+    void deleteUser(String username);
 }

@@ -276,6 +276,27 @@ public class AdminController {
         return "redirect:/admin/students";
     }
 
+    @DeleteMapping("/students/{targetUsername}")
+    @ResponseBody
+    public ResponseEntity<?> deleteStudent(@PathVariable String targetUsername, HttpSession session) {
+        try {
+            String role = (String) session.getAttribute("role");
+            String adminUsername = (String) session.getAttribute("username");
+            if (!"ADMIN".equals(role)) {
+                return ResponseEntity.status(HttpStatus.FORBIDDEN).body("Access denied");
+            }
+
+            userService.deleteUser(targetUsername);
+            auditService.logAction(adminUsername, "DELETE_STUDENT", "User", 0L, "Deleted student: " + targetUsername);
+            return ResponseEntity.ok().body("Student profile deleted successfully");
+        } catch (Exception e) {
+            auditService.logActionWithError((String) session.getAttribute("username"), "DELETE_STUDENT", "User", 0L,
+                    "Student: " + targetUsername, e.getMessage());
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR)
+                    .body("Error deleting student: " + e.getMessage());
+        }
+    }
+
     @GetMapping("/election/{electionId}/live-results")
     @ResponseBody
     public ResponseEntity<java.util.Map<String, Object>> getLiveResults(@PathVariable Long electionId,

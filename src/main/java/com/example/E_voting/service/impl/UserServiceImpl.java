@@ -84,4 +84,10 @@ public class UserServiceImpl implements UserService {
     public long countStudents() {
         return userRepository.countByRole(User.Role.STUDENT);
     }
+
+    @Override
+    @org.springframework.transaction.annotation.Transactional
+    public void deleteUser(String username) {
+        userRepository.deleteById(username);
+    }
 }
