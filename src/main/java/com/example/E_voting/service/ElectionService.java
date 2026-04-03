@@ -27,7 +27,7 @@ public interface ElectionService {
 
     Map<String, Long> getElectionResults(Long electionId);
 
-    Election createElection(String name);
+    Election createElection(String name, java.time.LocalDateTime startTime, java.time.LocalDateTime endTime);
 
     Election openElection(Long electionId);
 
@@ -63,6 +63,8 @@ public interface ElectionService {
     CandidateApplication rejectApplication(Long applicationId);
     
     List<CandidateApplication> getApprovedApplicationsByElection(Long electionId);
+
+    long getVotesCastSince(java.time.LocalDateTime date);
 
     CandidateApplication requestApplicationReview(Long applicationId, String justification);
 }

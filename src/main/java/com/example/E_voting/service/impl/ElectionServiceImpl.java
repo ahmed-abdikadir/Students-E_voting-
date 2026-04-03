@@ -120,6 +120,10 @@ public class ElectionServiceImpl implements ElectionService {
         Election election = electionRepository.findById(electionId)
                 .orElseThrow(() -> new IllegalArgumentException("Election not found with id: " + electionId));
 
+        if (!election.isActive()) {
+            throw new IllegalStateException("Election is not currently active.");
+        }
+
         Candidate candidate = candidateRepository.findById(candidateId)
                 .orElseThrow(() -> new IllegalArgumentException("Candidate not found with id: " + candidateId));
 
@@ -155,8 +159,8 @@ public class ElectionServiceImpl implements ElectionService {
     }
 
     @Override
-    public Election createElection(String name) {
-        Election newElection = new Election(name);
+    public Election createElection(String name, java.time.LocalDateTime startTime, java.time.LocalDateTime endTime) {
+        Election newElection = new Election(name, startTime, endTime);
         return electionRepository.save(newElection);
     }
 
@@ -165,6 +169,10 @@ public class ElectionServiceImpl implements ElectionService {
         Election election = getElectionById(electionId);
         if (election != null) {
             election.setStatus(Election.ElectionStatus.OPEN);
+            // If opened manually, and start time hasn't happened yet (or is null), update it to now
+            if (election.getStartTime() == null || election.getStartTime().isAfter(java.time.LocalDateTime.now())) {
+                election.setStartTime(java.time.LocalDateTime.now());
+            }
             return electionRepository.save(election);
         }
         return null;
@@ -175,6 +183,10 @@ public class ElectionServiceImpl implements ElectionService {
         Election election = getElectionById(electionId);
         if (election != null) {
             election.setStatus(Election.ElectionStatus.CLOSED);
+            // If closed manually, and end time hasn't happened yet (or is null), update it to now
+            if (election.getEndTime() == null || election.getEndTime().isAfter(java.time.LocalDateTime.now())) {
+                election.setEndTime(java.time.LocalDateTime.now());
+            }
             return electionRepository.save(election);
         }
         return null;
@@ -197,6 +209,9 @@ public class ElectionServiceImpl implements ElectionService {
 
             // Delete all candidates for this election using the corrected method name
             candidateRepository.deleteByElection_Id(electionId);
+
+            // Delete all applications for this election
+            candidateApplicationRepository.deleteByElection_Id(electionId);
 
             // Finally delete the election
             if (election != null) {
@@ -439,5 +454,10 @@ public class ElectionServiceImpl implements ElectionService {
         app.setStatus(CandidateApplication.Status.PENDING);
         app.setMotive(app.getMotive() + "\n\n[REVIEW REQUEST]: " + justification);
         return candidateApplicationRepository.save(app);
+    }
+
+    @Override
+    public long getVotesCastSince(java.time.LocalDateTime date) {
+        return voteRepository.countByTimestampAfter(date);
     }
 }

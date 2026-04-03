@@ -339,33 +339,61 @@
 
                 <div th:unless="${elections.isEmpty()}">
                     <th:block th:each="election : ${elections}">
-                        <div th:class="'election-item ' + (${votedElectionIds.contains(election.id)} ? 'voted-card' : '')" th:if="${election.status.name() == 'OPEN' || (election.status.name() == 'CREATED' && election.hasStarted())}">
-                            <div>
-                                <h2 th:text="${election.name}">Election Name</h2>
-                                <p>
-                                    Closes in: <span class="countdown-timer mono" th:data-end="${election.endTime}">--:--:--</span>
-                                </p>
-                            </div>
-                            <div class="actions">
-                                <span class="badge badge-live" th:if="${election.status.name() == 'OPEN' || election.hasStarted()}">
-                                    <span class="pulse-circle"></span> LIVE
-                                </span>
-                                <button class="btn btn-secondary" th:onclick="'toggleCandidates(' + ${election.id} + ')'">View Candidates</button>
-                                
-                                <div th:switch="${session.role}">
-                                    <a th:case="'ADMIN'" th:href="@{/election/{id}/results(id=${election.id})}" class="btn btn-primary">View Results</a>
-                                    <div th:case="'STUDENT'">
-                                        <!-- Note: badge-voted sets a green full pill -->
-                                        <span th:if="${votedElectionIds.contains(election.id)}" class="badge badge-voted">
-                                            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"></polyline></svg>
-                                            Voted (Results)
-                                        </span>
-                                        <a th:unless="${votedElectionIds.contains(election.id)}" th:href="@{/student/election/{id}(id=${election.id})}" class="btn btn-primary">Vote Now</a>
+                        <th:block th:if="${election.status.name() == 'OPEN' || (election.status.name() == 'CREATED' && election.hasStarted())}">
+                            <div th:class="'election-item ' + (${votedElectionIds.contains(election.id)} ? 'voted-card' : '')">
+                                <div>
+                                    <h2 th:text="${election.name}">Election Name</h2>
+                                    <p>
+                                        Closes in: <span class="countdown-timer mono" th:data-end="${election.endTime}">--:--:--</span>
+                                    </p>
+                                </div>
+                                <div class="actions">
+                                    <span class="badge badge-live" th:if="${election.status.name() == 'OPEN' || election.hasStarted()}">
+                                        <span class="pulse-circle"></span> LIVE
+                                    </span>
+                                    <button class="btn btn-secondary" th:onclick="'toggleCandidates(' + ${election.id} + ')'">View Candidates</button>
+                                    
+                                    <div th:switch="${session.role}">
+                                        <a th:case="'ADMIN'" th:href="@{/election/{id}/results(id=${election.id})}" class="btn btn-primary">View Results</a>
+                                        <div th:case="'STUDENT'">
+                                            <!-- Note: badge-voted sets a green full pill -->
+                                            <span th:if="${votedElectionIds.contains(election.id)}" class="badge badge-voted">
+                                                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                                                Voted (Results)
+                                            </span>
+                                            <a th:unless="${votedElectionIds.contains(election.id)}" th:href="@{/student/election/{id}(id=${election.id})}" class="btn btn-primary">Vote Now</a>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
-                        </div>
 
+                            <!-- Candidate Drawer -->
+                            <div class="candidates-view" th:id="'candidates-' + ${election.id}">
+                                <div th:if="${candidateProfiles.get(election.id) == null || candidateProfiles.get(election.id).isEmpty()}" class="caption" style="margin-bottom:16px;">No candidate profiles available yet.</div>
+                                <div class="candidate-profile" th:each="app : ${candidateProfiles.get(election.id)}">
+                                    <h4 th:text="${app.name}">Candidate Name</h4>
+                                    <p th:text="${app.motive}">Manifesto...</p>
+                                </div>
+                            </div>
+                        </th:block>
+                    </th:block>
+                </div>
+            </div>
+
+            <!-- UPCOMING ELECTIONS TAB -->
+            <div id="tab-upcoming" class="tab-content">
+                <th:block th:each="election : ${elections}">
+                    <th:block th:if="${election.status.name() == 'CREATED' && !election.hasStarted()}">
+                        <div class="election-item">
+                            <div>
+                                <h2 th:text="${election.name}">Election Name</h2>
+                                <p>Starts in: <span class="countdown-timer mono" th:data-start="${election.startTime}" data-mode="upcoming">--:--:--</span></p>
+                            </div>
+                            <div class="actions">
+                                <span class="badge badge-created">Scheduled</span>
+                                <button class="btn btn-secondary" th:onclick="'toggleCandidates(' + ${election.id} + ')'">Voter Guide</button>
+                            </div>
+                        </div>
                         <!-- Candidate Drawer -->
                         <div class="candidates-view" th:id="'candidates-' + ${election.id}">
                             <div th:if="${candidateProfiles.get(election.id) == null || candidateProfiles.get(election.id).isEmpty()}" class="caption" style="margin-bottom:16px;">No candidate profiles available yet.</div>
@@ -375,30 +403,6 @@
                             </div>
                         </div>
                     </th:block>
-                </div>
-            </div>
-
-            <!-- UPCOMING ELECTIONS TAB -->
-            <div id="tab-upcoming" class="tab-content">
-                <th:block th:each="election : ${elections}">
-                    <div class="election-item" th:if="${election.status.name() == 'CREATED' && !election.hasStarted()}">
-                        <div>
-                            <h2 th:text="${election.name}">Election Name</h2>
-                            <p>Starts in: <span class="countdown-timer mono" th:data-start="${election.startTime}" data-mode="upcoming">--:--:--</span></p>
-                        </div>
-                        <div class="actions">
-                            <span class="badge badge-created">Scheduled</span>
-                            <button class="btn btn-secondary" th:onclick="'toggleCandidates(' + ${election.id} + ')'">Voter Guide</button>
-                        </div>
-                    </div>
-                    <!-- Candidate Drawer -->
-                    <div class="candidates-view" th:id="'candidates-' + ${election.id}">
-                        <div th:if="${candidateProfiles.get(election.id) == null || candidateProfiles.get(election.id).isEmpty()}" class="caption" style="margin-bottom:16px;">No candidate profiles available yet.</div>
-                        <div class="candidate-profile" th:each="app : ${candidateProfiles.get(election.id)}">
-                            <h4 th:text="${app.name}">Candidate Name</h4>
-                            <p th:text="${app.motive}">Manifesto...</p>
-                        </div>
-                    </div>
                 </th:block>
             </div>
 

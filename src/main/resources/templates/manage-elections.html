@@ -224,7 +224,7 @@
                             <td>
                                 <!-- Scannable Badges with Animations -->
                                 <span class="badge badge-created" th:if="${election.status?.name() == 'CREATED'}">
-                                    <span class="pulse-dot"></span> Created
+                                    <span class="pulse-dot"></span> Scheduled
                                 </span>
                                 <span class="badge badge-open" th:if="${election.status?.name() == 'OPEN'}">
                                     <span class="pulse-dot anim-pulse"></span> Open
@@ -232,6 +232,18 @@
                                 <span class="badge badge-closed" th:if="${election.status?.name() == 'CLOSED'}">
                                     <span class="pulse-dot" style="background:#94a3b8;"></span> Closed
                                 </span>
+                                
+                                <div style="margin-top: 6px; font-size: 12px; color: var(--color-text-muted);">
+                                    <span th:if="${election.status?.name() == 'CREATED' && (!election.hasStarted())}">
+                                        Starts in: <span class="countdown-timer mono" th:data-start="${election.startTime}" data-mode="upcoming">--:--:--</span>
+                                    </span>
+                                    <span th:if="${election.status?.name() == 'OPEN' || (election.status?.name() == 'CREATED' && election.hasStarted())}">
+                                        Closes in: <span class="countdown-timer mono" th:data-end="${election.endTime}">--:--:--</span>
+                                    </span>
+                                    <span th:if="${election.status?.name() == 'CLOSED' || election.hasEnded()}">
+                                        Ended
+                                    </span>
+                                </div>
                             </td>
                             <td class="actions-col">
                                 <div style="display:flex; gap:12px; justify-content: flex-end; align-items:center;">
@@ -281,6 +293,15 @@
                 <label for="electionName">Election Name</label>
             </div>
             
+            <div class="group-floating">
+                <input type="datetime-local" id="startTime" name="startTime" placeholder=" " autocomplete="off">
+                <label for="startTime">Start Time (Optional)</label>
+            </div>
+            
+            <div class="group-floating">
+                <input type="datetime-local" id="endTime" name="endTime" placeholder=" " autocomplete="off">
+                <label for="endTime">End Time (Optional)</label>
+            </div>
         </div>
         <div class="panel-footer">
             <button type="button" class="btn btn-secondary" onclick="closePanel()">Cancel</button>
@@ -339,6 +360,32 @@
         btn.classList.add('loading');
         btn.setAttribute('disabled', 'true');
     }
+
+    // Timers
+    function updateTimers() {
+        const now = new Date().getTime();
+        document.querySelectorAll('.countdown-timer').forEach(el => {
+            const isUpcoming = el.getAttribute('data-mode') === 'upcoming';
+            const targetDateStr = isUpcoming ? el.getAttribute('data-start') : el.getAttribute('data-end');
+            if(!targetDateStr) { el.style.display = 'none'; return; }
+
+            const target = new Date(targetDateStr).getTime();
+            const distance = target - now;
+
+            if (distance < 0) {
+                el.innerText = '00:00:00';
+            } else {
+                const d = Math.floor(distance / (1000 * 60 * 60 * 24));
+                const h = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)).toString().padStart(2, '0');
+                const m = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60)).toString().padStart(2, '0');
+                const s = Math.floor((distance % (1000 * 60)) / 1000).toString().padStart(2, '0');
+                el.innerText = (d > 0 ? d + "d " : "") + `${h}:${m}:${s}`;
+            }
+        });
+    }
+
+    setInterval(updateTimers, 1000);
+    updateTimers();
 
     // Modal Logic
     let deleteTargetId = null;

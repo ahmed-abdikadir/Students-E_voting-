@@ -79,4 +79,9 @@ public class UserServiceImpl implements UserService {
     public User findByUsername(String username) {
         return userRepository.findById(username).orElse(null);
     }
+
+    @Override
+    public long countStudents() {
+        return userRepository.countByRole(User.Role.STUDENT);
+    }
 }

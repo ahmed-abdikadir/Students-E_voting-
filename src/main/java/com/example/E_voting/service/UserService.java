@@ -10,4 +10,6 @@ public interface UserService {
     boolean changePassword(String username, String currentPassword, String newPassword);
 
     User findByUsername(String username);
+
+    long countStudents();
 }

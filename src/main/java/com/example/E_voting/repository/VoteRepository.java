@@ -12,4 +12,5 @@ public interface VoteRepository extends JpaRepository<Vote, Long> {
     List<Vote> findByCandidate_Id(Long candidateId);
     void deleteByElection_Id(Long electionId);
     List<Vote> findByStudentId(String studentId);
+    long countByTimestampAfter(java.time.LocalDateTime date);
 }

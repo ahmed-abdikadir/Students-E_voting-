@@ -15,4 +15,6 @@ public interface CandidateApplicationRepository extends JpaRepository<CandidateA
     List<CandidateApplication> findByUserUsernameAndElectionId(String username, Long electionId);
     
     List<CandidateApplication> findByElectionIdAndStatus(Long electionId, CandidateApplication.Status status);
+
+    void deleteByElection_Id(Long electionId);
 }

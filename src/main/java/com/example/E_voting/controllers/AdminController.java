@@ -44,6 +44,17 @@ public class AdminController {
         // Add pending application count for dashboard badge
         model.addAttribute("pendingAppCount", electionService.getPendingApplications().size());
         model.addAttribute("announcementCount", announcementService.getActiveAnnouncements().size());
+
+        // Dynamic KPI Stats
+        long totalStudents = userService.countStudents();
+        long activeElectionsCount = electionService.getAllElections().stream()
+            .filter(e -> e.isActive())
+            .count();
+        long votesCastToday = electionService.getVotesCastSince(java.time.LocalDate.now().atStartOfDay());
+
+        model.addAttribute("totalStudents", totalStudents);
+        model.addAttribute("activeElectionsCount", activeElectionsCount);
+        model.addAttribute("votesCastToday", votesCastToday);
         return "admin-dashboard";
     }
 
@@ -58,7 +69,10 @@ public class AdminController {
     }
 
     @PostMapping("/elections/create")
-    public String createElection(@RequestParam String name, RedirectAttributes redirectAttributes,
+    public String createElection(@RequestParam String name, 
+            @RequestParam(required=false) @org.springframework.format.annotation.DateTimeFormat(iso = org.springframework.format.annotation.DateTimeFormat.ISO.DATE_TIME) java.time.LocalDateTime startTime,
+            @RequestParam(required=false) @org.springframework.format.annotation.DateTimeFormat(iso = org.springframework.format.annotation.DateTimeFormat.ISO.DATE_TIME) java.time.LocalDateTime endTime,
+            RedirectAttributes redirectAttributes,
             HttpSession session) {
         String role = (String) session.getAttribute("role");
         String username = (String) session.getAttribute("username");
@@ -66,7 +80,7 @@ public class AdminController {
             return "redirect:/login";
         }
         try {
-            var election = electionService.createElection(name);
+            var election = electionService.createElection(name, startTime, endTime);
             auditService.logAction(username, "CREATE_ELECTION", "Election", election.getId(),
                     "Created election: " + name);
             redirectAttributes.addFlashAttribute("successMessage", "Election '" + name + "' created successfully.");

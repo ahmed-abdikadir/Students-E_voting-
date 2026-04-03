@@ -24,7 +24,7 @@ public class ElectionController {
     private ElectionService electionService;
 
     @GetMapping("/election/{id}")
-    public String showBallot(@PathVariable("id") Long electionId, Model model, HttpSession session) {
+    public String showBallot(@PathVariable("id") Long electionId, Model model, HttpSession session, org.springframework.web.servlet.mvc.support.RedirectAttributes redirectAttributes) {
         String role = (String) session.getAttribute("role");
         if (!"STUDENT".equals(role)) {
             return "redirect:/login";
@@ -35,6 +35,11 @@ public class ElectionController {
             return "already-voted";
         }
         Election election = electionService.getElectionById(electionId);
+        if (election == null || !election.isActive()) {
+            redirectAttributes.addFlashAttribute("errorMessage", "This election is strongly closed and no longer accepting votes.");
+            return "redirect:/student/dashboard";
+        }
+
         List<Candidate> candidates = electionService.getCandidatesByElectionId(electionId);
 
         model.addAttribute("election", election);
@@ -84,7 +89,7 @@ public class ElectionController {
     }
 
     @PostMapping("/vote/confirm")
-    public String castVote(HttpSession session) {
+    public String castVote(HttpSession session, org.springframework.web.servlet.mvc.support.RedirectAttributes redirectAttributes) {
         String role = (String) session.getAttribute("role");
         if (!"STUDENT".equals(role)) {
             return "redirect:/login";
@@ -98,7 +103,14 @@ public class ElectionController {
             return "redirect:/login";
         }
 
-        electionService.castVote(studentId, electionId, candidateId);
+        try {
+            electionService.castVote(studentId, electionId, candidateId);
+        } catch (IllegalStateException e) {
+            redirectAttributes.addFlashAttribute("errorMessage", "Error: The election is closed! Your vote was not cast.");
+            session.removeAttribute("electionId");
+            session.removeAttribute("candidateId");
+            return "redirect:/student/dashboard";
+        }
 
         session.removeAttribute("electionId");
         session.removeAttribute("candidateId");
